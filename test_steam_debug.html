@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Steam Envanter Debug</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Steam Envanter Debug</h1>
+    
+    <div>
+        <h3>Trade URL Analizi:</h3>
+        <p>Trade URL: https://steamcommunity.com/tradeoffer/new/?partner=861133179&token=3HsqY4oM</p>
+        <p>Partner ID: 861133179</p>
+        <p>Hesaplanan Steam ID64: <span id="steamid64"></span></p>
+    </div>
+    
+    <div>
+        <h3>Test Seçenekleri:</h3>
+        <button onclick="testInventory1()">Test 1: CS2 Envanter (730/2)</button>
+        <button onclick="testInventory2()">Test 2: CS2 Envanter (730/2) - Farklı dil</button>
+        <button onclick="testInventory3()">Test 3: CS2 Envanter (730/2) - Daha az item</button>
+        <button onclick="testProfile()">Test 4: Steam Profil Bilgisi</button>
+    </div>
+    
+    <div id="result"></div>
+
+    <script>
+        // Steam ID hesaplama
+        const partnerId = 861133179;
+        const steamId64 = (BigInt(partnerId) + BigInt('76561197960265728')).toString();
+        document.getElementById('steamid64').textContent = steamId64;
+        
+        async function testInventory1() {
+            await testInventory(`https://gamedev.mymedya.tr/api/steam_inventory_proxy.php?steamid=${steamId64}`, 'CS2 Envanter (730/2)');
+        }
+        
+        async function testInventory2() {
+            await testInventory(`https://gamedev.mymedya.tr/api/steam_inventory_proxy.php?steamid=${steamId64}&lang=turkish`, 'CS2 Envanter (Türkçe)');
+        }
+        
+        async function testInventory3() {
+            await testInventory(`https://gamedev.mymedya.tr/api/steam_inventory_proxy.php?steamid=${steamId64}&count=100`, 'CS2 Envanter (100 item)');
+        }
+        
+        async function testProfile() {
+            await testInventory(`https://gamedev.mymedya.tr/api/steam_profile_proxy.php?steamid=${steamId64}`, 'Steam Profil');
+        }
+        
+        async function testInventory(url, testName) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML += `<h4>${testName} Test:</h4>`;
+            resultDiv.innerHTML += `<p>URL: ${url}</p>`;
+            resultDiv.innerHTML += '<p>Yükleniyor...</p>';
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.text();
+                
+                resultDiv.innerHTML += `
+                    <div style="background:#f0f0f0;padding:10px;margin:10px 0;border-radius:5px;">
+                        <p><strong>Status:</strong> ${response.status}</p>
+                        <p><strong>Response Length:</strong> ${data.length}</p>
+                        <p><strong>Response Preview:</strong></p>
+                        <pre style="background:#fff;padding:10px;border-radius:3px;max-height:200px;overflow:auto;">${data.substring(0, 500)}${data.length > 500 ? '...' : ''}</pre>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML += `
+                    <div style="background:#ffebee;padding:10px;margin:10px 0;border-radius:5px;">
+                        <p><strong>Error:</strong> ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html> 

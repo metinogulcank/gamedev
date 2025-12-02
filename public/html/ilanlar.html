@@ -1,0 +1,436 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        Jervis Game - jervisgame.com
+    </title>
+    <link rel="icon" type="image/x-icon" href="images/fav.png">
+    <link href="css/fontawesome.css" rel="stylesheet">
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!--Kütüphane-->
+    <script type="text/javascript" src="js/kutuphane/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="js/kutuphane/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="js/kutuphane/jquery.easing.1.3.js"></script>
+
+    <!--animate-->
+    <link href="js/animate/animate.css" rel="stylesheet">
+    <script type="text/javascript" src="js/animate/animate.js"></script>
+
+    <!--Modal-->
+    <link href="js/modal/modal.css" rel="stylesheet">
+    <script src="js/modal/promise.js"></script>
+    <script src="js/modal/modal.js"></script>
+
+    <!--slider-->
+    <link href="js/slider/slippry.css" rel="stylesheet">
+    <script type="text/javascript" src="js/slider/slippry.min.js"></script>
+
+    <!--carousel-->
+    <link href="js/carousel/util.carousel.css" rel="stylesheet">
+    <link href="js/carousel/util.animate.css" rel="stylesheet">
+    <script type="text/javascript" src="js/carousel/utilcarousel.source.js"></script>
+    <script type="text/javascript" src="js/carousel/utilcarousel.min.js"></script>
+
+    <!--Select-->
+    <script src="js/select/select2.min.js"></script>
+    <script src="js/select/i18n/tr.js"></script>
+    <link href="js/select/select2.css" rel="stylesheet">
+
+    <!--main-->
+    <script src="js/kutuphane/main.js"></script>
+</head>
+<body>
+    <div class="NavBarOverlay"></div>
+
+    <div class="HeaderProfil">
+        <div class="SetContent">
+            <div class="Logo">
+                <a href="index.html">
+                    <img src="images/Logo.png">
+                </a>
+            </div>
+            <div class="ProfileMenu">
+                <i class="fas fa-bars bars"></i>
+            </div>
+            <div class="Menu">
+                <ul>
+                    <li><a href="index.html">ANASAYFA</a></li>
+                    <li><a href="Market.html">MARKET</a></li>
+                    <li><a href="TakasListesi.html">TAKAS YAP</a><span class="Drky">Yeni</span></li>
+                </ul>
+            </div>
+            <div class="Login">
+                <ul>
+                    <li>
+                        <div class="BasketProfil">
+                            <a href="Sepet.html" title="Sepetim"><i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                        <div class="BildirimName" title="Bildirimler">
+                            <i class="fas fa-bell notifications">
+                                <span class="figure">77</span>
+                            </i>
+                        </div>
+                        <div class="NavbarNotifications">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-bell"></i>Hesabınıza 500.00 TL yüklendi.</a></li>
+                                <li><a href="#"><i class="fa fa-bell"></i>Favorilerinizdeki itemin fiyatı düştü.</a></li>
+                                <li><a href="#"><i class="fa fa-bell"></i>İteminize yorum geldi, görmek için tıklayınız.</a></li>
+                                <li><a href="#"><i class="fa fa-bell"></i>Hesabınıza 500.00 TL yüklendi.</a></li>
+                                <li><a href="#"><i class="fa fa-bell"></i>Favorilerinizdeki itemin fiyatı düştü.</a></li>
+                                <li><a href="#"><i class="fa fa-bell"></i>Hesabınızda 850.00 TL tutarındaki çekim talebiniz onaylandı.</a></li>
+                                <li><a href="Bildirimlerim.html">Tüm Bildirimleri Gör</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="Destek.html">Destek</a></li>
+                    <li>
+                        <div class="ProfilName">
+                            Ahmet Kaplan <i class="fas fa-angle-down"></i>
+                        </div>
+                        <div class="NavbarAccount">
+                            <h3>
+                                <span class="NavAccName"><b>Ahmet Kaplan</b></span>
+                                <span class="NavAccMail">ahmetkaplan@gmail.com</span>
+                                <span class="NavAccBalance">Bakiye : 8.750,05 TL</span>
+                            </h3>
+
+                            <ul>
+                                <li><a href="Account.html"><i class="fa fa-user"></i>Hesabım</a></li>
+                                <li><a href="Odeme.html"><i class="fas fa-money-bill-wave"></i>Bakiye Yükle</a></li>
+                                <li><a href="index.html"><i class="fas fa-sign-out-alt"></i>Çıkış Yap</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <section class="ProfilPageArea">
+        <div class="ProfilPageContent">
+            <div class="SetContent">
+                <div class="ProfilArea">
+                    <div class="ProfilMenu">
+                        <i class="fas fa-times ProfileClose"></i>
+                        <div class="ProfilMenuFoto">
+                            <a href="Account.html">
+                                <img src="images/unknownuser.jpg">
+                            </a>
+                        </div>
+                        <div class="ProfilMenuAd">
+                            <h1>Ahmet KAPLAN</h1>
+                        </div>
+                        <div class="ProfilMenuler">
+                            <ul>
+                                <li><a href="Cuzdan.html"><i class="fa fa-user"></i>Hesabım</a></li>
+                                <li><a href="Odeme.html"><i class="fas fa-money-bill-wave"></i>Bakiye Yükle</a></li>
+                                <li><a href="KullaniciBilgileri.html"><i class="fa fa-user"></i>Kullanıcı Bilgilerim</a></li>
+                                <li><a href="Siparislerim.html"><i class="fas fa-shopping-bag"></i>Siparişlerim</a></li>
+                                <li><a href="Satislarim.html"><i class="fas fa-coins"></i>Satışlarım</a></li>
+                                <li><a href="Favorilerim.html"><i class="fa fa-star"></i>Favorilerim</a></li>
+                                <li><a href="Bildirimlerim.html"><i class="fa fa-bell"></i>Bildirimlerim</a></li>
+                                <li><a href="Yorumlarim.html"><i class="fa fa-comments"></i>Yorumlarım</a></li>
+                                <li><a href="MagazaAyarlari.html"><i class="fas fa-store"></i>Mağaza Yönetimi</a></li>
+                                <li><a href="Desteklenenler.html"><i class="fas fa-handshake"></i>Destekle</a></li>
+                                <li><a href="ilanlar.html"><i class="fas fa-clipboard-list"></i>İlanlarım</a></li>
+                                <li><a href="ilanEkle.html"><i class="fas fa-cart-plus"></i>İlan Ekle</a></li>
+                                <li><a href="CsgoTrade.html"><i class="fas fa-people-arrows"></i>Takas (CS2)<span class="Profilenew">Yeni</span></a></li>
+                                <li><a href="KnightOnlineTrade.html"><i class="fas fa-people-arrows"></i>Takas (Knight Online)<span class="Profilenew">Yeni</span></a></li>
+                                <li><a href="Destek.html"><i class="fas fa-headset"></i>Yardım / Destek</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ProfilDetail">
+                        <h5>İLANLARIM</h5>
+                        <header class="tabs-nav2">
+                            <ul>
+                                <li class="activex">
+                                    <a href="#CsgoAdz">
+                                        <h4>CS2 İLANLARI</h4>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#KnightOnlineAdz">
+                                        <h4>KNIGHT ONLINE İLANLARI</h4>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#OnayBekleyen">
+                                        <h4>ONAY BEKLEYEN İLANLAR</h4>
+                                    </a>
+                                </li>
+                            </ul>
+                        </header>
+                        <section class="Products MarketProducts">
+                            <div class="SetContent">
+                                <section class="tabs-content2">
+                                    <div id="CsgoAdz">
+                                        <div class="ProductsArea">
+                                            <ul>
+                                                <li>
+                                                    <div class="ProductItem">
+                                                        <div class="ProductPic">
+                                                            <h1 class="factorynew">Factory New</h1>
+                                                            <img src="images/Test/bfk1.png">
+                                                            <a class="ProductButton" href="CsgoEnvanterGetir.html">Düzenle <i class="fas fa-arrow-right"></i></a>
+                                                        </div>
+                                                        <div class="ProductDesc">
+                                                            <h2>★ Butterfly Knife | Fade</h2>
+                                                            <p>
+                                                                <span class="left">
+                                                                    19525.90 ₺
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="ProductItem">
+                                                        <div class="ProductPic">
+                                                            <h1 class="minimalwear">Minimal Wear</h1>
+                                                            <img src="images/Test/bfk2.png">
+                                                            <a class="ProductButton" href="CsgoEnvanterGetir.html">Düzenle <i class="fas fa-arrow-right"></i></a>
+                                                        </div>
+                                                        <div class="ProductDesc">
+                                                            <h2>★ Butterfly Knife | Doppler</h2>
+                                                            <p>
+                                                                <span class="left">
+                                                                    15525.90 ₺
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="ProductItem">
+                                                        <div class="ProductPic">
+                                                            <h1 class="fieldtested">Field-Tested</h1>
+                                                            <img src="images/Test/bfk3.png">
+                                                            <a class="ProductButton" href="CsgoEnvanterGetir.html">Düzenle <i class="fas fa-arrow-right"></i></a>
+                                                        </div>
+                                                        <div class="ProductDesc">
+                                                            <h2>★ Butterfly Knife | Tiger Tooth</h2>
+                                                            <p>
+                                                                <span class="left">
+                                                                    14525.90 ₺
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="ProductItem">
+                                                        <div class="ProductPic">
+                                                            <h1 class="wellworn">Well-Worn</h1>
+                                                            <img src="images/Test/bfk4.png">
+                                                            <a class="ProductButton" href="CsgoEnvanterGetir.html">Düzenle <i class="fas fa-arrow-right"></i></a>
+                                                        </div>
+                                                        <div class="ProductDesc">
+                                                            <h2>★ Butterfly Knife | Marble Fade</h2>
+                                                            <p>
+                                                                <span class="left">
+                                                                    25000.90 ₺
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="ProductItem">
+                                                        <div class="ProductPic">
+                                                            <h1 class="battlescarred">Battle-Scarred</h1>
+                                                            <img src="images/Test/bfk5.png">
+                                                            <a class="ProductButton" href="CsgoEnvanterGetir.html">Düzenle <i class="fas fa-arrow-right"></i></a>
+                                                        </div>
+                                                        <div class="ProductDesc">
+                                                            <h2>★ Butterfly Knife | Gamma Doppler</h2>
+                                                            <p>
+                                                                <span class="left">
+                                                                    35525.90 ₺
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="ProductItem">
+                                                        <div class="ProductPic">
+                                                            <h1 class="factorynew">Factory New</h1>
+                                                            <img src="images/Test/bfk6.png">
+                                                            <a class="ProductButton" href="CsgoEnvanterGetir.html">Düzenle <i class="fas fa-arrow-right"></i></a>
+                                                        </div>
+                                                        <div class="ProductDesc">
+                                                            <h2>★ StatTrak™ Butterfly Knife | Lore</h2>
+                                                            <p>
+                                                                <span class="left">
+                                                                    25525.90 ₺
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div id="KnightOnlineAdz">
+                                        <div class="ProductsArea">
+                                            <ul>
+                                                <li>
+                                                    <div class="ProductItem">
+                                                        <div class="ProductPic">
+                                                            <h1 class="koserver">Altar</h1>
+                                                            <img src="images/Test/6.png">
+                                                            <a class="ProductButton" href="ilanEkle.html">Düzenle <i class="fas fa-arrow-right"></i></a>
+                                                        </div>
+                                                        <div class="ProductDesc">
+                                                            <h2>+9 Rogue Shell Set</h2>
+                                                            <p>
+                                                                <span class="left">1500 ₺</span>
+                                                                <span class="right">999 ilan</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="ProductItem">
+                                                        <div class="ProductPic">
+                                                            <h1 class="koserver">Sirius</h1>
+                                                            <img src="images/Test/6.png">
+                                                            <a class="ProductButton" href="ilanEkle.html">Düzenle <i class="fas fa-arrow-right"></i></a>
+                                                        </div>
+                                                        <div class="ProductDesc">
+                                                            <h2>+9 Rogue Shell Set</h2>
+                                                            <p>
+                                                                <span class="left">1500 ₺</span>
+                                                                <span class="right">999 ilan</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="ProductItem">
+                                                        <div class="ProductPic">
+                                                            <h1 class="koserver">Ares</h1>
+                                                            <img src="images/Test/6.png">
+                                                            <a class="ProductButton" href="ilanEkle.html">Düzenle <i class="fas fa-arrow-right"></i></a>
+                                                        </div>
+                                                        <div class="ProductDesc">
+                                                            <h2>+9 Rogue Shell Set</h2>
+                                                            <p>
+                                                                <span class="left">1500 ₺</span>
+                                                                <span class="right">999 ilan</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="ProductItem">
+                                                        <div class="ProductPic">
+                                                            <h1 class="koserver">Diez</h1>
+                                                            <img src="images/Test/6.png">
+                                                            <a class="ProductButton" href="ilanEkle.html">Düzenle <i class="fas fa-arrow-right"></i></a>
+                                                        </div>
+                                                        <div class="ProductDesc">
+                                                            <h2>+9 Rogue Shell Set</h2>
+                                                            <p>
+                                                                <span class="left">1500 ₺</span>
+                                                                <span class="right">999 ilan</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="ProductItem">
+                                                        <div class="ProductPic">
+                                                            <h1 class="koserver">Vega</h1>
+                                                            <img src="images/Test/6.png">
+                                                            <a class="ProductButton" href="ilanEkle.html">Düzenle <i class="fas fa-arrow-right"></i></a>
+                                                        </div>
+                                                        <div class="ProductDesc">
+                                                            <h2>+9 Rogue Shell Set</h2>
+                                                            <p>
+                                                                <span class="left">1500 ₺</span>
+                                                                <span class="right">999 ilan</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div id="OnayBekleyen">
+                                        <div class="ProductsArea">
+                                            <ul>
+                                                <li>
+                                                    <div class="ProductItem">
+                                                        <div class="ProductPic">
+                                                            <h1 class="koserver">Altar</h1>
+                                                            <img src="images/Test/6.png">
+                                                            <a class="ProductButton" href="ilanEkle.html">Düzenle <i class="fas fa-arrow-right"></i></a>
+                                                        </div>
+                                                        <div class="ProductDesc">
+                                                            <h2>+9 Rogue Shell Set</h2>
+                                                            <p>
+                                                                <span class="left">1500 ₺</span>
+                                                                <span class="right">999 ilan</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="ProductItem">
+                                                        <div class="ProductPic">
+                                                            <h1 class="koserver">Vega</h1>
+                                                            <img src="images/Test/7.png">
+                                                            <a class="ProductButton" href="ilanEkle.html">Düzenle <i class="fas fa-arrow-right"></i></a>
+                                                        </div>
+                                                        <div class="ProductDesc">
+                                                            <h2>+8 Buju Polearm</h2>
+                                                            <p>
+                                                                <span class="left">1500 ₺</span>
+                                                                <span class="right">999 ilan</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="ProductItem">
+                                                        <div class="ProductPic">
+                                                            <h1 class="koserver">Olympia</h1>
+                                                            <img src="images/Test/8.png">
+                                                            <a class="ProductButton" href="ilanEkle.html">Düzenle <i class="fas fa-arrow-right"></i></a>
+                                                        </div>
+                                                        <div class="ProductDesc">
+                                                            <h2>+9 Dual Shard</h2>
+                                                            <p>
+                                                                <span class="left">1500 ₺</span>
+                                                                <span class="right">999 ilan</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </section>
+
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

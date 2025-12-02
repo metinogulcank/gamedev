@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Steam Envanter Test</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Steam Envanter Test</h1>
+    <button onclick="testInventory()">Envanteri Test Et</button>
+    <div id="result"></div>
+
+    <script>
+        async function testInventory() {
+            const steamid = '76561198821398907';
+            const url = `https://gamedev.mymedya.tr/api/steam_inventory_proxy.php?steamid=${steamid}`;
+            
+            document.getElementById('result').innerHTML = 'Yükleniyor...';
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.text();
+                
+                document.getElementById('result').innerHTML = `
+                    <h3>Response Status: ${response.status}</h3>
+                    <h3>Response Headers:</h3>
+                    <pre>${JSON.stringify(Object.fromEntries(response.headers.entries()), null, 2)}</pre>
+                    <h3>Response Data:</h3>
+                    <pre>${data.substring(0, 1000)}${data.length > 1000 ? '...' : ''}</pre>
+                `;
+            } catch (error) {
+                document.getElementById('result').innerHTML = `
+                    <h3>Error:</h3>
+                    <pre>${error.message}</pre>
+                `;
+            }
+        }
+    </script>
+</body>
+</html> 

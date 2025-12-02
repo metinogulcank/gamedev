@@ -1,0 +1,695 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        Jervis Game - jervisgame.com
+    </title>
+    <link rel="icon" type="image/x-icon" href="images/fav.png">
+    <link href="css/fontawesome.css" rel="stylesheet">
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/site.css?v=2.0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!--Kütüphane-->
+    <script type="text/javascript" src="js/kutuphane/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="js/kutuphane/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="js/kutuphane/jquery.easing.1.3.js"></script>
+
+    <!--animate-->
+    <link href="js/animate/animate.css" rel="stylesheet">
+    <script type="text/javascript" src="js/animate/animate.js"></script>
+
+    <!--Modal-->
+    <link href="js/modal/modal.css" rel="stylesheet">
+    <script src="js/modal/promise.js"></script>
+    <script src="js/modal/modal.js"></script>
+
+    <!--slider-->
+    <link href="js/slider/slippry.css" rel="stylesheet">
+    <script type="text/javascript" src="js/slider/slippry.min.js"></script>
+
+    <!--carousel-->
+    <link href="js/carousel/util.carousel.css" rel="stylesheet">
+    <link href="js/carousel/util.animate.css" rel="stylesheet">
+    <script type="text/javascript" src="js/carousel/utilcarousel.source.js"></script>
+    <script type="text/javascript" src="js/carousel/utilcarousel.min.js"></script>
+
+    <!--Select-->
+    <script src="js/select/select2.min.js"></script>
+    <script src="js/select/i18n/tr.js"></script>
+    <link href="js/select/select2.css" rel="stylesheet">
+
+    <!--main-->
+    <script src="js/kutuphane/main.js"></script>
+</head>
+<body>
+    <section class="HeaderArea">
+        <div class="HeaderTop">
+            <div class="SetContent">
+                <div class="GamesTop">
+                    <ul>
+                        <li>Oyun Seçiniz :</li>
+                    </ul>
+                    <select id="konu" name="Oyunsec" class="GameSelected">
+                        <option value="CS2">CS2</option>
+                        <option value="Knight Online">Knight Online</option>
+                        <option value="Valorant VP">Valorant VP</option>
+                        <option value="PUBG UC">PUBG UC</option>
+                    </select>
+
+
+                </div>
+
+                <i class="fas fa-bars bars"></i>
+                <div class="MainMenu">
+                    <i class="fas fa-times MenuClose"></i>
+                    <div class="TopMenu">
+                        <ul>
+                            <li><a href="Kurumsal.html">KURUMSAL</a></li>
+                            <li><a href="Haberler.html">HABERLER</a></li>
+                            <li><a href="Kampanyalar.html">KAMPANYALAR</a></li>
+                            <li><a href="Donate.html">DESTEKLE</a></li>
+                            <li><a href="ilanEkle.html">SATIŞ YAP</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="Header">
+            <div class="Logo">
+                <a href="index.html">
+                    <img src="images/Logo.png">
+                </a>
+            </div>
+            <div class="Menu">
+                <ul>
+                    <li><a href="index.html">ANASAYFA</a></li>
+                    <li><a href="Market.html">MARKET</a></li>
+                    <li><a href="TakasListesi.html">TAKAS YAP</a><span class="Drky">Yeni</span></li>
+                </ul>
+            </div>
+            <div class="Search">
+                <input type="search" placeholder="Skin & Item Ara...">
+                <i class="fas fa-search"></i>
+                <div class="clear"></div>
+            </div>
+            <div class="Basket">
+                <a href="Sepet.html" title="Sepetim"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+            <div class="NotificationsMain">
+                <div class="BildirimNameMain" title="Bildirimler">
+                    <i class="fas fa-bell notificationsMain">
+                        <span class="figure">77</span>
+                    </i>
+                </div>
+                <div class="NavbarNotificationsMain">
+                    <ul>
+                        <li>
+                            <div class="BildirimYok">
+                                <i class="fa fa-bell"></i>Bildiriminiz bulunmamaktadır.
+                            </div>
+                        </li>
+                        <li><a href="Bildirimlerim.html">Tüm Bildirimleri Gör</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="Login">
+                <a class="GlobalButton" id="btn">GİRİŞ YAP / KAYIT OL</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </section>
+
+
+
+    <div class="MobileFilter">
+        <i class="fas fa-filter"></i> Filtreleme Yapın
+    </div>
+    <section class="MarketArea Ko">
+        <div class="MarketHeader" id="FilterMarket">
+            <div class="SetContent">
+                <h1>
+                    <img src="images/sword.svg" class="marketKoicon">
+                    Knight Online Market
+                </h1>
+                <div class="PageNavigation">
+                    <ul>
+                        <li><a href="index.html">Anasayfa</a></li>
+                        <li><i class="fas fa-angle-right"></i></li>
+                        <li><a href="KoMarket.html">Market</a></li>
+                        <li><i class="fas fa-angle-right"></i></li>
+                        <li>Knight Online</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="KoMarketFilterArea">
+                <div class="SetContent">
+                    <div class="FilterTitle">
+                        <i class="fas fa-filter"></i>Filtreleme Yapın
+                        <i class="fas fa-times FilterClose"></i>
+                    </div>
+                    <ul class="FilterCombos">
+                        <li>
+                            <select class="Select">
+                                <optgroup label="Server">
+                                    <option class="exterior_knightcategory">Altar</option>
+                                    <option class="exterior_knightcategory">Sirius</option>
+                                    <option class="exterior_knightcategory">Vega</option>
+                                    <option class="exterior_knightcategory">Destan</option>
+                                    <option class="exterior_knightcategory">Rosetta</option>
+                                    <option class="exterior_knightcategory">Ares</option>
+                                    <option class="exterior_knightcategory">Pathos (Steam)</option>
+                                    <option class="exterior_knightcategory">Olympia</option>
+                                    <option class="exterior_knightcategory">Gordion</option>
+                                    <option class="exterior_knightcategory">Diez</option>
+                                </optgroup>
+                            </select>
+                        </li>
+
+                        <li>
+                            <select class="Select">
+                                <optgroup label="Artı">
+                                    <option class="exterior_knightcategory">Hepsi</option>
+                                    <option class="exterior_knightcategory">+0</option>
+                                    <option class="exterior_knightcategory">+1</option>
+                                    <option class="exterior_knightcategory">+2</option>
+                                    <option class="exterior_knightcategory">+3</option>
+                                    <option class="exterior_knightcategory">+4</option>
+                                    <option class="exterior_knightcategory">+5</option>
+                                    <option class="exterior_knightcategory">+6</option>
+                                    <option class="exterior_knightcategory">+7</option>
+                                    <option class="exterior_knightcategory">+8</option>
+                                    <option class="exterior_knightcategory">+9</option>
+                                    <option class="exterior_knightcategory">+10</option>
+                                    <option class="exterior_knightcategory">+11</option>
+                                    <option class="exterior_knightcategory">+12</option>
+                                    <option class="exterior_knightcategory">+13</option>
+                                    <option class="exterior_knightcategory">+14</option>
+                                    <option class="exterior_knightcategory">+15</option>
+                                    <option class="exterior_knightcategory">+16</option>
+                                    <option class="exterior_knightcategory">+17</option>
+                                    <option class="exterior_knightcategory">+18</option>
+                                    <option class="exterior_knightcategory">+19</option>
+                                    <option class="exterior_knightcategory">+20</option>
+                                    <option class="exterior_knightcategory">+21</option>
+                                </optgroup>
+                            </select>
+                        </li>
+
+                        <li>
+                            <select class="Select">
+                                <optgroup label="Karakter Türü">
+                                    <option class="exterior_knightcategory">Hepsi</option>
+                                    <option class="exterior_knightcategory">Priest</option>
+                                    <option class="exterior_knightcategory">Mage</option>
+                                    <option class="exterior_knightcategory">Warrior</option>
+                                    <option class="exterior_knightcategory">Rogue</option>
+                                    <option class="exterior_knightcategory">Kurian</option>
+                                </optgroup>
+                            </select>
+                        </li>
+
+                        <li>
+                            <select class="Select">
+                                <optgroup label="Reverse">
+                                    <option class="exterior_knightcategory">Hepsi</option>
+                                    <option class="exterior_knightcategory">Evet</option>
+                                    <option class="exterior_knightcategory">Hayır</option>
+                                </optgroup>
+                            </select>
+                        </li>
+
+                        <li>
+                            <select class="Select">
+                                <optgroup label="Unique">
+                                    <option class="exterior_knightcategory">Hepsi</option>
+                                    <option class="exterior_knightcategory">Evet</option>
+                                    <option class="exterior_knightcategory">Hayır</option>
+                                </optgroup>
+                            </select>
+                        </li>
+
+                        <li>
+                            <select class="Select">
+                                <optgroup label="Set">
+                                    <option class="exterior_knightcategory">Hepsi</option>
+                                    <option class="exterior_knightcategory">Evet</option>
+                                    <option class="exterior_knightcategory">Hayır</option>
+                                </optgroup>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <section class="Products MarketProducts">
+            <div class="SetContent">
+                <div class="ProductsArea">
+                    <ul>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Sirius</h1>
+                                    <img src="images/Test/5.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+7 Raptor</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Altar</h1>
+                                    <img src="images/Test/6.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+9 Rogue Shell Set</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Vega</h1>
+                                    <img src="images/Test/7.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+8 Buju Polearm</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Olympia</h1>
+                                    <img src="images/Test/8.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+9 Dual Shard</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Ares</h1>
+                                    <img src="images/Test/6.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+9 Warrior Krowaz Set</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Diez</h1>
+                                    <img src="images/Test/8.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+8 Double Dragon Claw Jamadar</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Gordion</h1>
+                                    <img src="images/Test/7.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>Draki's Pendant of Strength A.A.A</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Destan</h1>
+                                    <img src="images/Test/5.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+3 Black Dragon Necklace</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Sirius</h1>
+                                    <img src="images/Test/5.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+7 Raptor</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Altar</h1>
+                                    <img src="images/Test/6.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+9 Rogue Shell Set</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Vega</h1>
+                                    <img src="images/Test/7.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+8 Buju Polearm</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Olympia</h1>
+                                    <img src="images/Test/8.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+9 Dual Shard</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Ares</h1>
+                                    <img src="images/Test/6.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+9 Warrior Krowaz Set</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Diez</h1>
+                                    <img src="images/Test/8.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+8 Double Dragon Claw Jamadar</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Gordion</h1>
+                                    <img src="images/Test/7.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>Draki's Pendant of Strength A.A.A</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Destan</h1>
+                                    <img src="images/Test/5.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+3 Black Dragon Necklace</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Sirius</h1>
+                                    <img src="images/Test/5.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+7 Raptor</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Altar</h1>
+                                    <img src="images/Test/6.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+9 Rogue Shell Set</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Vega</h1>
+                                    <img src="images/Test/7.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+8 Buju Polearm</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="koserver">Olympia</h1>
+                                    <img src="images/Test/8.png">
+                                    <a class="ProductButton" href="itemDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>+9 Dual Shard</h2>
+                                    <p>
+                                        <span class="left">1500 ₺</span>
+                                        <span class="right">999 ilan</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pagination">
+                    <a href="#">&laquo;</a>
+                    <a href="#">1</a>
+                    <a class="active" href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">&raquo;</a>
+                </div>
+            </div>
+
+        </section>
+
+    </section>
+
+
+
+    <section class="FooterArea">
+        <div class="SetContent">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <img src="images/Logo.png">
+                    </a>
+                </li>
+                <li>
+                    <div class="FooterMenu">
+                        <h2>JERVIS GAME</h2>
+                        <ul>
+                            <li><a href="Kurumsal.html">Kurumsal</a></li>
+                            <li><a href="Haberler.html">Haberler</a></li>
+                            <li><a href="Sponsorluklar.html">Sponsorluklar</a></li>
+                            <li><a href="Blog.html">Blog</a></li>
+                            <li><a href="Logolar.html">Logolar</a></li>
+                            <li><a href="iletisim.html">İletişim</a></li>
+                        </ul>
+                    </div>
+                    <div class="FooterMenu">
+                        <h2>KULLANICI</h2>
+                        <ul>
+                            <li><a href="KullaniciBilgileri.html">Bilgilerim</a></li>
+                            <li><a href="MagazaAyarlari.html">Mağazam</a></li>
+                            <li><a href="Donate.html">Yayıncı Destekle</a></li>
+                            <li><a href="YayinciBasvuru.html">Yayıncı Başvurusu</a></li>
+                            <li><a href="KullaniciSozlesmesi.html">Kullanıcı Sözleşmesi</a></li>
+                            <li><a href="MagazaKurallari.html">Mağaza Kuralları</a></li>
+                        </ul>
+                    </div>
+                    <div class="FooterMenu">
+                        <h2>ÖDEME</h2>
+                        <ul>
+                            <li><a href="Odeme.html">Ödeme Seçenekleri</a></li>
+                            <li><a href="Odeme.html">Kredi Kartı</a></li>
+                            <li><a href="Odeme.html">Havale/EFT</a></li>
+                            <li><a href="Odeme.html">Ödeme Yap(tım)</a></li>
+                            <li><a href="Odeme.html">Mobil Ödeme</a></li>
+                            <li><a href="iptaliadekosullari.html">İade-İptal Koşulları</a></li>
+                        </ul>
+                    </div>
+                    <div class="FooterMenu">
+                        <h2>DESTEK</h2>
+                        <ul>
+                            <li><a href="Destek.html">Yardım & Destek</a></li>
+                            <li><a href="#">Canlı Destek</a></li>
+                            <li><a href="Destek.html">Destek Talepleri</a></li>
+                            <li><a href="DestekTalepOlustur.html">Öneri ve Şikayet</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+
+    </section>
+    <section class="Carts">
+        <div class="SetContent">
+            <ul>
+                <li>Jervis Game&reg; | Copyrights 2022. Tüm Hakları Saklıdır. Bir <a rel="nofollow" href="http://www.mymedya.com.tr" target="_blank">My Medya</a> markasıdır.</li>
+                <li>
+                    <img src="images/Carts.png">
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="FooterSocial">
+        <div class="SetContent">
+            <ul>
+                <li>
+                    <ul>
+                        <li><a href="#">Gizlilik Politikası</a></li>
+                        <li><a href="#">Üyelik ve Hizmet Alım Sözleşmesi</a></li>
+                        <li><a href="#">Aydınlatma Metni (Kişisel Verilerin Korunması)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="Social">
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitch"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                            <li><a href="#"><i class="fab fa-tiktok"></i></a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <div class="ScrollTop">
+    </div>
+    <div class="clear"></div>
+
+</body>
+</html>

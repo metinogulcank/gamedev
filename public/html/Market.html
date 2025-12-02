@@ -1,0 +1,989 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        Jervis Game - jervisgame.com
+    </title>
+    <link rel="icon" type="image/x-icon" href="images/fav.png">
+    <link href="css/fontawesome.css" rel="stylesheet">
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/site.css?v=2.0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!--Kütüphane-->
+    <script type="text/javascript" src="js/kutuphane/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="js/kutuphane/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="js/kutuphane/jquery.easing.1.3.js"></script>
+
+    <!--animate-->
+    <link href="js/animate/animate.css" rel="stylesheet">
+    <script type="text/javascript" src="js/animate/animate.js"></script>
+
+    <!--Modal-->
+    <link href="js/modal/modal.css" rel="stylesheet">
+    <script src="js/modal/promise.js"></script>
+    <script src="js/modal/modal.js"></script>
+
+    <!--slider-->
+    <link href="js/slider/slippry.css" rel="stylesheet">
+    <script type="text/javascript" src="js/slider/slippry.min.js"></script>
+
+    <!--carousel-->
+    <link href="js/carousel/util.carousel.css" rel="stylesheet">
+    <link href="js/carousel/util.animate.css" rel="stylesheet">
+    <script type="text/javascript" src="js/carousel/utilcarousel.source.js"></script>
+    <script type="text/javascript" src="js/carousel/utilcarousel.min.js"></script>
+
+    <!--Select-->
+    <script src="js/select/select2.min.js"></script>
+    <script src="js/select/i18n/tr.js"></script>
+    <link href="js/select/select2.css" rel="stylesheet">
+
+    <!--main-->
+    <script src="js/kutuphane/main.js"></script>
+</head>
+<body>
+    <section class="HeaderArea">
+        <div class="HeaderTop">
+            <div class="SetContent">
+                <div class="GamesTop">
+                    <ul>
+                        <li>Oyun Seçiniz :</li>
+                    </ul>
+                    <select id="konu" name="Oyunsec" class="GameSelected">
+                        <option value="CS2">CS2</option>
+                        <option value="Knight Online">Knight Online</option>
+                        <option value="Valorant VP">Valorant VP</option>
+                        <option value="PUBG UC">PUBG UC</option>
+                    </select>
+
+
+                </div>
+
+                <i class="fas fa-bars bars"></i>
+                <div class="MainMenu">
+                    <i class="fas fa-times MenuClose"></i>
+                    <div class="TopMenu">
+                        <ul>
+                            <li><a href="Kurumsal.html">KURUMSAL</a></li>
+                            <li><a href="Haberler.html">HABERLER</a></li>
+                            <li><a href="Kampanyalar.html">KAMPANYALAR</a></li>
+                            <li><a href="Donate.html">DESTEKLE</a></li>
+                            <li><a href="ilanEkle.html">SATIŞ YAP</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="Header">
+            <div class="Logo">
+                <a href="index.html">
+                    <img src="images/Logo.png">
+                </a>
+            </div>
+            <div class="Menu">
+                <ul>
+                    <li><a href="index.html">ANASAYFA</a></li>
+                    <li><a href="Market.html">MARKET</a></li>
+                    <li><a href="TakasListesi.html">TAKAS YAP</a><span class="Drky">Yeni</span></li>
+                </ul>
+            </div>
+            <div class="Search">
+                <input type="search" placeholder="Skin & Item Ara...">
+                <i class="fas fa-search"></i>
+                <div class="clear"></div>
+            </div>
+            <div class="Basket">
+                <a href="Sepet.html" title="Sepetim"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+            <div class="NotificationsMain">
+                <div class="BildirimNameMain" title="Bildirimler">
+                    <i class="fas fa-bell notificationsMain">
+                        <span class="figure">77</span>
+                    </i>
+                </div>
+                <div class="NavbarNotificationsMain">
+                    <ul>
+                        <li>
+                            <div class="BildirimYok">
+                                <i class="fa fa-bell"></i>Bildiriminiz bulunmamaktadır.
+                            </div>
+                        </li>
+                        <li><a href="Bildirimlerim.html">Tüm Bildirimleri Gör</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="Login">
+                <a class="GlobalButton" id="btn">GİRİŞ YAP / KAYIT OL</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </section>
+
+
+
+    <div class="MobileFilter">
+        <i class="fas fa-filter"></i> Filtreleme Yapın
+    </div>
+    <section class="MarketArea">
+        <div class="MarketHeader" id="FilterMarket">
+            <div class="SetContent">
+                <h1>
+                    <img src="images/cs_logo.svg" class="marketCsgoicon">
+                    CS2 Market
+                </h1>
+                <div class="PageNavigation">
+                    <ul>
+                        <li><a href="index.html">Anasayfa</a></li>
+                        <li><i class="fas fa-angle-right"></i></li>
+                        <li><a href="Market.html">Market</a></li>
+                        <li><i class="fas fa-angle-right"></i></li>
+                        <li>CS2</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="MarketFilterArea">
+                <div class="SetContent">
+                    <div class="FilterTitle">
+                        <i class="fas fa-filter"></i>Filtreleme Yapın
+                        <i class="fas fa-times FilterClose"></i>
+                    </div>
+                    <ul class="ProductCategories">
+                        <li>
+                            <a href="#">
+                                <i class="iconCsgo iconCsgo_knife"></i>
+                                <h2>Knives</h2>
+                            </a>
+                            <ul class="ProductsWeapons">
+                                <li><a href="SkinList.html">Bowie Knife </a></li>
+                                <li><a href="SkinList.html">Butterfly Knife </a></li>
+                                <li><a href="SkinList.html">Falchion Knife </a></li>
+                                <li><a href="SkinList.html">Flip Knife </a></li>
+                                <li><a href="SkinList.html">Gut Knife </a></li>
+                                <li><a href="SkinList.html">Huntsman Knife </a></li>
+                                <li><a href="SkinList.html">M9 Bayonet </a></li>
+                                <li><a href="SkinList.html">Bayonet </a></li>
+                                <li><a href="SkinList.html">Karambit </a></li>
+                                <li><a href="SkinList.html">Shadow Daggers </a></li>
+                                <li><a href="SkinList.html">Stiletto Knife </a></li>
+                                <li><a href="SkinList.html">Ursus Knife </a></li>
+                                <li><a href="SkinList.html">Navaja Knife </a></li>
+                                <li><a href="SkinList.html">Talon Knife </a></li>
+                                <li><a href="SkinList.html">Classic Knife </a></li>
+                                <li><a href="SkinList.html">Paracord Knife </a></li>
+                                <li><a href="SkinList.html">Survival Knife </a></li>
+                                <li><a href="SkinList.html">Nomad Knife </a></li>
+                                <li><a href="SkinList.html">Skeleton Knife </a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="iconCsgo iconCsgo_pistol"></i>
+                                <h2>Pistols</h2>
+                            </a>
+                            <ul class="ProductsWeapons">
+                                <li><a href="#">P2000 </a></li>
+                                <li><a href="#">USP-S </a></li>
+                                <li><a href="#">Glock-18 </a></li>
+                                <li><a href="#">P250 </a></li>
+                                <li><a href="#">FN57 </a></li>
+                                <li><a href="#">CZ75-Auto </a></li>
+                                <li><a href="#">Tec-9 </a></li>
+                                <li><a href="#">R8 Revolver </a></li>
+                                <li><a href="#">Desert Eagle </a></li>
+                                <li><a href="#">Dual Berettas </a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="iconCsgo iconCsgo_rifle"></i>
+                                <h2>Rifles</h2>
+                            </a>
+                            <ul class="ProductsWeapons">
+                                <li><a href="#">Galil AR </a></li>
+                                <li><a href="#">SCAR-20 </a></li>
+                                <li><a href="#">AWP </a></li>
+                                <li><a href="#">AK-47 </a></li>
+                                <li><a href="#">FAMAS </a></li>
+                                <li><a href="#">M4A4 </a></li>
+                                <li><a href="#">M4A1-S </a></li>
+                                <li><a href="#">SG 553 </a></li>
+                                <li><a href="#">SSG 08 </a></li>
+                                <li><a href="#">AUG </a></li>
+                                <li><a href="#">G3SG1 </a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="iconCsgo iconCsgo_smg"></i>
+                                <h2>SMGs</h2>
+                            </a>
+                            <ul class="ProductsWeapons">
+                                <li><a href="#">P90 </a></li>
+                                <li><a href="#">MAC-10 </a></li>
+                                <li><a href="#">UMP-45 </a></li>
+                                <li><a href="#">MP7 </a></li>
+                                <li><a href="#">PP-Bizon </a></li>
+                                <li><a href="#">MP9 </a></li>
+                                <li><a href="#">MP5-SD </a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="iconCsgo iconCsgo_shotgun"></i>
+                                <h2>Shotguns</h2>
+                            </a>
+                            <ul class="ProductsWeapons">
+                                <li><a href="#">Sawed off </a></li>
+                                <li><a href="#">XM1014 </a></li>
+                                <li><a href="#">Nova </a></li>
+                                <li><a href="#">MAG-7 </a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="iconCsgo iconCsgo_machinegun"></i>
+                                <h2>Machineguns</h2>
+                            </a>
+                            <ul class="ProductsWeapons">
+                                <li><a href="#">M249 </a></li>
+                                <li><a href="#">Negev </a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="iconCsgo iconCsgo_hands"></i>
+                                <h2>Gloves</h2>
+                            </a>
+                            <ul class="ProductsWeapons">
+                                <li><a href="#">Bloodhound Gloves </a></li>
+                                <li><a href="#">Driver Gloves </a></li>
+                                <li><a href="#">Hand Wraps </a></li>
+                                <li><a href="#">Moto Gloves </a></li>
+                                <li><a href="#">Specialist Gloves </a></li>
+                                <li><a href="#">Sport Gloves </a></li>
+                                <li><a href="#">Hydra Gloves </a></li>
+                                <li><a href="#">Broken Fang Glove </a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="iconCsgo iconCsgo_sticker"></i>
+                                <h2>Stickers</h2>
+                            </a>
+                            <ul class="ProductsWeapons">
+                                <li><a href="#">Antwerp 2022 </a></li>
+                                <li><a href="#">Boardroom </a></li>
+                                <li><a href="#">Battlefield 2042 </a></li>
+                                <li><a href="#">Stockholm 2021 </a></li>
+                                <li><a href="#">Riptide Surf Shop </a></li>
+                                <li><a href="#">Operation Riptide </a></li>
+                                <li><a href="#">2021 Community </a></li>
+                                <li><a href="#">Poorly Drawn </a></li>
+                                <li><a href="#">2020RMR </a></li>
+                                <li><a href="#">Broken Fang </a></li>
+                                <li><a href="#">Recoil </a></li>
+                                <li><a href="#">Warhammer 40K </a></li>
+                                <li><a href="#">HL:Alyx </a></li>
+                                <li><a href="#">Halo </a></li>
+                                <li><a href="#">Shattered Web </a></li>
+                                <li><a href="#">CS20 </a></li>
+                                <li><a href="#">Berlin 2019 </a></li>
+                                <li><a href="#">Chicken </a></li>
+                                <li><a href="#">Feral Predators </a></li>
+                                <li><a href="#">Katowice 2019 </a></li>
+                                <li><a href="#">Skill Group </a></li>
+                                <li><a href="#">London 2018 </a></li>
+                                <li><a href="#">Boston 2018 </a></li>
+                                <li><a href="#">Krakow 2017 </a></li>
+                                <li><a href="#">Atlanta 2017 </a></li>
+                                <li><a href="#">Cologne 2016 </a></li>
+                                <li><a href="#">Columbus 2016 </a></li>
+                                <li><a href="#">DreamHack 2015 </a></li>
+                                <li><a href="#">Cologne 2015 </a></li>
+                                <li><a href="#">Katowice 2015 </a></li>
+                                <li><a href="#">DreamHack 2014 </a></li>
+                                <li><a href="#">Cologne 2014 </a></li>
+                                <li><a href="#">Katowice 2014 </a></li>
+                                <li><a href="#">Community 2018 </a></li>
+                                <li><a href="#">Sticker 1 </a></li>
+                                <li><a href="#">Sticker 2 </a></li>
+                                <li><a href="#">Enfu Sticker </a></li>
+                                <li><a href="#">Perfect World 1 </a></li>
+                                <li><a href="#">Perfect World 2 </a></li>
+                                <li><a href="#">Community 1 </a></li>
+                                <li><a href="#">Bestiary </a></li>
+                                <li><a href="#">Slid3 </a></li>
+                                <li><a href="#">Sugarface </a></li>
+                                <li><a href="#">Pinups </a></li>
+                                <li><a href="#">Team Roles </a></li>
+                                <li><a href="#">Other Stickers </a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="iconCsgo iconCsgo_customplayer"></i>
+                                <h2>Agent</h2>
+                            </a>
+                            <ul class="ProductsWeapons">
+                                <li><a href="#">CT </a></li>
+                                <li><a href="#">T </a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="iconCsgo iconCsgo_other"></i>
+                                <h2>Others</h2>
+                            </a>
+                            <ul class="ProductsWeapons">
+                                <li><a href="#">Tools </a></li>
+                                <li><a href="#">Spray </a></li>
+                                <li><a href="#">Collectibles </a></li>
+                                <li><a href="#">Passes </a></li>
+                                <li><a href="#">Gifts </a></li>
+                                <li><a href="#">Music Kits </a></li>
+                                <li><a href="#">Weapon Cases </a></li>
+                                <li><a href="#">Keys </a></li>
+                                <li><a href="#">Patch </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="FilterCombos">
+                        <li>
+                            <select class="Select">
+                                <optgroup label="Quality">
+                                    <option class="exterior_wearcategory0">All</option>
+                                    <option class="exterior_wearcategory1">Contraband</option>
+                                    <option class="exterior_wearcategory2">Covert</option>
+                                    <option class="exterior_wearcategory3">Classified</option>
+                                    <option class="exterior_wearcategory4">Restricted</option>
+                                    <option class="quality_normal">Mil-Spec Grade</option>
+                                    <option class="quality_tournament">Industrial Grade</option>
+                                    <option class="quality_strange">Consumer Grade</option>
+                                    <option class="quality_unusual">Extraordinary</option>
+                                    <option class="quality_unusual_strange">Remarkable</option>
+                                    <option class="rarity_ancient_weapon">Exotic</option>
+                                    <option class="rarity_rare_weapon">High Grade</option>
+                                    <option class="rarity_mythical_weapon">Base Grade</option>
+                                    <option class="rarity_legendary_weapon">Agent Quality</option>
+                                </optgroup>
+                            </select>
+                        </li>
+
+                        <li>
+                            <select class="Select">
+                                <optgroup label="Category">
+                                    <option class="exterior_wearcategory0">All</option>
+                                    <option class="exterior_wearcategory1">Normal</option>
+                                    <option class="exterior_wearcategory2">Souvenir</option>
+                                    <option class="exterior_wearcategory3">StatTrak™</option>
+                                    <option class="exterior_wearcategory4">★</option>
+                                    <option class="quality_normal">★ StatTrak™</option>
+                                </optgroup>
+                            </select>
+                        </li>
+
+                        <li>
+                            <select class="Select">
+                                <optgroup label="Exterior">
+                                    <option class="exterior_wearcategory0">All</option>
+                                    <option class="exterior_wearcategory1">Factory New</option>
+                                    <option class="exterior_wearcategory2">Minimal Wear</option>
+                                    <option class="exterior_wearcategory3">Field-Tested</option>
+                                    <option class="exterior_wearcategory4">Well-Worn</option>
+                                    <option class="quality_normal">Battle-Scarred</option>
+                                </optgroup>
+                            </select>
+                        </li>
+
+                        <li>
+                            <select class="Select">
+                                <optgroup label="Popular">
+                                    <option class="exterior_wearcategory0">All</option>
+                                    <option class="exterior_wearcategory1">Knives</option>
+                                    <option class="exterior_wearcategory2">Weapons</option>
+                                </optgroup>
+                            </select>
+                        </li>
+
+                        <li>
+                            <select class="Select">
+                                <optgroup label="Color">
+                                    <option class="exterior_wearcategory0">All</option>
+                                    <option class="exterior_wearcategory1">Red</option>
+                                    <option class="exterior_wearcategory2">Blue</option>
+                                    <option class="exterior_wearcategory3">Green</option>
+                                    <option class="exterior_wearcategory4">Yellow</option>
+                                    <option class="quality_normal">Black</option>
+                                    <option class="quality_tournament">White</option>
+                                    <option class="quality_strange">Purple</option>
+                                    <option class="quality_unusual">Camouflage</option>
+                                    <option class="quality_unusual_strange">Beast</option>
+                                </optgroup>
+                            </select>
+                        </li>
+
+                        <li>
+                            <select class="Select">
+                                <optgroup label="Collections">
+                                    <option class="exterior_wearcategory0">All</option>
+                                    <option class="exterior_wearcategory1">Weapon Cases</option>
+                                    <option class="exterior_wearcategory2">Map Collections</option>
+                                </optgroup>
+                            </select>
+                        </li>
+
+                        <li>
+                            <select class="Select">
+                                <optgroup label="Stickers">
+                                    <option class="exterior_wearcategory0">All</option>
+                                    <option class="exterior_wearcategory1">Customize</option>
+                                </optgroup>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <section class="Products MarketProducts">
+            <div class="SetContent">
+                <div class="ProductsArea">
+                    <ul>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="factorynew">Factory New</h1>
+                                    <img src="images/Test/1.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="minimalwear">Minimal Wear</h1>
+                                    <img src="images/Test/2.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="fieldtested">Field-Tested</h1>
+                                    <img src="images/Test/3.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="wellworn">Well-Worn</h1>
+                                    <img src="images/Test/4.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="battlescarred">Battle-Scarred</h1>
+                                    <img src="images/Test/1.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="factorynew">Factory New</h1>
+                                    <img src="images/Test/3.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>StatTrak™ M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="factorynew">Factory New</h1>
+                                    <img src="images/Test/4.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="factorynew">Factory New</h1>
+                                    <img src="images/Test/1.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="factorynew">Factory New</h1>
+                                    <img src="images/Test/4.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>StatTrak™ M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="factorynew">Factory New</h1>
+                                    <img src="images/Test/1.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="factorynew">Factory New</h1>
+                                    <img src="images/Test/1.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="factorynew">Factory New</h1>
+                                    <img src="images/Test/2.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="factorynew">Factory New</h1>
+                                    <img src="images/Test/3.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="factorynew">Factory New</h1>
+                                    <img src="images/Test/4.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="factorynew">Factory New</h1>
+                                    <img src="images/Test/1.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="factorynew">Factory New</h1>
+                                    <img src="images/Test/3.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="factorynew">Factory New</h1>
+                                    <img src="images/Test/4.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="factorynew">Factory New</h1>
+                                    <img src="images/Test/1.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="factorynew">Factory New</h1>
+                                    <img src="images/Test/4.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ProductItem">
+                                <div class="ProductPic">
+                                    <h1 class="factorynew">Factory New</h1>
+                                    <img src="images/Test/1.png">
+                                    <a class="ProductButton" href="SkinDetay.html">İncele <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="ProductDesc">
+                                    <h2>M4A1-S | Leaded Glass</h2>
+                                    <p>
+                                        <span class="left">
+                                            1525.90 ₺
+                                        </span>
+                                        <span class="right">
+                                            999 ilan
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="pagination">
+                    <a href="#">&laquo;</a>
+                    <a class="active" href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">&raquo;</a>
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+
+    <section class="FooterArea">
+        <div class="SetContent">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <img src="images/Logo.png">
+                    </a>
+                </li>
+                <li>
+                    <div class="FooterMenu">
+                        <h2>JERVIS GAME</h2>
+                        <ul>
+                            <li><a href="Kurumsal.html">Kurumsal</a></li>
+                            <li><a href="Haberler.html">Haberler</a></li>
+                            <li><a href="Sponsorluklar.html">Sponsorluklar</a></li>
+                            <li><a href="Blog.html">Blog</a></li>
+                            <li><a href="Logolar.html">Logolar</a></li>
+                            <li><a href="iletisim.html">İletişim</a></li>
+                        </ul>
+                    </div>
+                    <div class="FooterMenu">
+                        <h2>KULLANICI</h2>
+                        <ul>
+                            <li><a href="KullaniciBilgileri.html">Bilgilerim</a></li>
+                            <li><a href="MagazaAyarlari.html">Mağazam</a></li>
+                            <li><a href="Donate.html">Yayıncı Destekle</a></li>
+                            <li><a href="YayinciBasvuru.html">Yayıncı Başvurusu</a></li>
+                            <li><a href="KullaniciSozlesmesi.html">Kullanıcı Sözleşmesi</a></li>
+                            <li><a href="MagazaKurallari.html">Mağaza Kuralları</a></li>
+                        </ul>
+                    </div>
+                    <div class="FooterMenu">
+                        <h2>ÖDEME</h2>
+                        <ul>
+                            <li><a href="Odeme.html">Ödeme Seçenekleri</a></li>
+                            <li><a href="Odeme.html">Kredi Kartı</a></li>
+                            <li><a href="Odeme.html">Havale/EFT</a></li>
+                            <li><a href="Odeme.html">Ödeme Yap(tım)</a></li>
+                            <li><a href="Odeme.html">Mobil Ödeme</a></li>
+                            <li><a href="iptaliadekosullari.html">İade-İptal Koşulları</a></li>
+                        </ul>
+                    </div>
+                    <div class="FooterMenu">
+                        <h2>DESTEK</h2>
+                        <ul>
+                            <li><a href="Destek.html">Yardım & Destek</a></li>
+                            <li><a href="#">Canlı Destek</a></li>
+                            <li><a href="Destek.html">Destek Talepleri</a></li>
+                            <li><a href="DestekTalepOlustur.html">Öneri ve Şikayet</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+
+    </section>
+    <section class="Carts">
+        <div class="SetContent">
+            <ul>
+                <li>Jervis Game&reg; | Copyrights 2022. Tüm Hakları Saklıdır. Bir <a rel="nofollow" href="http://www.mymedya.com.tr" target="_blank">My Medya</a> markasıdır.</li>
+                <li>
+                    <img src="images/Carts.png">
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="FooterSocial">
+        <div class="SetContent">
+            <ul>
+                <li>
+                    <ul>
+                        <li><a href="#">Gizlilik Politikası</a></li>
+                        <li><a href="#">Üyelik ve Hizmet Alım Sözleşmesi</a></li>
+                        <li><a href="#">Aydınlatma Metni (Kişisel Verilerin Korunması)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="Social">
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitch"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                            <li><a href="#"><i class="fab fa-tiktok"></i></a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <div class="ScrollTop">
+    </div>
+    <div class="clear"></div>
+
+</body>
+</html>

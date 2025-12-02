@@ -1,0 +1,93 @@
+*{
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+
+/* Profil düzenleme koyu tema */
+.profile-edit-input,
+.profile-edit-select {
+  width: 100%;
+  background: #181a1f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  box-sizing: border-box;
+  transition: border 0.2s;
+}
+
+.profile-edit-input:focus,
+.profile-edit-select:focus {
+  outline: none;
+  border: 1.5px solid #2196f3;
+}
+
+.profile-edit-label {
+  color: #bfc4cc;
+  font-weight: 500;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.profile-edit-btn {
+  background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.profile-edit-btn:hover {
+  background: linear-gradient(90deg, #21cbf3 0%, #2196f3 100%);
+}
+
+/* Ödeme Bildirimleri Tablosu */
+.AccountTable.islembasliklar {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #23252b;
+}
+
+.AccountTable.islembasliklar th,
+.AccountTable.islembasliklar td {
+  padding: 12px 18px;
+  font-size: 15px;
+  text-align: left;
+  color: #fff;
+  border-bottom: 1px solid #2e3036;
+  vertical-align: middle;
+}
+
+.AccountTable.islembasliklar th {
+  color: #ffe082;
+  font-weight: 700;
+  background: #23252b;
+  text-align: left;
+}
+
+.AccountTable.islembasliklar td:last-child,
+.AccountTable.islembasliklar th:last-child {
+  text-align: left;
+}
+
+.AccountTable.islembasliklar tr:last-child td {
+  border-bottom: none;
+}
+
+.AccountTable.islembasliklar td.amount {
+  text-align: left;
+  font-weight: 600;
+  color: #b2ff59;
+}
+.AccountTable.islembasliklar th.date {
+  width:  200px;
+}

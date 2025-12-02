@@ -1,0 +1,893 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        Jervis Game - jervisgame.com
+    </title>
+    <link rel="icon" type="image/x-icon" href="images/fav.png">
+    <link href="css/fontawesome.css" rel="stylesheet">
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!--Kütüphane-->
+    <script type="text/javascript" src="js/kutuphane/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="js/kutuphane/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="js/kutuphane/jquery.easing.1.3.js"></script>
+
+    <!--animate-->
+    <link href="js/animate/animate.css" rel="stylesheet">
+    <script type="text/javascript" src="js/animate/animate.js"></script>
+
+    <!--Modal-->
+    <link href="js/modal/modal.css" rel="stylesheet">
+    <script src="js/modal/promise.js"></script>
+    <script src="js/modal/modal.js"></script>
+
+    <!--slider-->
+    <link href="js/slider/slippry.css" rel="stylesheet">
+    <script type="text/javascript" src="js/slider/slippry.min.js"></script>
+
+    <!--carousel-->
+    <link href="js/carousel/util.carousel.css" rel="stylesheet">
+    <link href="js/carousel/util.animate.css" rel="stylesheet">
+    <script type="text/javascript" src="js/carousel/utilcarousel.source.js"></script>
+    <script type="text/javascript" src="js/carousel/utilcarousel.min.js"></script>
+
+    <!--Select-->
+    <script src="js/select/select2.min.js"></script>
+    <script src="js/select/i18n/tr.js"></script>
+    <link href="js/select/select2.css" rel="stylesheet">
+
+    <!--main-->
+    <script src="js/kutuphane/main.js"></script>
+</head>
+<body>
+    <div class="NavBarOverlay"></div>
+
+    <div class="HeaderProfil">
+        <div class="SetContent">
+            <div class="Logo">
+                <a href="index.html">
+                    <img src="images/Logo.png">
+                </a>
+            </div>
+            <div class="ProfileMenu">
+                <i class="fas fa-bars bars"></i>
+            </div>
+            <div class="Menu">
+                <ul>
+                    <li><a href="index.html">ANASAYFA</a></li>
+                    <li><a href="Market.html">MARKET</a></li>
+                    <li><a href="TakasListesi.html">TAKAS YAP</a><span class="Drky">Yeni</span></li>
+                </ul>
+            </div>
+            <div class="Login">
+                <ul>
+                    <li>
+                        <div class="BasketProfil">
+                            <a href="Sepet.html" title="Sepetim"><i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                        <div class="BildirimName" title="Bildirimler">
+                            <i class="fas fa-bell notifications">
+                                <span class="figure">77</span>
+                            </i>
+                        </div>
+                        <div class="NavbarNotifications">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-bell"></i>Hesabınıza 500.00 TL yüklendi.</a></li>
+                                <li><a href="#"><i class="fa fa-bell"></i>Favorilerinizdeki itemin fiyatı düştü.</a></li>
+                                <li><a href="#"><i class="fa fa-bell"></i>İteminize yorum geldi, görmek için tıklayınız.</a></li>
+                                <li><a href="#"><i class="fa fa-bell"></i>Hesabınıza 500.00 TL yüklendi.</a></li>
+                                <li><a href="#"><i class="fa fa-bell"></i>Favorilerinizdeki itemin fiyatı düştü.</a></li>
+                                <li><a href="#"><i class="fa fa-bell"></i>Hesabınızda 850.00 TL tutarındaki çekim talebiniz onaylandı.</a></li>
+                                <li><a href="Bildirimlerim.html">Tüm Bildirimleri Gör</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="Destek.html">Destek</a></li>
+                    <li>
+                        <div class="ProfilName">
+                            Ahmet Kaplan <i class="fas fa-angle-down"></i>
+                        </div>
+                        <div class="NavbarAccount">
+                            <h3>
+                                <span class="NavAccName"><b>Ahmet Kaplan</b></span>
+                                <span class="NavAccMail">ahmetkaplan@gmail.com</span>
+                                <span class="NavAccBalance">Bakiye : 8.750,05 TL</span>
+                            </h3>
+
+                            <ul>
+                                <li><a href="Account.html"><i class="fa fa-user"></i>Hesabım</a></li>
+                                <li><a href="Odeme.html"><i class="fas fa-money-bill-wave"></i>Bakiye Yükle</a></li>
+                                <li><a href="index.html"><i class="fas fa-sign-out-alt"></i>Çıkış Yap</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <section class="ProfilPageArea">
+        <div class="ProfilPageContent">
+            <div class="SetContent">
+                <div class="ProfilArea">
+                    <div class="ProfilMenu">
+                        <i class="fas fa-times ProfileClose"></i>
+                        <div class="ProfilMenuFoto">
+                            <a href="Account.html">
+                                <img src="images/unknownuser.jpg">
+                            </a>
+                        </div>
+                        <div class="ProfilMenuAd">
+                            <h1>Ahmet KAPLAN</h1>
+                        </div>
+                        <div class="ProfilMenuler">
+                            <ul>
+                                <li><a href="Cuzdan.html"><i class="fa fa-user"></i>Hesabım</a></li>
+                                <li><a href="Odeme.html"><i class="fas fa-money-bill-wave"></i>Bakiye Yükle</a></li>
+                                <li><a href="KullaniciBilgileri.html"><i class="fa fa-user"></i>Kullanıcı Bilgilerim</a></li>
+                                <li><a href="Siparislerim.html"><i class="fas fa-shopping-bag"></i>Siparişlerim</a></li>
+                                <li><a href="Satislarim.html"><i class="fas fa-coins"></i>Satışlarım</a></li>
+                                <li><a href="Favorilerim.html"><i class="fa fa-star"></i>Favorilerim</a></li>
+                                <li><a href="Bildirimlerim.html"><i class="fa fa-bell"></i>Bildirimlerim</a></li>
+                                <li><a href="Yorumlarim.html"><i class="fa fa-comments"></i>Yorumlarım</a></li>
+                                <li><a href="MagazaAyarlari.html"><i class="fas fa-store"></i>Mağaza Yönetimi</a></li>
+                                <li><a href="Desteklenenler.html"><i class="fas fa-handshake"></i>Destekle</a></li>
+                                <li><a href="ilanlar.html"><i class="fas fa-clipboard-list"></i>İlanlarım</a></li>
+                                <li><a href="ilanEkle.html"><i class="fas fa-cart-plus"></i>İlan Ekle</a></li>
+                                <li><a href="CsgoTrade.html"><i class="fas fa-people-arrows"></i>Takas (CS2)<span class="Profilenew">Yeni</span></a></li>
+                                <li><a href="KnightOnlineTrade.html"><i class="fas fa-people-arrows"></i>Takas (Knight Online)<span class="Profilenew">Yeni</span></a></li>
+                                <li><a href="Destek.html"><i class="fas fa-headset"></i>Yardım / Destek</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ProfilDetail">
+                        <h5>İLAN EKLE</h5>
+                        <header class="tabs-nav1">
+                            <ul>
+                                <li class="activex">
+                                    <a href="#Csgo">
+                                        <h4>CS2 İLAN EKLE</h4>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#KO">
+                                        <h4>KNIGHT ONLINE İLAN EKLE</h4>
+                                    </a>
+                                </li>
+                            </ul>
+                        </header>
+                        <section class="tabs-content1">
+                            <div id="Csgo">
+                                <ul class="CardBlokFull">
+                                    <li>
+                                        <div class="CardContent">
+                                            <table class="ilanekletable">
+                                                <tr>
+                                                    <td>TRADE URL</td>
+                                                    <td>
+                                                        <input type="text" class="ilanekleinput" placeholder="Trade URL'nizi Buraya Yapıştırın">
+                                                    </td>
+                                                    <td>Veya</td>
+                                                    <td>
+                                                        <select id="konu" name="tradeurl" class="ilanekleinput">
+                                                            <option value="Kayıtlı Trade URL Seçin">Kayıtlı Trade URL Seçin</option>
+                                                            <option value="URL1">https://steamcommunity.com/tradeoffer/new/?partner=427991890&token=b1oSj7bm</option>
+                                                            <option value="URL2">https://steamcommunity.com/tradeoffer/new/?partner=427991890&token=b1oSj7bm</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                        <label><a rel="nofollow" class="SteamTradeURL" href="https://steamcommunity.com/id/example/tradeoffers/privacy#trade_offer_access_url" target="_blank"><i class="fab fa-steam"></i>Steam Trade URL'nize erişmek için tıklayınız</a></label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><a href="CsgoEnvanterGetir.html" class="BtnCekimYap">ENVANTERİ GETİR</a></td>
+                                                    <td></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div id="KO">
+                                <ul class="CardBlokFull">
+                                    <li>
+                                        <div class="CardContent">
+                                            <table class="streamapptable">
+                                                <tr>
+                                                    <td>İlan Tipi</td>
+                                                    <td>
+                                                        <select id="ilantipi" name="ilantipi" class="streamappinput">
+                                                            <option value="Knight Online Item">Knight Online Item</option>
+                                                            <option value="Knight Online Cypher Ring">Knight Online Cypher Ring</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Server</td>
+                                                    <td>
+                                                        <select id="KOserver" name="ilantipi" class="streamappinput">
+                                                            <option value="Altar" class="">Altar</option>
+                                                            <option value="Ares" class="">Ares</option>
+                                                            <option value="Cypher (Steam)" class="">Cypher (Steam)</option>
+                                                            <option value="Destan" class="">Destan</option>
+                                                            <option value="Diez" class="">Diez</option>
+                                                            <option value="Gordion" class="">Gordion</option>
+                                                            <option value="Olympia" class="">Olympia</option>
+                                                            <option value="Pathos (Steam)" class="">Pathos (Steam)</option>
+                                                            <option value="Rosetta" class="">Rosetta</option>
+                                                            <option value="Sirius" class="">Sirius</option>
+                                                            <option value="Vega" class="">Vega</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Item</td>
+                                                    <td>
+                                                        <select id="item" name="ilantipi" class="streamappinput">
+                                                            <option value="Item Seçiniz">Item Seçiniz</option>
+                                                            <option value="672" class="">Adaga</option>
+                                                            <option value="6" class="">Agate Earring</option>
+                                                            <option value="228" class="">Agate Ring</option>
+                                                            <option value="7" class="">Amulet of Curse</option>
+                                                            <option value="8" class="">Amulet of Dexterity</option>
+                                                            <option value="9" class="">Amulet of Goddess</option>
+                                                            <option value="247" class="">Amulet of Health</option>
+                                                            <option value="248" class="">Amulet of Intelligence</option>
+                                                            <option value="10" class="">Amulet of Strength</option>
+                                                            <option value="354" class="">Ararat's belt</option>
+                                                            <option value="353" class="">Ararat's pendant</option>
+                                                            <option value="355" class="">Ararat's ring</option>
+                                                            <option value="295" class="">Avedon</option>
+                                                            <option value="437" class="">Azagai</option>
+                                                            <option value="202" class="">Aztec Gold Faun</option>
+                                                            <option value="196" class="">Aztec Gold Fulitol</option>
+                                                            <option value="199" class="">Aztec Gold Molok</option>
+                                                            <option value="238" class="">Belt of Curse</option>
+                                                            <option value="11" class="">Belt of Dexterity</option>
+                                                            <option value="12" class="">Belt of Intelligence</option>
+                                                            <option value="239" class="">Belt of Life</option>
+                                                            <option value="13" class="">Belt of Strength</option>
+                                                            <option value="14" class="">Black Dragon Necklace</option>
+                                                            <option value="15" class="">Blade Axe</option>
+                                                            <option value="448" class="">Blood finger</option>
+                                                            <option value="16" class="">Blue Dragon Necklace</option>
+                                                            <option value="558" class="">Bone Cleaver</option>
+                                                            <option value="563" class="">Bone Crasher</option>
+                                                            <option value="250" class="">Book of wisdom (Air)</option>
+                                                            <option value="251" class="">Book of wisdom (Appeal)</option>
+                                                            <option value="221" class="">Book of wisdom (Fire)</option>
+                                                            <option value="326" class="">Boots of Trial</option>
+                                                            <option value="336" class="">Bow of Noah GameSatış</option>
+                                                            <option value="241" class="">Bronze Belt</option>
+                                                            <option value="17" class="">Bronze Earring</option>
+                                                            <option value="438" class="">Buju</option>
+                                                            <option value="450" class="">Castellan's Dignity</option>
+                                                            <option value="451" class="">Castellan's Teachings</option>
+                                                            <option value="654" class="">Celestial Dragon Halberd</option>
+                                                            <option value="192" class="">Chaos Baal</option>
+                                                            <option value="208" class="">Chaos Nebiros</option>
+                                                            <option value="188" class="">Chaos Wirinom</option>
+                                                            <option value="222" class="">Chaotic Staff</option>
+                                                            <option value="5" class="">Chitin Armor Boots</option>
+                                                            <option value="46" class="">Chitin Armor Gauntlets</option>
+                                                            <option value="47" class="">Chitin Armor Helmet</option>
+                                                            <option value="48" class="">Chitin Armor Pads</option>
+                                                            <option value="49" class="">Chitin Armor Pauldron</option>
+                                                            <option value="50" class="">Chitin Bow</option>
+                                                            <option value="51" class="">Chitin Shell Boots</option>
+                                                            <option value="52" class="">Chitin Shell Gauntlets</option>
+                                                            <option value="53" class="">Chitin Shell Helmet</option>
+                                                            <option value="54" class="">Chitin Shell Pads</option>
+                                                            <option value="55" class="">Chitin Shell Pauldron</option>
+                                                            <option value="679" class="">Chitin Shield</option>
+                                                            <option value="362" class="">Christmas Cross</option>
+                                                            <option value="18" class="">Cleric Earring</option>
+                                                            <option value="144" class="">Cockatrice's Earrings</option>
+                                                            <option value="175" class="">Cold-Hearted Dagger</option>
+                                                            <option value="19" class="">Complete Boots</option>
+                                                            <option value="20" class="">Complete Gloves</option>
+                                                            <option value="21" class="">Complete Helmet</option>
+                                                            <option value="22" class="">Complete Pants</option>
+                                                            <option value="23" class="">Complete Robe</option>
+                                                            <option value="24" class="">Crimson Boots</option>
+                                                            <option value="25" class="">Crimson Gloves</option>
+                                                            <option value="26" class="">Crimson Helmet</option>
+                                                            <option value="27" class="">Crimson Pants</option>
+                                                            <option value="28" class="">Crimson Robe</option>
+                                                            <option value="29" class="">Crystal Belt</option>
+                                                            <option value="311" class="">Crystal Boots</option>
+                                                            <option value="30" class="">Crystal Earring</option>
+                                                            <option value="312" class="">Crystal Gloves</option>
+                                                            <option value="313" class="">Crystal Helmet</option>
+                                                            <option value="31" class="">Crystal Necklace</option>
+                                                            <option value="314" class="">Crystal Pads</option>
+                                                            <option value="315" class="">Crystal Pauldron</option>
+                                                            <option value="32" class="">Crystal Ring</option>
+                                                            <option value="337" class="">Dagger of GameSatış</option>
+                                                            <option value="372" class="">Dark Knight Axe</option>
+                                                            <option value="363" class="">Dark Knight Crossbow</option>
+                                                            <option value="364" class="">Dark Knight Dagger</option>
+                                                            <option value="365" class="">Dark Knight Jamadar</option>
+                                                            <option value="366" class="">Dark Knight Mace</option>
+                                                            <option value="371" class="">Dark Knight Shield</option>
+                                                            <option value="367" class="">Dark Knight Spear</option>
+                                                            <option value="174" class="">Dark Vane</option>
+                                                            <option value="170" class="">Deep Scar</option>
+                                                            <option value="673" class="">Defender of the Lord</option>
+                                                            <option value="181" class="">Determined Decision</option>
+                                                            <option value="33" class="">Diamond Ring</option>
+                                                            <option value="655" class="">Double Dragon Claw Jamadar</option>
+                                                            <option value="653" class="">Dragon Horn Shield</option>
+                                                            <option value="319" class="">Dragon Scale Armor Pants</option>
+                                                            <option value="320" class="">Dragon Scale Armor Top</option>
+                                                            <option value="316" class="">Dragon Scale Boots</option>
+                                                            <option value="317" class="">Dragon Scale Gauntlet</option>
+                                                            <option value="318" class="">Dragon Scale Helmet</option>
+                                                            <option value="642" class="">Draki Legion Mage Coat</option>
+                                                            <option value="644" class="">Draki Legion Mage Crown</option>
+                                                            <option value="645" class="">Draki Legion Mage Gloves</option>
+                                                            <option value="643" class="">Draki Legion Mage Leggings</option>
+                                                            <option value="646" class="">Draki Legion Mage Shoes</option>
+                                                            <option value="647" class="">Draki Legion Priest Coat</option>
+                                                            <option value="649" class="">Draki Legion Priest Crown</option>
+                                                            <option value="650" class="">Draki Legion Priest Gloves</option>
+                                                            <option value="648" class="">Draki Legion Priest Leggings</option>
+                                                            <option value="651" class="">Draki Legion Priest Shoes</option>
+                                                            <option value="641" class="">Draki Legion Rogue Boots</option>
+                                                            <option value="640" class="">Draki Legion Rogue Gauntlets</option>
+                                                            <option value="639" class="">Draki Legion Rogue Helm</option>
+                                                            <option value="638" class="">Draki Legion Rogue Pads</option>
+                                                            <option value="637" class="">Draki Legion Rogue Pauldrons</option>
+                                                            <option value="636" class="">Draki Legion Warrior Boots</option>
+                                                            <option value="635" class="">Draki Legion Warrior Gauntlets</option>
+                                                            <option value="634" class="">Draki Legion Warrior Helm</option>
+                                                            <option value="633" class="">Draki Legion Warrior Pads</option>
+                                                            <option value="632" class="">Draki Legion Warrior Pauldrons</option>
+                                                            <option value="687" class="">Draki's Pendant</option>
+                                                            <option value="443" class="">Draki's Pendant of Dexterity</option>
+                                                            <option value="447" class="">Draki's Pendant of Intelligence</option>
+                                                            <option value="446" class="">Draki's Pendant of Magic</option>
+                                                            <option value="445" class="">Draki's Pendant of Philosopher</option>
+                                                            <option value="444" class="">Draki's Pendant of Strength</option>
+                                                            <option value="226" class="">Dread Shield</option>
+                                                            <option value="34" class="">Durandal</option>
+                                                            <option value="4" class="">Eagle's Eye</option>
+                                                            <option value="35" class="">Elemental Necklace</option>
+                                                            <option value="36" class="">Elemental Pendant</option>
+                                                            <option value="37" class="">Elf Belt</option>
+                                                            <option value="38" class="">Elf-Metal Earring</option>
+                                                            <option value="39" class="">Elf Ring</option>
+                                                            <option value="158" class="">Elixir Staff</option>
+                                                            <option value="219" class="">Elysium</option>
+                                                            <option value="40" class="">Emerald Ring</option>
+                                                            <option value="449" class="">Enion Bow</option>
+                                                            <option value="258" class="">Exceptional Blade Axe</option>
+                                                            <option value="257" class="">Exceptional Deep Scar</option>
+                                                            <option value="264" class="">Exceptional Elixir Staff</option>
+                                                            <option value="255" class="">Exceptional Graham</option>
+                                                            <option value="259" class="">Exceptional Impact</option>
+                                                            <option value="263" class="">Exceptional Iron Bow</option>
+                                                            <option value="260" class="">Exceptional Iron Impact</option>
+                                                            <option value="256" class="">Exceptional Mirage</option>
+                                                            <option value="265" class="">Exceptional Priest Impact</option>
+                                                            <option value="262" class="">Exceptional Raptor</option>
+                                                            <option value="254" class="">Exceptional Shard</option>
+                                                            <option value="261" class="">Exceptional Totemic Spear</option>
+                                                            <option value="671" class="">Exceptional True silver</option>
+                                                            <option value="152" class="">Fabric Coat</option>
+                                                            <option value="153" class="">Fabric Pants</option>
+                                                            <option value="41" class="">Fire Belt</option>
+                                                            <option value="368" class="">Fire Dark Knight Staff</option>
+                                                            <option value="657" class="">Fire Dragon Saddle</option>
+                                                            <option value="663" class="">Fire Garges Staff</option>
+                                                            <option value="229" class="">Flame Ring</option>
+                                                            <option value="232" class="">Foverin</option>
+                                                            <option value="296" class="">Full Plate Armor Boots</option>
+                                                            <option value="297" class="">Full Plate Armor Gauntlets</option>
+                                                            <option value="298" class="">Full Plate Armor Helmet</option>
+                                                            <option value="299" class="">Full Plate Armor Pads</option>
+                                                            <option value="300" class="">Full Plate Armor Pauldron</option>
+                                                            <option value="132" class="">Gab's Adamant</option>
+                                                            <option value="225" class="">Gab's Blessing</option>
+                                                            <option value="352" class="">GameSatış's Adaga</option>
+                                                            <option value="344" class="">GameSatış's Azagai</option>
+                                                            <option value="347" class="">GameSatış's Buju Polearm</option>
+                                                            <option value="348" class="">GameSatış's Fire Codex Gigas</option>
+                                                            <option value="349" class="">GameSatış's Ice Codex Gigas</option>
+                                                            <option value="345" class="">GameSatış's Khanjar</option>
+                                                            <option value="350" class="">GameSatış's Lighting Codex Gigas</option>
+                                                            <option value="346" class="">GameSatış's Moonlight</option>
+                                                            <option value="351" class="">GameSatış's Ruahue</option>
+                                                            <option value="659" class="">Garges Bow</option>
+                                                            <option value="660" class="">Garges Dagger</option>
+                                                            <option value="661" class="">Garges Mace</option>
+                                                            <option value="662" class="">Garges Scythe</option>
+                                                            <option value="652" class="">Garges Shield</option>
+                                                            <option value="666" class="">Garges Two-Handed Sword</option>
+                                                            <option value="220" class="">Garp</option>
+                                                            <option value="327" class="">Gauntlets of Trial</option>
+                                                            <option value="42" class="">Gigantic Axe 1H</option>
+                                                            <option value="43" class="">Gigantic Axe 2H</option>
+                                                            <option value="217" class="">Glacier Erenion</option>
+                                                            <option value="44" class="">Glass Belt</option>
+                                                            <option value="178" class="">Glave</option>
+                                                            <option value="667" class="">Golden Dragon Crescent Blade</option>
+                                                            <option value="45" class="">Golden Earring</option>
+                                                            <option value="234" class="">Gold Ring</option>
+                                                            <option value="165" class="">Graham</option>
+                                                            <option value="294" class="">Green Dragon Necklace</option>
+                                                            <option value="179" class="">Hanguk Sword</option>
+                                                            <option value="586" class="">Harpoon</option>
+                                                            <option value="172" class="">Helenid</option>
+                                                            <option value="252" class="">Hell Blood</option>
+                                                            <option value="173" class="">Hell Breaker</option>
+                                                            <option value="328" class="">Helmet of Trial</option>
+                                                            <option value="270" class="">Hepa's Blade Axe</option>
+                                                            <option value="559" class="">Hepa's Bone Cleaver</option>
+                                                            <option value="585" class="">Hepa's Bone Crasher</option>
+                                                            <option value="607" class="">Hepa's Chitin Armor Boots</option>
+                                                            <option value="608" class="">Hepa's Chitin Armor Gauntlets</option>
+                                                            <option value="609" class="">Hepa's Chitin Armor Helmet</option>
+                                                            <option value="610" class="">Hepa's Chitin Armor Pads</option>
+                                                            <option value="611" class="">Hepa's Chitin Armor Pauldron</option>
+                                                            <option value="602" class="">Hepa's Chitin Shell Boots</option>
+                                                            <option value="603" class="">Hepa's Chitin Shell Gauntlets</option>
+                                                            <option value="604" class="">Hepa's Chitin Shell Helmet</option>
+                                                            <option value="605" class="">Hepa's Chitin Shell Pads</option>
+                                                            <option value="606" class="">Hepa's Chitin Shell Pauldron</option>
+                                                            <option value="592" class="">Hepa's Complete Boots</option>
+                                                            <option value="593" class="">Hepa's Complete Gloves</option>
+                                                            <option value="594" class="">Hepa's Complete Helmet</option>
+                                                            <option value="595" class="">Hepa's Complete Pants</option>
+                                                            <option value="596" class="">Hepa's Complete Robe</option>
+                                                            <option value="597" class="">Hepa's Crimson Boots</option>
+                                                            <option value="598" class="">Hepa's Crimson Gloves</option>
+                                                            <option value="599" class="">Hepa's Crimson Helmet</option>
+                                                            <option value="600" class="">Hepa's Crimson Pants</option>
+                                                            <option value="601" class="">Hepa's Crimson Robe</option>
+                                                            <option value="269" class="">Hepa's Deep Scar</option>
+                                                            <option value="552" class="">Hepa's Durandal</option>
+                                                            <option value="276" class="">Hepa's Elixir Staff</option>
+                                                            <option value="282" class="">Hepa's Exceptional Blade Axe</option>
+                                                            <option value="281" class="">Hepa's Exceptional Deep Scar</option>
+                                                            <option value="288" class="">Hepa's Exceptional Elixir Staff</option>
+                                                            <option value="279" class="">Hepa's Exceptional Graham</option>
+                                                            <option value="283" class="">Hepa's Exceptional Impact</option>
+                                                            <option value="287" class="">Hepa's Exceptional Iron Bow</option>
+                                                            <option value="284" class="">Hepa's Exceptional Iron Impact</option>
+                                                            <option value="280" class="">Hepa's Exceptional Mirage</option>
+                                                            <option value="289" class="">Hepa's Exceptional Priest Impact</option>
+                                                            <option value="286" class="">Hepa's Exceptional Raptor</option>
+                                                            <option value="278" class="">Hepa's Exceptional Shard</option>
+                                                            <option value="285" class="">Hepa's Exceptional Totemic Spear</option>
+                                                            <option value="554" class="">Hepa's Glave</option>
+                                                            <option value="267" class="">Hepa's Graham</option>
+                                                            <option value="587" class="">Hepa's Harpoon</option>
+                                                            <option value="271" class="">Hepa's Impact</option>
+                                                            <option value="275" class="">Hepa's Iron Bow</option>
+                                                            <option value="555" class="">Hepa's Iron Crossbow</option>
+                                                            <option value="272" class="">Hepa's Iron Impact</option>
+                                                            <option value="268" class="">Hepa's Mirage</option>
+                                                            <option value="550" class="">Hepa's Mirage Dagger</option>
+                                                            <option value="591" class="">Hepa's Priest Bone Crasher</option>
+                                                            <option value="622" class="">Hepa's Priest Chitin Armor Boots</option>
+                                                            <option value="623" class="">Hepa's Priest Chitin Armor Gauntlets</option>
+                                                            <option value="624" class="">Hepa's Priest Chitin Armor Helmet</option>
+                                                            <option value="625" class="">Hepa's Priest Chitin Armor Pads</option>
+                                                            <option value="626" class="">Hepa's Priest Chitin Armor Pauldron</option>
+                                                            <option value="627" class="">Hepa's Priest Chitin Shell Boots</option>
+                                                            <option value="628" class="">Hepa's Priest Chitin Shell Gauntlets</option>
+                                                            <option value="629" class="">Hepa's Priest Chitin Shell Helmet</option>
+                                                            <option value="630" class="">Hepa's Priest Chitin Shell Pads</option>
+                                                            <option value="631" class="">Hepa's Priest Chitin Shell Pauldron</option>
+                                                            <option value="277" class="">Hepa's Priest Impact</option>
+                                                            <option value="274" class="">Hepa's Raptor</option>
+                                                            <option value="612" class="">Hepa's Rogue Chitin Armor Boots</option>
+                                                            <option value="613" class="">Hepa's Rogue Chitin Armor Gauntlets</option>
+                                                            <option value="614" class="">Hepa's Rogue Chitin Armor Helmet</option>
+                                                            <option value="615" class="">Hepa's Rogue Chitin Armor Pads</option>
+                                                            <option value="616" class="">Hepa's Rogue Chitin Armor Pauldron</option>
+                                                            <option value="617" class="">Hepa's Rogue Chitin Shell Boots</option>
+                                                            <option value="618" class="">Hepa's Rogue Chitin Shell Gauntlets</option>
+                                                            <option value="619" class="">Hepa's Rogue Chitin Shell Helmet</option>
+                                                            <option value="620" class="">Hepa's Rogue Chitin Shell Pads</option>
+                                                            <option value="621" class="">Hepa's Rogue Chitin Shell Pauldron</option>
+                                                            <option value="589" class="">Hepa's Salamander Staff</option>
+                                                            <option value="266" class="">Hepa's Shard</option>
+                                                            <option value="551" class="">Hepa's Slayer</option>
+                                                            <option value="557" class="">Hepa's Tomahawk</option>
+                                                            <option value="553" class="">Hepa's Totamic Club</option>
+                                                            <option value="273" class="">Hepa's Totemic Spear</option>
+                                                            <option value="237" class="">Hero's Valor</option>
+                                                            <option value="131" class="">Holy Animor</option>
+                                                            <option value="403" class="">Holy Knight Assassin Boots</option>
+                                                            <option value="405" class="">Holy Knight Assassine Helmet</option>
+                                                            <option value="404" class="">Holy Knight Assassin Gauntlets</option>
+                                                            <option value="406" class="">Holy Knight Assassin Pads</option>
+                                                            <option value="407" class="">Holy Knight Assassin Pauldron</option>
+                                                            <option value="413" class="">Holy Knight Mage Boots</option>
+                                                            <option value="414" class="">Holy Knight Mage Gloves</option>
+                                                            <option value="415" class="">Holy Knight Mage Helmet</option>
+                                                            <option value="416" class="">Holy Knight Mage Pants</option>
+                                                            <option value="417" class="">Holy Knight Mage Robe</option>
+                                                            <option value="393" class="">Holy Knight Portu Boots</option>
+                                                            <option value="394" class="">Holy Knight Portu Gauntlets</option>
+                                                            <option value="395" class="">Holy Knight Portu Helmet</option>
+                                                            <option value="396" class="">Holy Knight Portu Pads</option>
+                                                            <option value="397" class="">Holy Knight Portu Pauldron</option>
+                                                            <option value="408" class="">Holy Knight Priest Boots</option>
+                                                            <option value="410" class="">Holy Knight Priest Gauntlets</option>
+                                                            <option value="411" class="">Holy Knight Priest Helmet</option>
+                                                            <option value="409" class="">Holy Knight Priest Pads</option>
+                                                            <option value="412" class="">Holy Knight Priest Pauldron</option>
+                                                            <option value="398" class="">Holy Knight Warrior Boots</option>
+                                                            <option value="399" class="">Holy Knight Warrior Gauntlets</option>
+                                                            <option value="400" class="">Holy Knight Warrior Helmet</option>
+                                                            <option value="401" class="">Holy Knight Warrior Pads</option>
+                                                            <option value="402" class="">Holy Knight Warrior Pauldron</option>
+                                                            <option value="56" class="">Ice Belt</option>
+                                                            <option value="369" class="">Ice Dark Knight Staff</option>
+                                                            <option value="656" class="">Ice Dragon Saddle</option>
+                                                            <option value="664" class="">Ice Garges Staff</option>
+                                                            <option value="230" class="">Imir Ring</option>
+                                                            <option value="169" class="">Impact</option>
+                                                            <option value="57" class="">Iron Belt</option>
+                                                            <option value="2" class="">Iron Bow</option>
+                                                            <option value="58" class="">Iron Crossbow</option>
+                                                            <option value="167" class="">Iron Impact</option>
+                                                            <option value="59" class="">Iron Necklace</option>
+                                                            <option value="60" class="">Javana Axe 1H</option>
+                                                            <option value="61" class="">Javana Axe 2H</option>
+                                                            <option value="685" class="">Jewel of Absortion</option>
+                                                            <option value="680" class="">Jewel of Dexterity</option>
+                                                            <option value="684" class="">Jewel of Hardness</option>
+                                                            <option value="683" class="">Jewel of Intelligence</option>
+                                                            <option value="682" class="">Jewel of Magic</option>
+                                                            <option value="681" class="">Jewel of Philosopher</option>
+                                                            <option value="686" class="">Jewel of Strength</option>
+                                                            <option value="145" class="">Judicious Belt</option>
+                                                            <option value="242" class="">Kekuri Belt</option>
+                                                            <option value="233" class="">Kekuri Ring</option>
+                                                            <option value="440" class="">Khanjar</option>
+                                                            <option value="441" class="">Kodeks Gigas</option>
+                                                            <option value="109" class="">Krowaz Assassin Boots</option>
+                                                            <option value="110" class="">Krowaz Assassin Gauntlets</option>
+                                                            <option value="111" class="">Krowaz Assassin Helmet</option>
+                                                            <option value="112" class="">Krowaz Assassin Lower Garment</option>
+                                                            <option value="113" class="">Krowaz Assassin Upper Garment</option>
+                                                            <option value="114" class="">Krowaz Mage Boots</option>
+                                                            <option value="115" class="">Krowaz Mage Gauntlets</option>
+                                                            <option value="116" class="">Krowaz Mage Helmet</option>
+                                                            <option value="117" class="">Krowaz Mage Pants</option>
+                                                            <option value="118" class="">Krowaz Mage Robe</option>
+                                                            <option value="418" class="">Krowaz Portu Boots</option>
+                                                            <option value="419" class="">Krowaz Portu Gauntlets</option>
+                                                            <option value="420" class="">Krowaz Portu Helmet</option>
+                                                            <option value="421" class="">Krowaz Portu Pads</option>
+                                                            <option value="422" class="">Krowaz Portu Pauldron</option>
+                                                            <option value="119" class="">Krowaz Priest Boots</option>
+                                                            <option value="120" class="">Krowaz Priest Gauntlets</option>
+                                                            <option value="121" class="">Krowaz Priest Helmet</option>
+                                                            <option value="122" class="">Krowaz Priest Lower Garment</option>
+                                                            <option value="123" class="">Krowaz Priest Upper Garment</option>
+                                                            <option value="124" class="">Krowaz Warrior Boots</option>
+                                                            <option value="125" class="">Krowaz Warrior Gauntlets</option>
+                                                            <option value="126" class="">Krowaz Warrior Helmet</option>
+                                                            <option value="127" class="">Krowaz Warrior Lower Garment</option>
+                                                            <option value="128" class="">Krowaz Warrior Upper Garment</option>
+                                                            <option value="130" class="">Legionnnaire Band</option>
+                                                            <option value="227" class="">Lich King's Pride</option>
+                                                            <option value="240" class="">Light Belt of Life</option>
+                                                            <option value="62" class="">Lighting Belt</option>
+                                                            <option value="370" class="">Lighting Dark Knight Staff</option>
+                                                            <option value="253" class="">Lighting Erenion</option>
+                                                            <option value="658" class="">Lightning Dragon Saddle</option>
+                                                            <option value="665" class="">Lightning Garges Staff</option>
+                                                            <option value="129" class="">Lillime's Enticement</option>
+                                                            <option value="290" class="">Lobo Hammer</option>
+                                                            <option value="63" class="">Lobo Pendant</option>
+                                                            <option value="164" class="">Lobo Staff</option>
+                                                            <option value="213" class="">Lousy Pickocket Windforce</option>
+                                                            <option value="185" class="">Lousy Pickpocket Raum</option>
+                                                            <option value="216" class="">Lugias</option>
+                                                            <option value="291" class="">Lupus Hammer</option>
+                                                            <option value="64" class="">Lupus Pendant</option>
+                                                            <option value="163" class="">Lupus Staff</option>
+                                                            <option value="292" class="">Lycaon Hammer</option>
+                                                            <option value="65" class="">Lycaon Pendant</option>
+                                                            <option value="162" class="">Lycaon Staff</option>
+                                                            <option value="338" class="">Mace of GameSatış</option>
+                                                            <option value="148" class="">Mage Cloth Pants</option>
+                                                            <option value="147" class="">Mage Cotton Robe</option>
+                                                            <option value="66" class="">Mage Earring</option>
+                                                            <option value="149" class="">Mage Gloves</option>
+                                                            <option value="150" class="">Mage Hat</option>
+                                                            <option value="458" class="">Mage Leather Boots</option>
+                                                            <option value="457" class="">Mage Leather Gloves</option>
+                                                            <option value="456" class="">Mage Linen Cap</option>
+                                                            <option value="455" class="">Mage Linen Pants</option>
+                                                            <option value="454" class="">Mage Linen Robe</option>
+                                                            <option value="151" class="">Mage Shoes</option>
+                                                            <option value="249" class="">Magic Power Necklace</option>
+                                                            <option value="244" class="">Mana Belt</option>
+                                                            <option value="205" class="">Mean Leonar</option>
+                                                            <option value="146" class="">Minotaur's Earring</option>
+                                                            <option value="68" class="">Mirage</option>
+                                                            <option value="3" class="">Mirage Dagger</option>
+                                                            <option value="439" class="">Moonlight</option>
+                                                            <option value="321" class="">Mythril Boots</option>
+                                                            <option value="322" class="">Mythril Gauntlet</option>
+                                                            <option value="323" class="">Mythril Helmet</option>
+                                                            <option value="324" class="">Mythril Pad</option>
+                                                            <option value="325" class="">Mythril Pauldron</option>
+                                                            <option value="548" class="">Nepilim of dimension failure</option>
+                                                            <option value="546" class="">Nepilim of great chaos</option>
+                                                            <option value="545" class="">Nepilim of sweet kiss</option>
+                                                            <option value="547" class="">Nepilim of weak dwarf</option>
+                                                            <option value="160" class="">Oasis Staff</option>
+                                                            <option value="69" class="">Opal Earring</option>
+                                                            <option value="235" class="">Opal Ring</option>
+                                                            <option value="329" class="">Pads of Trial</option>
+                                                            <option value="330" class="">Pauldron of Trial</option>
+                                                            <option value="70" class="">Platinum Earring</option>
+                                                            <option value="71" class="">Platinum Ring</option>
+                                                            <option value="339" class="">Pole of GameSatış</option>
+                                                            <option value="357" class="">Pontus's belt</option>
+                                                            <option value="356" class="">Pontus's pendant</option>
+                                                            <option value="358" class="">Pontus's ring</option>
+                                                            <option value="155" class="">Priest Cap</option>
+                                                            <option value="72" class="">Priest Chitin Armor Boots</option>
+                                                            <option value="73" class="">Priest Chitin Armor Gauntlets</option>
+                                                            <option value="74" class="">Priest Chitin Armor Helmet</option>
+                                                            <option value="75" class="">Priest Chitin Armor Pads</option>
+                                                            <option value="76" class="">Priest Chitin Armor Pauldron</option>
+                                                            <option value="77" class="">Priest Chitin Shell Boots</option>
+                                                            <option value="78" class="">Priest Chitin Shell Gauntlets</option>
+                                                            <option value="79" class="">Priest Chitin Shell Helmet</option>
+                                                            <option value="80" class="">Priest Chitin Shell Pads</option>
+                                                            <option value="81" class="">Priest Chitin Shell Pauldron</option>
+                                                            <option value="306" class="">Priest Full Plate Armor Boots</option>
+                                                            <option value="307" class="">Priest Full Plate Armor Gauntlets</option>
+                                                            <option value="308" class="">Priest Full Plate Armor Helmet</option>
+                                                            <option value="309" class="">Priest Full Plate Armor Pads</option>
+                                                            <option value="310" class="">Priest Full Plate Armor Pauldron</option>
+                                                            <option value="154" class="">Priest Gloves</option>
+                                                            <option value="168" class="">Priest Impact</option>
+                                                            <option value="82" class="">Priest Pendant</option>
+                                                            <option value="156" class="">Priest Shoes</option>
+                                                            <option value="161" class="">Raptor</option>
+                                                            <option value="183" class="">Raum on Severe Diet</option>
+                                                            <option value="83" class="">Red Dragon Necklace</option>
+                                                            <option value="84" class="">Ring Of Courage</option>
+                                                            <option value="85" class="">Ring Of Life</option>
+                                                            <option value="86" class="">Ring of Magic</option>
+                                                            <option value="87" class="">Ring of the Felankor</option>
+                                                            <option value="89" class="">Rogue Chitin Armor Boots</option>
+                                                            <option value="90" class="">Rogue Chitin Armor Gauntlets</option>
+                                                            <option value="91" class="">Rogue Chitin Armor Helmet</option>
+                                                            <option value="92" class="">Rogue Chitin Armor Pads</option>
+                                                            <option value="93" class="">Rogue Chitin Armor Pauldron</option>
+                                                            <option value="94" class="">Rogue Chitin Shell Boots</option>
+                                                            <option value="95" class="">Rogue Chitin Shell Gauntlets</option>
+                                                            <option value="96" class="">Rogue Chitin Shell Helmet</option>
+                                                            <option value="97" class="">Rogue Chitin Shell Pads</option>
+                                                            <option value="98" class="">Rogue Chitin Shell Pauldron</option>
+                                                            <option value="88" class="">Rogue Earring</option>
+                                                            <option value="301" class="">Rogue Full Plate Armor Boots</option>
+                                                            <option value="302" class="">Rogue Full Plate Armor Gauntlets</option>
+                                                            <option value="303" class="">Rogue Full Plate Armor Helmet</option>
+                                                            <option value="304" class="">Rogue Full Plate Armor Pads</option>
+                                                            <option value="305" class="">Rogue Full Plate Armor Pauldron</option>
+                                                            <option value="675" class="">Rogue Plate Armor Pads</option>
+                                                            <option value="674" class="">Rogue Plate Armor Pauldron</option>
+                                                            <option value="676" class="">Rogue Plate Boots</option>
+                                                            <option value="677" class="">Rogue Plate Gauntlets</option>
+                                                            <option value="678" class="">Rogue Plate Helmet</option>
+                                                            <option value="331" class="">Ron's Boots</option>
+                                                            <option value="332" class="">Ron's Gloves</option>
+                                                            <option value="333" class="">Ron's Helmet</option>
+                                                            <option value="334" class="">Ron's Pants</option>
+                                                            <option value="335" class="">Ron's Robe</option>
+                                                            <option value="549" class="">Ron's Staff</option>
+                                                            <option value="564" class="">Rosetta Assassin Boots</option>
+                                                            <option value="565" class="">Rosetta Assassin Bottom</option>
+                                                            <option value="566" class="">Rosetta Assassin Gauntlet</option>
+                                                            <option value="567" class="">Rosetta Assassin Helmet</option>
+                                                            <option value="568" class="">Rosetta Assassin Top</option>
+                                                            <option value="569" class="">Rosetta Mage Boots</option>
+                                                            <option value="570" class="">Rosetta Mage Gauntlet</option>
+                                                            <option value="571" class="">Rosetta Mage Helmet</option>
+                                                            <option value="572" class="">Rosetta Mage Pants</option>
+                                                            <option value="573" class="">Rosetta Mage Robe</option>
+                                                            <option value="574" class="">Rosetta Priest Boots</option>
+                                                            <option value="577" class="">Rosetta Priest Bottom</option>
+                                                            <option value="575" class="">Rosetta Priest Gauntlet</option>
+                                                            <option value="576" class="">Rosetta Priest Helmet</option>
+                                                            <option value="578" class="">Rosetta Priest Top</option>
+                                                            <option value="579" class="">Rosetta Warrior Boots</option>
+                                                            <option value="582" class="">Rosetta Warrior Bottom</option>
+                                                            <option value="580" class="">Rosetta Warrior Gauntlet</option>
+                                                            <option value="581" class="">Rosetta Warrior Helmet</option>
+                                                            <option value="583" class="">Rosetta Warrior Top</option>
+                                                            <option value="442" class="">Ruahue</option>
+                                                            <option value="99" class="">Ruby Ring</option>
+                                                            <option value="698" class="">Ruler of the legend - Black Tortoise</option>
+                                                            <option value="695" class="">Ruler of the legend - Blue Dragon</option>
+                                                            <option value="697" class="">Ruler of the legend - Diana's Deer</option>
+                                                            <option value="699" class="">Ruler of the legend - Fenrir</option>
+                                                            <option value="690" class="">Ruler of the legend - Pegasus (Fire)</option>
+                                                            <option value="691" class="">Ruler of the legend - Pegasus (Ice)</option>
+                                                            <option value="692" class="">Ruler of the legend - Pegasus (Lightning)</option>
+                                                            <option value="696" class="">Ruler of the legend - Phoenix</option>
+                                                            <option value="693" class="">Ruler of the legend - Serpent</option>
+                                                            <option value="694" class="">Ruler of the legend - White Tiger</option>
+                                                            <option value="588" class="">Salamander Staff</option>
+                                                            <option value="245" class="">Sash of Sorrows</option>
+                                                            <option value="159" class="">Scorching Staff</option>
+                                                            <option value="100" class="">Scorpion Bow</option>
+                                                            <option value="224" class="">Scorpion Shield</option>
+                                                            <option value="177" class="">Scorpion Side</option>
+                                                            <option value="378" class="">Secret Assassin Boots</option>
+                                                            <option value="381" class="">Secret Assassin Bottom</option>
+                                                            <option value="379" class="">Secret Assassin Gauntlets</option>
+                                                            <option value="380" class="">Secret Assassin Helmet</option>
+                                                            <option value="382" class="">Secret Assassin Top</option>
+                                                            <option value="388" class="">Secret Mage Boots</option>
+                                                            <option value="389" class="">Secret Mage Gloves</option>
+                                                            <option value="390" class="">Secret Mage Helmet</option>
+                                                            <option value="391" class="">Secret Mage Pants</option>
+                                                            <option value="392" class="">Secret Mage Robe</option>
+                                                            <option value="383" class="">Secret Priest Boots</option>
+                                                            <option value="386" class="">Secret Priest Bottom</option>
+                                                            <option value="384" class="">Secret Priest Gauntlets</option>
+                                                            <option value="385" class="">Secret Priest Helmet</option>
+                                                            <option value="387" class="">Secret Priest Top</option>
+                                                            <option value="101" class="">Secret Silver Earring</option>
+                                                            <option value="373" class="">Secret Warrior Boots</option>
+                                                            <option value="376" class="">Secret Warrior Bottom</option>
+                                                            <option value="374" class="">Secret Warrior Gauntlets</option>
+                                                            <option value="375" class="">Secret Warrior Helmet</option>
+                                                            <option value="377" class="">Secret Warrior Top</option>
+                                                            <option value="1" class="">Shard</option>
+                                                            <option value="668" class="">Shenlong Bow</option>
+                                                            <option value="223" class="">Sherion</option>
+                                                            <option value="340" class="">Shield of GameSatış</option>
+                                                            <option value="231" class="">Shio Tears</option>
+                                                            <option value="293" class="">Silver Earring</option>
+                                                            <option value="236" class="">Silver Ring</option>
+                                                            <option value="243" class="">Skeleton Belt</option>
+                                                            <option value="102" class="">Skull Hammer</option>
+                                                            <option value="176" class="">Slayer</option>
+                                                            <option value="453" class="">Smart Castellan's Sword</option>
+                                                            <option value="215" class="">Smite Hammer</option>
+                                                            <option value="341" class="">Spear of GameSatış</option>
+                                                            <option value="180" class="">Spear of Murky Waters</option>
+                                                            <option value="342" class="">Staff of GameSatış</option>
+                                                            <option value="452" class="">Stern Castellan's Sword</option>
+                                                            <option value="157" class="">Stone Splitter</option>
+                                                            <option value="246" class="">String of Skulls</option>
+                                                            <option value="193" class="">Sweet Kiss Baal</option>
+                                                            <option value="209" class="">Sweet Kiss Nebiros</option>
+                                                            <option value="189" class="">Sweet Kiss Wirinom</option>
+                                                            <option value="584" class="">Syphioric</option>
+                                                            <option value="360" class="">Taurus's belt</option>
+                                                            <option value="359" class="">Taurus's pendant</option>
+                                                            <option value="361" class="">Taurus's ring</option>
+                                                            <option value="103" class="">Totemic Club</option>
+                                                            <option value="171" class="">Totemic Spear</option>
+                                                            <option value="201" class="">Trainer Kate Faun</option>
+                                                            <option value="195" class="">Trainer Kate Fulitol</option>
+                                                            <option value="198" class="">Trainer Kate Molok</option>
+                                                            <option value="670" class="">True silver</option>
+                                                            <option value="343" class="">Two-Handed Sword of GameSatış</option>
+                                                            <option value="190" class="">Undefeatable Baal</option>
+                                                            <option value="200" class="">Undefeatable Faun</option>
+                                                            <option value="194" class="">Undefeatable Fulitol</option>
+                                                            <option value="203" class="">Undefeatable Leonar</option>
+                                                            <option value="197" class="">Undefeatable Molok</option>
+                                                            <option value="206" class="">Undefeatable Nebiros</option>
+                                                            <option value="182" class="">Undefeatable Raum</option>
+                                                            <option value="210" class="">Undefeatable Windforce</option>
+                                                            <option value="186" class="">Undefeatable Wirinom</option>
+                                                            <option value="214" class="">Warm Downpour Windforce</option>
+                                                            <option value="105" class="">Warrior Earring</option>
+                                                            <option value="106" class="">Warrior Pendant</option>
+                                                            <option value="191" class="">Weak Dwarf Baal</option>
+                                                            <option value="204" class="">Weak Dwarf Leonar</option>
+                                                            <option value="207" class="">Weak Dwarf Nebiros</option>
+                                                            <option value="184" class="">Weak Dwarf Raum</option>
+                                                            <option value="211" class="">Weak Dwarf Windforce</option>
+                                                            <option value="187" class="">Weak Dwarf Wirinom</option>
+                                                            <option value="166" class="">Weapon Breaker</option>
+                                                            <option value="107" class="">White Dragon Necklace</option>
+                                                            <option value="108" class="">White Silver Earring</option>
+                                                            <option value="212" class="">Windforce on Severe Diet</option>
+                                                            <option value="669" class="">Wrath Of The Dragon</option>
+                                                            <option value="218" class="">Wreath of Erenion</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Artı Kaç?</td>
+                                                    <td>
+                                                        <select id="ArtiKac" name="ilantipi" class="streamappinput">
+                                                            <option value="">+0</option>
+                                                            <option value="">+1</option>
+                                                            <option value="">+2</option>
+                                                            <option value="">+3</option>
+                                                            <option value="">+4</option>
+                                                            <option value="">+5</option>
+                                                            <option value="">+6</option>
+                                                            <option value="">+7</option>
+                                                            <option value="">+8</option>
+                                                            <option value="">+9</option>
+                                                            <option value="">+10</option>
+                                                            <option value="">+11</option>
+                                                            <option value="">+12</option>
+                                                            <option value="">+13</option>
+                                                            <option value="">+14</option>
+                                                            <option value="">+15</option>
+                                                            <option value="">+16</option>
+                                                            <option value="">+17</option>
+                                                            <option value="">+18</option>
+                                                            <option value="">+19</option>
+                                                            <option value="">+20</option>
+                                                            <option value="">+21</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Fiyat</td>
+                                                    <td>
+                                                        <input type="text" class="ilanekleinput">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Hesabınıza Geçecek Tutar</td>
+                                                    <td>
+                                                        <input type="text" class="ilanekleinput">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Açıklama</td>
+                                                    <td>
+                                                        <textarea name="text" cols="40" rows="5" class="ilanekleinputArea" maxlength="250" placeholder="Maks. 250 karakter"></textarea>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><a href="ilanlar.html" class="BtnCekimYap">SATIŞA ÇIKART</a></td>
+                                                    <td></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+</body>
+</html>

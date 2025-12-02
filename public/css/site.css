@@ -1,0 +1,6941 @@
+/* T�m Haklar� Jervis Game� Firmas�na Aittir. �zinsiz Kopyalanamaz ve �o�alt�lamaz. | www.mymedya.com.tr */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rajdhani:wght@300;400;500;600;700&display=swap");
+/* Reset and base styles */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw !important;
+  overflow-x: hidden;
+  position: relative;
+  height: 100%;
+  min-height: 100vh;
+}
+
+body {
+  font-size: 14px;
+  background: #191b1f;
+  color: #2d2d2d;
+  font-family: "Rajdhani", sans-serif !important;
+  overflow-y: auto;
+  position: relative;
+}
+#root {
+  width: 100vw;
+  height: 100%;
+  min-height: 100vh;
+}
+/* Container styles */
+.SetContent {
+  width: 1360px;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Header styles */
+.HeaderArea {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: rgba(25, 27, 31, 0.7); /* Semi-transparent background */
+  height: 50px; /* Assuming header height for spacing */
+}
+
+.HeaderTop {
+  width: 1360px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 333;
+}
+
+.Header {
+  width: 1360px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 222;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #191b1f;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: #191b1f;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(3, 176, 250);
+}
+
+.sq {
+  transition: all 0.3s ease-in-out;
+}
+.SetFixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+/*Ayarlamalar*/
+.clear {
+  clear: both;
+  display: block !important;
+}
+.SetMarginTop {
+  margin: 150px auto 0 !important;
+}
+
+.HeaderTop {
+  padding: 17px 0px 9px 0;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  z-index: 333;
+}
+
+.Header {
+  padding: 20px 0;
+  position: relative;
+  z-index: 222;
+  width: 100%;
+  max-width: 1360px;
+  margin: 0px auto;
+}
+.Logo {
+  float: left;
+  width: 200px;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+.Logo a {
+  display: block;
+  margin: -6px 0 0 0;
+}
+
+.Social ul li:last-child a {
+  padding-right: 0 !important;
+}
+.Social ul li a {
+  font-size: 18px;
+  padding: 0 10px;
+  font-weight: 500;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+.Social ul li a:hover {
+  text-shadow: 0 0 15px rgb(3, 176, 250);
+  transition: all 0.3s ease-in-out;
+}
+
+.Desc h2 {
+  font-size: 42px;
+  color: #fff;
+  font-weight: 700;
+  margin-top: 5px;
+}
+.Desc p {
+  font-size: 18px;
+  color: #fff;
+  margin: 5px 0 25px 0;
+}
+.Desc span {
+  font-size: 22px;
+  color: rgb(3, 176, 250);
+  font-weight: 700;
+}
+
+.GamesTop {
+  float: left;
+}
+.GamesTop ul {
+  display: inline-block;
+}
+.GamesTop ul li {
+  display: inline-block;
+  color: #fff;
+  vertical-align: top;
+  border-right: dashed 1px rgba(43, 49, 58, 1);
+}
+.GamesTop ul li:first-child {
+  color: rgb(3, 176, 250);
+  font-weight: bold;
+  border-right: none;
+}
+.GamesTop ul li:last-child {
+  border-right: none;
+}
+.GamesTop ul li img {
+  max-width: 18px;
+}
+.GamesTop ul li a {
+  display: block;
+  padding: 0 5px;
+  color: #fff;
+}
+.GamesTop ul li a:hover {
+  color: #00a3ff;
+}
+
+.GameSelected {
+  min-width: 114px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-family: "Rajdhani", sans-serif !important;
+  font-size: 15px;
+  font-weight: 600;
+  margin-left: 25px;
+  margin: -2px 0 0 0;
+}
+.GameSelected select {
+  cursor: pointer;
+}
+.GameSelected option {
+  background: #14141e;
+}
+
+.TopMenu {
+  float: right;
+}
+.TopMenu ul {
+  display: inline-block;
+}
+.TopMenu ul li {
+  display: inline-block;
+}
+.TopMenu ul li a {
+  padding: 0 10px;
+  font-weight: 500;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+.TopMenu ul li a:hover {
+  text-shadow: 0 0 15px rgb(3, 176, 250);
+  transition: all 0.3s ease-in-out;
+}
+
+.lang {
+  display: none !important;
+  float: right;
+}
+.lang li {
+  border-right: 1px solid;
+}
+.lang li:last-child {
+  border-right: none;
+}
+.lang li a {
+  padding: 0 8px !important;
+}
+
+.Menu {
+  float: left;
+  margin: 0 40px 0 10px;
+}
+.Menu ul {
+  display: block;
+}
+.Menu ul li {
+  display: inline-block;
+  position: relative;
+}
+.Menu ul li a {
+  padding: 0 10px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 70px;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+}
+.Menu ul li a:hover {
+  text-shadow: 0 0 15px rgb(3, 176, 250);
+  transition: all 0.3s ease-in-out;
+}
+.Menu ul li span {
+  background-image: linear-gradient(
+    -225deg,
+    #eb4b4b 0%,
+    #eb4b4b 29%,
+    #00a3ff 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #fff;
+  animation: Drky 0.8s linear infinite;
+  position: absolute;
+  margin: 4px 0 0 -41px;
+  padding: 6px;
+  border-radius: 100%;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@keyframes Drky {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.MenuDrk {
+  margin: 0 0 0 30px;
+  float: left;
+}
+.responsiveMenu {
+  display: none;
+  font-size: 25px;
+  position: relative;
+  margin: 10px auto;
+  text-align: center;
+}
+.HeaderTop .bars {
+  display: none;
+}
+
+.MainMenu {
+  float: right;
+  min-height: 1px;
+  margin-top: 0;
+}
+.ProfileClose,
+.MenuClose {
+  text-align: center;
+  font-size: 20px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: none;
+}
+
+.FilterClose {
+  text-align: center;
+  font-size: 20px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: none;
+}
+
+/*Trade*/
+.betas {
+  float: right;
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -300deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: betadrk 2s linear infinite;
+  display: inline-block;
+  font-weight: 600 !important;
+}
+
+@keyframes betadrk {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.TradeArea {
+  margin-bottom: 50px;
+}
+.TradeArea h2 {
+  font-size: 30px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 30px;
+}
+.TradeSelect {
+}
+.TradeSelect .Left {
+  width: 30%;
+  float: left;
+  margin: 2% 5% 0 15%;
+}
+.TradeSelect .Left img {
+  width: 100%;
+  border-radius: 100%;
+}
+.TradeSelect .Right {
+  width: 30%;
+  float: right;
+  margin: 2% 15% 0 5%;
+}
+.TradeSelect .Right img {
+  width: 100%;
+  border-radius: 100%;
+}
+.TradeSelect .Left h3 {
+  text-align: center;
+  font-size: 20px;
+  padding: 15px 0 50px 0;
+}
+.TradeSelect .Right h3 {
+  text-align: center;
+  font-size: 20px;
+  padding: 15px 0 50px 0;
+}
+
+.TradeEdit ul li {
+  flex: none;
+  margin: 6% 0 0 0;
+}
+.TradeEdit ul li .ProductItem {
+  margin: 0;
+}
+.TradeRequest {
+  margin-bottom: 20px;
+}
+.Trade {
+}
+.Trade .Left {
+  width: 49%;
+  padding: 20px;
+  min-height: 500px;
+  float: left;
+  border: 1px solid rgb(30, 87, 153);
+  border-radius: 10px;
+}
+.Trade .Right {
+  width: 49%;
+  padding: 20px;
+  min-height: 500px;
+  float: right;
+  border: 1px solid rgb(30, 87, 153);
+  border-radius: 10px;
+}
+.Trade .Left h3 {
+  text-align: center;
+  font-size: 24px;
+  padding: 15px 0;
+  margin: 0 0 15px 0;
+  border-bottom: 1px solid rgb(30, 87, 153);
+}
+.Trade .Right h3 {
+  text-align: center;
+  font-size: 24px;
+  padding: 15px 0;
+  margin: 0 0 15px 0;
+  border-bottom: 1px solid rgb(30, 87, 153);
+}
+.Trade .Left img {
+  width: 40%;
+}
+.Trade .Right img {
+  width: 40%;
+}
+.Trade .Bottom {
+  width: 100%;
+  float: left;
+  padding: 40px 0;
+  text-align: center;
+  border-bottom: 1px solid rgb(30, 87, 153);
+  border-radius: 10px;
+}
+.Trade .Bottom .BtnCekimYap {
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    rgb(3, 176, 250) 0%,
+    rgba(24, 67, 212, 1) 51%,
+    rgb(3, 176, 250) 100%
+  );
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  width: 200px;
+  height: 40px;
+  font-weight: 600;
+  line-height: 42px;
+  border-radius: 5px;
+  display: block;
+  font-size: 15px !important;
+  float: none;
+  margin: 0 auto;
+}
+
+.TradeProfilArea {
+  margin: 20px;
+}
+.TradeProfil .Left {
+  width: 49%;
+  padding: 10px;
+  min-height: 500px;
+  float: left;
+  border: 1px solid rgb(39, 62, 89);
+  margin-bottom: 20px;
+}
+.TradeProfil .Right {
+  width: 49%;
+  padding: 10px;
+  min-height: 500px;
+  float: right;
+  border: 1px solid rgb(39, 62, 89);
+}
+.TradeProfil .Left h3 {
+  text-align: center;
+  font-size: 24px;
+  padding: 15px 0;
+  margin: 0 0 15px 0;
+  border-bottom: 1px solid rgb(39, 62, 89);
+}
+.TradeProfil .Right h3 {
+  text-align: center;
+  font-size: 24px;
+  padding: 15px 0;
+  margin: 0 0 15px 0;
+  border-bottom: 1px solid rgb(39, 62, 89);
+}
+.TradeProfil .Left img {
+  width: 40%;
+}
+.TradeProfil .Right img {
+  width: 40%;
+}
+.TradeProfil .Bottom {
+  width: 100%;
+  float: left;
+  padding: 40px 0;
+  text-align: center;
+  border-bottom: 1px solid rgb(39, 62, 89);
+  border-radius: 10px;
+}
+.TradeProfil .Bottom .BtnCekimYap {
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    rgb(3, 176, 250) 0%,
+    rgba(24, 67, 212, 1) 51%,
+    rgb(3, 176, 250) 100%
+  );
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  width: 200px;
+  height: 40px;
+  font-weight: 600;
+  line-height: 42px;
+  border-radius: 5px;
+  display: block;
+  font-size: 15px !important;
+  float: none;
+  margin: 30px auto 0 auto;
+}
+
+.TradeListFilter {
+  margin: 70px 0 35px 0;
+  float: left;
+}
+
+.tradefilters {
+  width: 500px;
+  border: 1px solid rgba(43, 49, 58, 1);
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 16px;
+  color: #fff;
+  padding: 0 10px;
+  outline: 0;
+  line-height: 20px;
+  height: 40px;
+  transition: background-position 0.2s, background-color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  margin: 0 auto;
+}
+.tradefilters:hover,
+.tradefilters:focus,
+.tradefilters:active {
+  border: 1px solid #0e86ca;
+}
+
+.TradeDetailArea {
+  width: 100%;
+  margin: 80px 0;
+  min-height: 400px;
+}
+.TradeDetail {
+  margin-bottom: 50px;
+}
+.TradeDetail .SkinPhoto {
+  width: 20%;
+  float: left;
+  margin-right: 1%;
+  border: 1px solid rgba(43, 49, 58, 0.8);
+  min-height: 300px;
+}
+.TradeDetail .SkinPhoto img {
+  width: 100%;
+}
+.TradeDetail .SkinDetailOurs {
+  width: 39%;
+  float: left;
+  margin-right: 1%;
+  color: #fff;
+  padding: 5px 10px;
+  min-height: 300px;
+  border: 1px solid rgba(43, 49, 58, 0.8);
+}
+.TradeDetail .SkinDetailOurs ul li {
+  width: 100%;
+  float: left;
+  border-bottom: 1px solid rgba(43, 49, 58, 0.8);
+  color: #fff;
+  margin-bottom: 5px;
+  padding: 10px 0;
+  font-size: 18px;
+}
+.TradeDetail .SkinDetailOurs ul li:last-child {
+  border-bottom: none;
+}
+.TradeDetail .SkinDetailOurs ul li h4 {
+  width: 20%;
+  float: left;
+  color: #fff;
+}
+.TradeDetail .SkinDetailOurs ul li h5 {
+  width: 80%;
+  float: left;
+}
+.TradeDetail .SkinDetailOurs ul li h5 a {
+  font-size: 18px;
+  color: #fff;
+}
+.TradeDetail .SkinDetailOurs ul li h5 a:hover {
+  color: #0e86ca;
+  transition: all 0.2s ease-in-out;
+}
+.TradeDetail .SkinDetailOurs ul li h5 span {
+  font-size: 16px;
+}
+
+.TradeDetail .SkinDetailAgainst {
+  width: 39%;
+  float: left;
+  color: #fff;
+  padding: 10px 15px;
+  min-height: 300px;
+  background: rgba(43, 49, 58, 0.8);
+}
+.TradeDetail .SkinDetailAgainst h2 {
+  font-size: 22px;
+  color: #fff;
+  border-bottom: 1px solid rgba(66, 74, 86, 0.8);
+  padding: 7px 0;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+.TradeDetail .SkinDetailAgainst ul li {
+  width: 100%;
+  float: left;
+  border-bottom: 1px solid rgba(66, 74, 86, 0.8);
+  color: #fff;
+  margin-bottom: 5px;
+  padding: 10px 0;
+  font-size: 18px;
+}
+.TradeDetail .SkinDetailAgainst ul li:last-child {
+  border-bottom: none;
+}
+.TradeDetail .SkinDetailAgainst ul li h4 {
+  width: 48%;
+  float: left;
+  font-weight: 600;
+}
+.TradeDetail .SkinDetailAgainst ul li h5 {
+  width: 52%;
+  float: left;
+  color: #fff;
+}
+.TradeDetail .SkinDetailAgainst ul li h5 a {
+  font-size: 18px;
+  color: #fff;
+}
+.TradeDetail .SkinDetailAgainst ul li h5 a:hover {
+  color: #0e86ca;
+  transition: all 0.2s ease-in-out;
+}
+.TradeDetail .SkinDetailAgainst ul li h5 span {
+  font-size: 16px;
+}
+
+.SkinMessage {
+  width: 100%;
+  float: left;
+}
+.SkinMessage h1 {
+  font-size: 26px;
+  text-align: center;
+  border-bottom: 1px solid rgba(43, 49, 58, 0.8);
+  padding: 10px 0 20px 0;
+  color: #fff;
+  font-weight: 600;
+}
+.SkinMessage .MessageArea {
+  width: 59%;
+  float: left;
+}
+.SkinMessage .MessageArea h2 {
+  font-size: 22px;
+  text-align: center;
+  border-bottom: 1px solid rgba(43, 49, 58, 0.8);
+  padding: 24px 0 20px 0;
+  color: #fff;
+  font-weight: 600;
+}
+.SkinMessage .MessageArea ul {
+}
+.SkinMessage .MessageArea ul li {
+  color: #fff;
+  padding: 12px 0;
+  margin-bottom: 5px;
+  border-bottom: 1px solid rgba(43, 49, 58, 0.8);
+  font-size: 16px;
+}
+.SkinMessage .MessageArea ul li span i {
+  margin: 0 5px;
+}
+
+.SkinMessage .MessageSend {
+  width: 36%;
+  float: right;
+}
+.SkinMessage .MessageSend h1 {
+  font-size: 22px;
+  text-align: center;
+  border-bottom: 1px solid rgba(43, 49, 58, 0.8);
+  padding: 24px 0 20px 0;
+  color: #fff;
+  font-weight: 600;
+}
+.SkinMessage .MessageSend ul {
+}
+.SkinMessage .MessageSend ul li {
+  margin-bottom: 20px;
+}
+.SkinMessage .MessageSend ul li span {
+  color: #0e86ca;
+  margin: 0 0 10px 0;
+  float: left;
+  font-weight: 600;
+  font-size: 16px;
+}
+.BtnMesajGonder {
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    rgb(3, 176, 250) 0%,
+    rgba(24, 67, 212, 1) 51%,
+    rgb(3, 176, 250) 100%
+  );
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  width: 160px;
+  height: 40px;
+  font-weight: 600;
+  line-height: 42px;
+  border-radius: 5px;
+  display: block;
+  font-size: 15px !important;
+  float: left;
+}
+.BtnMesajGonder:hover {
+  box-shadow: 0 0 0 rgba(24, 67, 212, 1);
+  transition: all 0.2s ease-in-out;
+  background-position: right center;
+  color: #fff !important;
+}
+
+.tradeBuyer {
+}
+.tradeSeller {
+  margin-left: 20px;
+}
+.tradeBuyer i {
+  color: #0e86ca;
+}
+.tradeSeller i {
+  color: #00c710;
+}
+
+/* ��������������������������������������������������
+Menu Mobile style's
+�������������������������������������������������� */
+@media only screen and (max-width: 1024px) {
+  .TopMenu {
+    float: none;
+    margin-top: 50px;
+    width: 100%;
+    overflow-y: auto;
+    height: 100%;
+  }
+  .TopMenu-container {
+    width: 100%;
+  }
+  .TopMenu-mobile {
+    display: block;
+    color: #fff;
+  }
+  .TopMenu-dropdown-icon:before {
+    display: block;
+  }
+  .TopMenu > ul {
+  }
+  .TopMenu > ul > li {
+    width: 100%;
+    float: none;
+    display: block;
+  }
+  .TopMenu > ul > li a {
+    padding: 1.5em;
+    width: 100%;
+    display: block;
+  }
+  .TopMenu > ul > li > ul {
+    position: relative;
+  }
+  .TopMenu > ul > li > ul.normal-sub {
+    width: 100%;
+  }
+  .TopMenu > ul > li > ul > li {
+    float: none;
+    width: 100%;
+    margin-top: 20px;
+  }
+  .TopMenu > ul > li > ul > li:first-child {
+    margin: 0;
+  }
+  .TopMenu > ul > li > ul > li > ul {
+    position: relative;
+  }
+  .TopMenu > ul > li > ul > li > ul > li {
+    float: none;
+  }
+  .TopMenu .show-on-mobile {
+    display: block;
+  }
+}
+
+.Games {
+  width: 1360px;
+  margin: 0 auto;
+  padding: 10px 0;
+  border-radius: 5px;
+  background: #23252b;
+  position: relative;
+  z-index: 123;
+}
+.Games img {
+  max-width: 40px;
+  transition: all 0.2s ease-in-out;
+}
+.Games ul {
+  display: block;
+  text-align: left;
+  margin: 0 24px;
+}
+.Games ul li {
+  display: inline-block;
+  color: #fff;
+  vertical-align: middle;
+  font-weight: bold;
+  line-height: 40px;
+}
+.Games ul li a {
+  display: block;
+  padding: 0 10px;
+  height: 40px;
+  width: 60px;
+}
+.Games ul li a:hover img {
+  transform: scale(1.3);
+  transition: all 0.2s ease-in-out;
+}
+
+/*Switch Button*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+input:checked + .slider {
+  background-color: #2196f3;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.slider.round {
+  border-radius: 34px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
+/*Switch Button*/
+
+.Search {
+  float: left;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  box-shadow: -21px 13px 21px -12px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  margin-top: 15px;
+  height: 40px;
+  margin-right: 30px;
+}
+.Search input {
+  float: left;
+  width: 100%;
+  height: 100%;
+  background: none;
+  padding-left: 10px;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+  font-family: "Rajdhani";
+  border-radius: 5px;
+  padding-right: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(24, 40, 55, 0.4);
+}
+.Search i {
+  float: right;
+  line-height: 40px;
+  right: 10px;
+  color: rgb(3, 176, 250);
+  position: absolute;
+}
+.Search:hover {
+  border-color: rgb(3, 176, 250);
+}
+.Search input:hover,
+.Search input:focus,
+.Search input:active {
+  border-color: rgb(3, 176, 250);
+  transition: all 0.3s ease-in-out;
+}
+
+.DownArrow {
+  width: 100%;
+  max-width: 1360px;
+  margin: -100px auto;
+  -webkit-animation: jump 1.5s ease 0s infinite normal;
+  animation: jump 1.5s ease 0s infinite normal;
+  position: relative;
+  z-index: 5;
+}
+.Down {
+  width: 34px;
+  height: 48px;
+  position: absolute;
+  z-index: 4;
+  background: url(../images/MouseDown.png) no-repeat;
+}
+
+.marketKoicon {
+  max-height: 37px;
+  vertical-align: middle;
+}
+.marketCsgoicon {
+  max-height: 37px;
+  margin-right: 5px !important;
+  vertical-align: middle;
+}
+
+@-webkit-keyframes jump {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  20% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  50% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  60% {
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+  80% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+  80% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.Basket {
+  float: left;
+  display: block;
+  margin: 0 0 0 5px;
+}
+.Basket a {
+  line-height: 70px;
+  color: #01bdfc;
+  font-size: 20px;
+}
+
+.BasketProfil {
+  float: left;
+  display: block;
+  margin: 0 25px 0 0;
+}
+.BasketProfil a {
+  color: #fff;
+  font-size: 18px;
+}
+
+.Notifications {
+  float: left;
+  display: block;
+  margin: 0 0 0 24px;
+}
+.Notifications a {
+  line-height: 70px;
+  color: #01bdfc;
+  font-size: 20px;
+}
+
+.NotificationsMain {
+  float: left;
+  display: block;
+  margin: 0 0 0 26px;
+  line-height: 70px;
+  color: #01bdfc;
+  font-size: 21px;
+}
+
+/*Login Olduktan Sonra*/
+.HeaderProfil {
+  padding: 5px 0;
+  width: 100%;
+  background-color: hsla(0, 0%, 100%, 0.05);
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.15);
+  margin: 0px auto;
+}
+.HeaderProfil .Login {
+  display: flex;
+      align-items: center;
+      margin: 0;
+      height: 70px;
+}
+.HeaderProfil .Login .ProfilPhoto {
+  width: 20%;
+  float: left;
+  margin: 0 8px 0 5px;
+}
+.HeaderProfil .Login .ProfilPhoto img {
+  width: 100%;
+  border-radius: 100px;
+}
+.HeaderProfil .Login .ProfilName {
+  float: left;
+  text-align: left;
+  color: #dedede;
+  position: relative;
+  z-index: 123;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+.HeaderProfil .Login .ProfilName:hover {
+  color: #fff;
+}
+.HeaderProfil .Login .GlobalButton {
+  padding: 5px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.BildirimName {
+  float: left;
+  text-align: left;
+  font-weight: bold;
+  color: #dedede;
+  position: relative;
+  z-index: 123;
+  cursor: pointer;
+}
+.BildirimName:hover {
+  color: #fff;
+}
+
+.BildirimNameMain {
+  float: left;
+  text-align: left;
+  font-weight: bold;
+  color: #dedede;
+  position: relative;
+  z-index: 123;
+  cursor: pointer;
+}
+.BildirimNameMain:hover {
+  color: #fff;
+}
+
+.ProfilPageArea {
+  min-height: 300px;
+}
+.ProfilPageArea:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  opacity: 1;
+  width: 100%;
+  min-height: 300px;
+  z-index: -1;
+}
+
+.ProfilPageHeader {
+  width: 100%;
+  position: relative;
+  z-index: 123;
+}
+.ProfilPageHeader h1 {
+  font-size: 40px;
+  color: #fff;
+  margin: 10px 0 10px 0;
+}
+
+.ProfilPageContent {
+  min-height: 500px;
+  color: #fff;
+  margin: 0 0 50px;
+}
+.ProfilPageContent h1 {
+  font-size: 40px;
+  color: #fff;
+  letter-spacing: -1px;
+}
+.ProfilPageContent h5 {
+  font-size: 40px;
+  color: #fff;
+  letter-spacing: -1px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.ProfilPageContent p {
+  margin-bottom: 20px;
+  line-height: 25px;
+}
+
+.ProfilPageContent .ProfilArea {
+  margin: 30px 0 0 0;
+}
+.ProfilPageContent .ProfilMenu {
+  background: rgba(0, 0, 0, 0.2);
+  min-height: 400px;
+  border-radius: 2px;
+  width: 20%;
+  float: left;
+  padding: 30px 0;
+}
+.ProfilPageContent .SaticiMenu {
+  background: rgba(0, 0, 0, 0.2);
+  min-height: 400px;
+  border-radius: 2px;
+  width: 20%;
+  float: left;
+  padding: 30px 0;
+}
+.ProfilPageContent .ProfilDetail {
+  min-height: 100px;
+  width: 78%;
+  float: right;
+}
+.ProfilPageContent .ProfilDetail h3 {
+  font-size: 22px;
+  border-bottom: 1px solid rgb(39, 62, 89);
+  color: rgb(3, 176, 250);
+  padding: 8px 0;
+  font-weight: 600;
+}
+.ProfilPageContent .ProfilDetail h3 span a {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  float: right;
+  text-align: right;
+}
+.ProfilPageContent .ProfilDetail h3 span a:hover {
+  color: rgb(3, 176, 250);
+  transition: all 0.3s ease-in-out;
+}
+
+.ProfilPageContent .ProfilMenu .ProfilMenuFoto {
+  width: 50%;
+  margin: 0 auto 15px auto;
+}
+.ProfilPageContent .ProfilMenu .ProfilMenuFoto img {
+  width: 100%;
+  border-radius: 100px;
+  border: 2px dotted #777;
+}
+.ProfilPageContent .ProfilMenu .ProfilMenuAd {
+  margin-bottom: 20px;
+  position: relative;
+}
+.ProfilPageContent .ProfilMenu .ProfilMenuAd h1 {
+  font-size: 22px;
+  text-align: center;
+  font-weight: 600;
+}
+.ProfilPageContent .ProfilMenu .ProfilMenuAd h4 {
+  font-size: 18px;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0 5px 0;
+  margin: 0 12px;
+  font-weight: 500;
+}
+
+.ProfilPageContent .SaticiMenu .ProfilMenuFoto {
+  width: 50%;
+  margin: 0 auto 15px auto;
+}
+.ProfilPageContent .SaticiMenu .ProfilMenuFoto img {
+  width: 100%;
+  border-radius: 100px;
+  border: 2px dotted #777;
+}
+.ProfilPageContent .SaticiMenu .ProfilMenuAd {
+  margin-bottom: 20px;
+  position: relative;
+}
+.ProfilPageContent .SaticiMenu .ProfilMenuAd h1 {
+  font-size: 22px;
+  text-align: center;
+  font-weight: 600;
+}
+.ProfilPageContent .SaticiMenu .ProfilMenuAd h4 {
+  font-size: 18px;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0 5px 0;
+  margin: 0 12px;
+  font-weight: 500;
+}
+.ProfilPageContent .ProfilMenu .ProfilMenuler {
+}
+.ProfilPageContent .ProfilMenu .ProfilMenuler ul {
+}
+.ProfilPageContent .ProfilMenu .ProfilMenuler ul li {
+}
+.ProfilPageContent .ProfilMenu .ProfilMenuler ul li a {
+  display: block;
+  font-size: 16px;
+  color: #fff;
+  padding: 10px 30px;
+}
+.ProfilPageContent .ProfilMenu .ProfilMenuler ul li a:hover {
+  background: rgb(3, 176, 250);
+}
+.ProfilPageContent .ProfilMenu .ProfilMenuler ul li a i {
+  width: 26px;
+}
+
+.Profilenew {
+  background-image: linear-gradient(
+    -300deg,
+    #fff 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: profiledrk 2s linear infinite;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+@keyframes profiledrk {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.ProfilPageContent .SaticiMenu .ProfilMenuAd b {
+  color: #28a745 !important;
+  margin: 0 0 5px 0;
+  font-weight: 700;
+  text-align: center;
+  display: block;
+}
+.ProfilPageContent .SaticiMenu .ProfilMenuAd p {
+  font-weight: 600;
+  text-align: center;
+  display: block;
+  margin-bottom: 0;
+}
+
+.ProfilPageContent .SaticiMenu .SonSatislar {
+  margin: 0 16px;
+}
+.ProfilPageContent .SaticiMenu .SonSatislar .satilan {
+  overflow: hidden;
+  padding: 0 0 15px 0;
+  margin: 0 0 15px 0;
+  border-bottom: 1px solid #9f9f9f;
+}
+.ProfilPageContent .SaticiMenu .SonSatislar .satilan .image {
+  width: 35%;
+  height: 50px;
+  margin-right: 5%;
+  float: left;
+  background: rgb(30, 87, 153);
+  background: -moz-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(30, 87, 153, 1) 0%,
+    rgba(125, 185, 232, 1) 0%,
+    rgba(30, 87, 153, 1) 100%
+  );
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(30, 87, 153, 1) 0%,
+    rgba(125, 185, 232, 1) 0%,
+    rgba(30, 87, 153, 1) 100%
+  );
+  background: radial-gradient(
+    ellipse at center,
+    rgba(30, 87, 153, 1) 0%,
+    rgba(125, 185, 232, 1) 0%,
+    rgba(30, 87, 153, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#1e5799',GradientType=1 );
+}
+.ProfilPageContent .SaticiMenu .SonSatislar .satilan .image img {
+  object-fit: contain;
+  max-width: 80%;
+  max-height: 100%;
+  height: 100px;
+  margin: 0 0 0 8px;
+}
+.ProfilPageContent .SaticiMenu .SonSatislar .satilan .name {
+  width: 60%;
+  float: left;
+  font-weight: 500;
+}
+.ProfilPageContent .SaticiMenu .SonSatislar .satilan a {
+  color: #fff;
+}
+.ProfilPageContent .SaticiMenu .SonSatislar .satilan .name:hover {
+  color: #1e5799;
+}
+.ProfilPageContent .SaticiMenu .SonSatislar .satilan a:hover .name {
+  color: #1e5799;
+  transition: all 0.3s ease-in-out;
+}
+.ProfilPageContent .SaticiMenu .SonSatislar .satilan:last-child {
+  border-bottom: none;
+}
+
+.ProfilPageContent .SaticiDetay {
+  position: relative;
+  z-index: 50;
+}
+.ProfilPageContent .SaticiDetay .balance {
+  background: #2a2a2a;
+  height: 104px;
+  width: 78%;
+  float: right;
+  margin-bottom: 26px;
+  padding: 20px;
+}
+.ProfilPageContent .SaticiDetay .balance .balancepay {
+  width: 32%;
+  float: left;
+  margin-right: 2%;
+}
+.ProfilPageContent .SaticiDetay .balance .balancepay img {
+  width: 20%;
+  margin-right: 2%;
+  float: left;
+}
+.ProfilPageContent .SaticiDetay .balance .balancepay h2 {
+  width: 78%;
+  float: left;
+  font-size: 20px;
+  padding: 6px 0 0 8px;
+}
+.ProfilPageContent .SaticiDetay .balance .balancepay h2 span {
+  font-size: 22px;
+  font-weight: 600;
+}
+.ProfilPageContent .SaticiDetay .balance .balancepay:last-child {
+  margin-right: 0;
+}
+.ProfilPageContent .SaticiDetay .bottom {
+  background: #2a2a2a;
+  width: 78%;
+  float: right;
+  margin-bottom: 50px;
+}
+
+.suggested {
+  background: #2a2a2a;
+  height: 104px;
+  width: 78%;
+  float: right;
+  margin-bottom: 26px;
+  padding: 20px;
+}
+.suggested .FilterCombos li {
+  width: calc(100% / 4) !important;
+}
+
+.CardBlok {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2%;
+}
+.CardBlok li {
+  flex: 0 49%;
+  min-height: 220px;
+  height: 100%;
+  border-radius: 0;
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  color: #fff;
+  background-color: rgba(43, 49, 58, 0.2);
+}
+
+.CardBlokFull {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2%;
+  width: 100%;
+}
+.CardBlokFull li {
+  flex: 0 100%;
+  min-height: 150px;
+  height: 100%;
+  border-radius: 0;
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  color: #fff;
+  background-color: hsla(0, 0%, 100%, 0.05);
+}
+
+.CardTitle {
+  padding: 15px 20px;
+  background-color: hsla(0, 0%, 100%, 0.05);
+  margin-bottom: 0;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
+}
+.CardTitle span {
+  text-align: right;
+  float: right;
+  font-size: 16px;
+  text-transform: capitalize;
+  padding: 4px 0 0 0;
+}
+.CardTitle span a {
+  color: #fff;
+}
+.CardTitle span a:hover {
+  color: #03aff9;
+  transition: all 0.3s ease-in-out;
+}
+.CardTitle span a i {
+  margin-left: 5px;
+}
+.CardContent {
+  padding: 20px;
+  min-height: 165px;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.CardContent img {
+  vertical-align: middle;
+  margin-right: 20px;
+}
+.balance {
+  color: #70d929;
+  font-size: 27px;
+}
+
+.AccountTable {
+  width: 100%;
+  font-size: 16px;
+}
+.AccountTable tr {
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+}
+.AccountTable tr td {
+  padding: 15px 5px;
+}
+.AccountTable tr:first-child:hover {
+  background: none;
+}
+.AccountTable tr:hover {
+  background: hsla(0, 0%, 100%, 0.05);
+}
+.AccountTable tr td:first-child {
+  width: 80px;
+}
+.AccountTable tr td:first-child i {
+  padding: 10px 0;
+}
+.AccountTable tr img {
+  max-width: 60px;
+}
+.AccountTable tr td:last-child {
+  text-align: right;
+  color: #03aff9;
+}
+.AccountTable tr td:last-child i {
+  color: #03aff9;
+  padding: 0 5px;
+}
+.AccountTable tr:last-child {
+  border-bottom: none;
+}
+
+.accountinfotable {
+  width: 100%;
+  font-size: 16px;
+}
+.accountinfotable tr td {
+  padding: 15px 10px;
+}
+.SetOddEven tr:nth-child(even) {
+  background: rgba(43, 49, 58, 0.5);
+}
+.accountinfotable tr td a {
+  color: #fff;
+}
+.accountinfotable tr td a:hover {
+  color: #03aff9;
+  transition: all 0.3s ease-in-out;
+}
+.accountinfotable tr td:first-child {
+  width: 20%;
+}
+.accountinfotable tr td:nth-child(2n) {
+  font-weight: 600;
+  text-align: left !important;
+}
+.accountinfotable tr td:last-child {
+  text-align: right;
+}
+
+.accountinfo tr td {
+  padding: 5px 10px !important;
+}
+.accountinfo tr td:first-child {
+  width: 35% !important;
+}
+
+.ilanekletable {
+  width: 100%;
+  font-size: 16px;
+}
+.ilanekletable tr td {
+  padding: 15px 10px;
+}
+.ilanekletable tr td a {
+  color: #fff;
+}
+.ilanekletable tr td a:hover {
+  color: #03aff9;
+  transition: all 0.3s ease-in-out;
+}
+.ilanekletable tr td:first-child {
+  width: 10%;
+}
+.ilanekletable tr td:nth-child(2n) {
+  width: 44%;
+  font-weight: 600;
+  text-align: left !important;
+}
+.ilanekletable tr td:last-child {
+  text-align: right;
+}
+
+.ilanekleinput {
+  width: 100%;
+  border: 1px solid rgba(43, 49, 58, 1);
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 16px;
+  color: #fff;
+  padding: 0 10px;
+  outline: 0;
+  line-height: 20px;
+  height: 40px;
+  transition: background-position 0.2s, background-color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+}
+.ilanekleinputArea {
+  width: 100%;
+  border: 1px solid rgba(43, 49, 58, 1);
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 16px;
+  color: #fff;
+  padding: 10px;
+  outline: 0;
+  line-height: 20px;
+  transition: background-position 0.2s, background-color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+}
+.ilanekleinput:hover,
+.ilanekleinput:focus,
+.ilanekleinput:active {
+  border: 1px solid #0e86ca;
+}
+
+.ilanYayinlaDetay {
+  width: 100%;
+  padding: 20px;
+  background-color: hsla(0, 0%, 100%, 0.05);
+  display: block !important;
+}
+.itemsec {
+  float: left;
+}
+.teslimatsaatArea {
+  padding-bottom: 20px;
+  display: block !important;
+}
+.labelText {
+  width: 180px;
+  display: inline-block;
+}
+.teslimatsaat {
+  width: 20%;
+  border: 1px solid rgba(43, 49, 58, 1);
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 16px;
+  color: #fff;
+  padding: 0 10px;
+  outline: 0;
+  line-height: 20px;
+  height: 40px;
+  transition: background-position 0.2s, background-color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+}
+.teslimatsaat:hover,
+.teslimatsaat:focus,
+.teslimatsaat:active {
+  border: 1px solid #0e86ca;
+}
+
+.islembasliklar tr:first-child {
+  height: 40px;
+  font-weight: 600;
+}
+.islembasliklar tr td a {
+  color: #fff;
+}
+.islembasliklar tr td a i {
+  color: #03aff9;
+}
+.islembasliklar tr td a:hover {
+  color: #03aff9;
+  transition: all 0.3s ease-in-out;
+}
+.islembasliklar tr td:last-child {
+  color: #fff;
+}
+.islembasliklar tr td:last-child a {
+  color: #fff;
+}
+.islembasliklar tr td:last-child a:hover {
+  color: #03aff9;
+  transition: all 0.3s ease-in-out;
+}
+.magazainput {
+  width: 60%;
+  border: 1px solid rgba(43, 49, 58, 1);
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+  color: #fff;
+  padding: 8px 10px;
+  outline: 0;
+  line-height: 20px;
+  height: 40px;
+  transition: background-position 0.2s, background-color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+}
+.magazainputArea {
+  width: 60%;
+  border: 1px solid rgba(43, 49, 58, 1);
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 16px;
+  color: #fff;
+  padding: 10px;
+  outline: 0;
+  line-height: 20px;
+  transition: background-position 0.2s, background-coilanekleinputArealor 0.2s,
+    border-color 0.2s, box-shadow 0.2s;
+}
+.magazainput:hover,
+.magazainput:focus,
+.magazainput:active {
+  border: 1px solid #0e86ca;
+}
+
+.destekinput {
+  width: 60%;
+  border: 1px solid rgba(43, 49, 58, 1);
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+  color: #fff;
+  padding: 8px 10px;
+  outline: 0;
+  line-height: 20px;
+  transition: background-position 0.2s, background-color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+}
+.destekinput:hover,
+.destekinput:focus,
+.destekinput:active {
+  border: 1px solid #0e86ca;
+}
+
+.PeymentRight {
+  float: left;
+  width: 45%;
+  margin-left: 5%;
+}
+.PeymentLeft {
+  float: left;
+  width: 40%;
+}
+.cards .card.active {
+  background: hsla(0, 0%, 100%, 0.05);
+  box-shadow: 0 4px 28px -4px rgba(22, 45, 61, 0.2);
+  -ms-box-shadow: 0 4px 28px -4px rgba(22, 45, 61, 0.2);
+  -webkit-box-shadow: 0 4px 28px -4px rgba(22, 45, 61, 0.2);
+  -o-box-shadow: 0 4px 28px -4px rgba(22, 45, 61, 0.2);
+  -moz-box-shadow: 0 4px 28px -4px rgba(22, 45, 61, 0.2);
+}
+.card {
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.15);
+  background: hsla(0, 0%, 100%, 0.09);
+  min-height: 96px;
+  max-height: 96px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 36px;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  position: relative;
+}
+.ease,
+.stepCount,
+.stepCount.active,
+.stepCount.done,
+.plan object,
+.plan object img,
+.detPurchase,
+.marg,
+.second,
+.viewed,
+.card,
+.card:after,
+.card:hover:after,
+.card:hover {
+  -webkit-transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 680ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.easeFast,
+a:hover,
+.stepHeader h3 span h3 a,
+.stepHeader h3 span h3 a:hover,
+.plan button,
+.plan button:hover,
+.detPrice button,
+.detPrice button:hover,
+.detSubmit button,
+.detSubmit button:hover,
+.radio input[type="radio"] + .radio-label,
+.radio input[type="radio"]:checked + .radio-label:before {
+  -webkit-transition: all 230ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 230ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.plan.product:hover object {
+  opacity: 1;
+}
+.radio {
+  z-index: 999991;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+.radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+.radio input[type="radio"] + .radio-label {
+  font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 96px;
+  width: 100%;
+}
+.radio input[type="radio"] + .radio-label:hover {
+  cursor: pointer;
+}
+.radio input[type="radio"] + .radio-label div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.radio input[type="radio"] + .radio-label h3 {
+  margin: 0 0 6px 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 400;
+}
+.radio input[type="radio"] + .radio-label p {
+  margin: 0;
+  padding: 1px 12px;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  background: #ff7500;
+  color: #fff;
+}
+.radio input[type="radio"] + .radio-label:before {
+  content: "";
+  background: white;
+  border-radius: 100%;
+  border: 1px solid #1bc1a1;
+  display: none;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  margin-right: 18px;
+  vertical-align: top;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: all 250ms ease;
+  transition: all 250ms ease;
+}
+.radio input[type="radio"]:focus + .radio-label:before {
+  outline: none;
+  border-color: #1bc1a1;
+}
+.radio input[type="radio"]:hover + .radio-label:before {
+  background-color: #daeffe;
+  box-shadow: inset 0 0 0 0px white;
+}
+.radio input[type="radio"]:active + .radio-label:before {
+  background-color: #95c9f5;
+  box-shadow: inset 0 0 0 2px white;
+}
+.radio input[type="radio"]:checked + .radio-label:before {
+  background-color: #1bc1a1;
+  box-shadow: inset 0 0 0 2px white;
+}
+.radio input[type="radio"]:disabled + .radio-label:before {
+  box-shadow: inset 0 0 0 4px #f4f4f4;
+  border-color: #b4b4b4;
+  background: #b4b4b4;
+}
+.radio input[type="radio"] + .radio-label:empty:before {
+  margin-right: 0;
+}
+
+.saved-card {
+  min-height: 290px;
+  position: relative;
+}
+.saved-card .number,
+.saved-card .name {
+  margin-bottom: 5px;
+  width: 100%;
+}
+.saved-card .cvv {
+  width: 30%;
+  float: left;
+}
+.saved-card .expiry {
+  width: 33%;
+  margin-right: 2%;
+  float: left;
+}
+.saved-card .number,
+.saved-card .name,
+.saved-card .cvv,
+.saved-card .expiry {
+  padding: 10px 0;
+}
+.saved-card label {
+  display: block;
+  margin-bottom: 10px;
+}
+.saved-card span {
+  color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  display: inline-block;
+}
+.saved-card .action-icon {
+  position: absolute;
+  right: 15px;
+  top: 0px;
+}
+.saved-card .action-icon a {
+  float: left;
+  margin: 0px 5px;
+}
+.saved-card .action-icon a.text-oringe {
+  color: orange;
+}
+.saved-card .action-icon a.text-red {
+  color: #eb001b;
+}
+.editCard {
+  display: none;
+  background: #fff;
+  position: absolute;
+  height: inherit;
+  width: 100%;
+}
+.paypall,
+.skrill,
+.payoneer,
+.authorize,
+.ininial {
+  display: none;
+}
+
+.Globalinput {
+  width: 100%;
+  border: 1px solid rgba(43, 49, 58, 1);
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 16px;
+  color: #fff;
+  padding: 0 10px;
+  outline: 0;
+  line-height: 20px;
+  height: 40px;
+  transition: background-position 0.2s, background-color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+}
+.Globalinput:hover,
+.Globalinput:focus,
+.Globalinput:active {
+  border: 1px solid #0e86ca;
+}
+
+.GlobalSelect {
+  width: 100%;
+  border: 1px solid rgba(43, 49, 58, 1);
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 16px;
+  color: #fff;
+  padding: 0 10px;
+  outline: 0;
+  line-height: 20px;
+  height: 40px;
+  transition: background-position 0.2s, background-color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.FormContent {
+  padding: 20px 0;
+}
+.FormContent h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #70d929;
+}
+.FormContentLeft {
+  min-height: 300px;
+  width: 100%;
+}
+
+.BtnCekimYap {
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    rgb(3, 176, 250) 0%,
+    rgba(24, 67, 212, 1) 51%,
+    rgb(3, 176, 250) 100%
+  );
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  width: 160px;
+  height: 40px;
+  padding: 0;
+  font-weight: 600;
+  line-height: 42px;
+  border-radius: 5px;
+  display: block;
+  font-size: 15px !important;
+  float: none;
+  margin: 0 auto;
+}
+.BtnCekimYap:hover {
+  box-shadow: 0 0 0 rgba(24, 67, 212, 1);
+  transition: all 0.2s ease-in-out;
+  background-position: right center;
+  color: #fff !important;
+}
+
+.DestekBtnArea {
+  width: 100%;
+  padding: 30px 22px 0 22px;
+}
+.DestekBtnArea a {
+  margin-right: 20px;
+}
+.BtnTalep {
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    rgb(3, 176, 250) 0%,
+    rgba(24, 67, 212, 1) 51%,
+    rgb(3, 176, 250) 100%
+  );
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  height: 40px;
+  font-weight: 600;
+  line-height: 40px;
+  border-radius: 5px;
+  display: block;
+  font-size: 15px !important;
+  float: left;
+  padding: 0 30px;
+}
+.BtnTalep:hover {
+  box-shadow: 0 0 0 rgba(24, 67, 212, 1);
+  transition: all 0.2s ease-in-out;
+  background-position: right center;
+  color: #fff !important;
+}
+.DestekAciklama {
+  padding: 20px;
+}
+.DestekAciklama h5 {
+  font-size: 18px !important;
+  font-weight: 500;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #6e6e6e;
+  padding-bottom: 5px;
+  letter-spacing: 0.1px;
+}
+.DestekAciklama h5 i {
+  color: #70d929;
+}
+
+.BtnCekimTalep {
+  width: 260px;
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    rgb(3, 176, 250) 0%,
+    rgba(24, 67, 212, 1) 51%,
+    rgb(3, 176, 250) 100%
+  );
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  height: 40px;
+  font-weight: 600;
+  line-height: 40px;
+  border-radius: 5px;
+  display: block;
+  font-size: 15px !important;
+  float: left;
+  padding: 0 30px;
+}
+.BtnCekimTalep:hover {
+  box-shadow: 0 0 0 rgba(24, 67, 212, 1);
+  transition: all 0.2s ease-in-out;
+  background-position: right center;
+  color: #fff !important;
+}
+
+/*Login Olduktan Sonra*/
+
+.Login {
+  float: right;
+  margin-top: 10px;
+}
+.Login > ul > li {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin-left: 12px;
+}
+.Login > ul > li > a {
+  color: #dedede;
+  padding: 0 10px;
+  font-weight: 600;
+  font-size: 15px;
+}
+.Login > ul > li > a:hover {
+  color: #fff;
+}
+.notifications {
+  color: #fff;
+  padding: 0 0 0 0;
+  font-size: 20px;
+}
+.notifications .figure {
+  color: #fff;
+  font-size: 13px;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #f00;
+  border-radius: 100px;
+  line-height: 18px;
+  font-weight: 600;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+}
+
+.notificationsMain {
+  color: #01bdfc;
+  padding: 0 0 0 0;
+  font-size: 21px;
+}
+.notificationsMain .figure {
+  color: #fff;
+  font-size: 13px;
+  position: absolute;
+  top: 15px;
+  right: -8px;
+  background: #f00;
+  border-radius: 100px;
+  line-height: 18px;
+  font-weight: 600;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+}
+
+.NavbarAccount {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: #2d2d2d;
+  width: 250px;
+  z-index: 10000000;
+  border: 1px solid hsla(0, 0%, 100%, 0.08);
+  display: none;
+}
+
+.NavbarAccount.open {
+  display: block;
+}
+.NavbarAccount:after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid hsla(0, 0%, 100%, 0.15);
+  border-right: 1px solid hsla(0, 0%, 100%, 0.15);
+  background-color: #2d2d2d;
+  opacity: 0.95;
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
+  -webkit-transform-origin: center;
+  transform-origin: center;
+}
+.NavbarAccount ul li {
+  width: 100%;
+}
+.NavbarAccount ul li a {
+  color: hsla(0, 0%, 100%, 0.7);
+  padding: 10px 15px;
+  display: block;
+  font-size: 14px;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.08);
+  transition: color 0.2s, background-color 0.2s;
+}
+.NavbarAccount ul li a:hover {
+  color: hsla(0, 0%, 100%, 1);
+  transition: color 0.2s, background-color 0.2s;
+}
+.NavbarAccount ul li a:hover i {
+  color: rgba(3, 176, 250, 1);
+  transition: color 0.2s, background-color 0.2s;
+}
+.NavbarAccount ul li a i {
+  width: 24px;
+  color: rgba(3, 176, 250, 0.7);
+}
+.NavbarAccount h3 {
+  padding: 15px 15px;
+  font-size: 18px;
+  color: rgb(3, 176, 250);
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.08);
+}
+
+.NavbarAccount h3 span {
+  display: block;
+}
+.NavAccName {
+  color: #82c5ff;
+  font-size: 18px;
+}
+.NavAccMail {
+  color: hsla(0, 0%, 100%, 0.5);
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.NavAccBalance {
+  font-size: 14px;
+  border-top: 1px solid hsla(0, 0%, 100%, 0.08);
+  padding-top: 15px;
+}
+.NavBarOverlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: none;
+}
+
+.NavbarNotifications {
+  position: absolute;
+  top: 50px;
+  right: -22px;
+  background: #2d2d2d;
+  width: 280px;
+  z-index: 53;
+  border: 1px solid hsla(0, 0%, 100%, 0.08);
+  display: none;
+}
+
+.NavbarNotifications.open {
+  display: block;
+}
+.NavbarNotifications:after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid hsla(0, 0%, 100%, 0.15);
+  border-right: 1px solid hsla(0, 0%, 100%, 0.15);
+  background-color: #2d2d2d;
+  opacity: 0.95;
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
+  -webkit-transform-origin: center;
+  transform-origin: center;
+}
+.NavbarNotifications ul li {
+  width: 100%;
+}
+.NavbarNotifications ul li:last-child a {
+  font-weight: 600;
+  text-align: center;
+}
+.NavbarNotifications ul li a {
+  color: hsla(0, 0%, 100%, 0.7);
+  padding: 12px 15px;
+  display: block;
+  font-size: 14px;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.08);
+  transition: color 0.2s, background-color 0.2s;
+}
+.NavbarNotifications ul li a:hover {
+  color: hsla(0, 0%, 100%, 1);
+  transition: color 0.2s, background-color 0.2s;
+}
+.NavbarNotifications ul li a:hover i {
+  color: rgba(3, 176, 250, 1);
+  transition: color 0.2s, background-color 0.2s;
+}
+.NavbarNotifications ul li a i {
+  color: rgba(3, 176, 250, 0.7);
+  margin-right: 5px;
+}
+.NavbarNotifications h3 {
+  padding: 15px 15px;
+  font-size: 18px;
+  color: rgb(3, 176, 250);
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.08);
+}
+
+.NavbarNotifications h3 span {
+  display: block;
+}
+.NavAccName1 {
+  color: #82c5ff;
+  font-size: 18px;
+}
+.NavAccMail1 {
+  color: hsla(0, 0%, 100%, 0.5);
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.NavAccBalance1 {
+  font-size: 14px;
+  border-top: 1px solid hsla(0, 0%, 100%, 0.08);
+  padding-top: 15px;
+}
+.NavBarOverlay1 {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: none;
+}
+
+.NavbarNotificationsMain {
+  position: absolute;
+  top: 82px;
+  right: 215px;
+  background: #2d2d2d;
+  width: 280px;
+  z-index: 53;
+  border: 1px solid hsla(0, 0%, 100%, 0.08);
+  display: none;
+}
+.NavbarNotificationsMain:after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid hsla(0, 0%, 100%, 0.15);
+  border-right: 1px solid hsla(0, 0%, 100%, 0.15);
+  background-color: #2d2d2d;
+  opacity: 0.95;
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
+  -webkit-transform-origin: center;
+  transform-origin: center;
+}
+.NavbarNotificationsMain ul li {
+  width: 100%;
+  line-height: 16px;
+}
+.NavbarNotificationsMain ul li:last-child a {
+  font-weight: 600;
+  text-align: center;
+}
+.NavbarNotificationsMain ul li .BildirimYok {
+  color: hsla(0, 0%, 100%, 0.7);
+  padding: 30px 15px;
+  display: block;
+  font-size: 14px;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.08);
+  transition: color 0.2s, background-color 0.2s;
+}
+.NavbarNotificationsMain ul li .BildirimYok i {
+  color: rgba(3, 176, 250, 0.7);
+  margin-right: 10px;
+}
+.NavbarNotificationsMain ul li a {
+  color: hsla(0, 0%, 100%, 0.7);
+  padding: 12px 15px;
+  display: block;
+  font-size: 14px;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.08);
+  transition: color 0.2s, background-color 0.2s;
+}
+.NavbarNotificationsMain ul li a:hover {
+  color: hsla(0, 0%, 100%, 1);
+  transition: color 0.2s, background-color 0.2s;
+}
+.NavbarNotificationsMain ul li a:hover i {
+  color: rgba(3, 176, 250, 1);
+  transition: color 0.2s, background-color 0.2s;
+}
+.NavbarNotificationsMain ul li a i {
+  color: rgba(3, 176, 250, 0.7);
+  margin-right: 5px;
+}
+.NavbarNotificationsMain h3 {
+  padding: 15px 15px;
+  font-size: 18px;
+  color: rgb(3, 176, 250);
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.08);
+}
+
+.NavbarNotificationsMain h3 span {
+  display: block;
+}
+.NavAccName2 {
+  color: #82c5ff;
+  font-size: 18px;
+}
+.NavAccMail2 {
+  color: hsla(0, 0%, 100%, 0.5);
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.NavAccBalance2 {
+  font-size: 14px;
+  border-top: 1px solid hsla(0, 0%, 100%, 0.08);
+  padding-top: 15px;
+}
+.NavBarOverlay2 {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: none;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+.Account {
+  background: url(../images/ProfileBg.jpg) no-repeat top center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.SliderArea {
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  height: 70%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.sy-box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.sy-slides-wrap {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.sy-slides-crop {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+
+#Slides {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  list-style: none;
+}
+
+#Slides li {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  display: none; /* Force hide non-active slides */
+  transition: opacity 1s ease-in-out;
+}
+
+#Slides li.sy-active {
+  z-index: 4 !important;
+}
+
+.sy-slide.sy-active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+.SliderDescArea {
+  position: absolute; /* Positioned relative to the slide (li) */
+  top: 0;
+  left: 0;
+  width: 100%; /* Take full width of the slide */
+  height: 100%; /* Take full height of the slide */
+  z-index: 2;
+  display: flex;
+  align-items: flex-start; /* Align content to the top */
+  justify-content: center; /* Center the inner content horizontally */
+  padding-top: 290px; /* Adjust vertical position of text */
+}
+
+.SliderDesc {
+  width: 100%;
+  max-width: 1360px; /* Restrict inner content width to match overall layout */
+  margin: 0 auto; /* Center the inner content horizontally within SliderDescArea */
+  padding: 0 20px;
+  position: relative;
+  z-index: 3;
+  text-align: left; /* Ensure text is left aligned */
+}
+
+.Products {
+  width: 1360px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.ProductsArea {
+  width: 1360px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.ProductsArea ul {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ProductsArea ul li {
+  width: calc(25% - 20px);
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1200px) {
+  .ProductsArea ul li {
+    width: calc(33.333% - 20px);
+  }
+}
+
+@media (max-width: 992px) {
+  .ProductsArea ul li {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 576px) {
+  .ProductsArea ul li {
+    width: calc(100% - 20px);
+  }
+}
+
+.GlobalButton {
+  cursor: pointer;
+  border: none;
+  background-image: linear-gradient(
+    to right,
+    rgb(3, 176, 250) 0%,
+    rgba(24, 67, 212, 1) 51%,
+    rgb(3, 176, 250) 100%
+  );
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  padding: 0;
+  background-size: 200% auto;
+  color: white;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  width: 200px;
+  height: 50px;
+  font-weight: bold;
+  line-height: 50px;
+  border-radius: 5px;
+  display: block;
+  font-size: 14px !important;
+}
+.GlobalButton i {
+  font-size: 12px;
+  transition: all 0.3s ease-in-out;
+}
+.GlobalButton:hover i {
+  margin-left: 20px;
+  transition: all 0.3s ease-in-out;
+}
+.GlobalButton:hover {
+  box-shadow: 0 0 15px rgba(24, 67, 212, 1);
+  transition: all 0.2s ease-in-out;
+  background-position: right center;
+  color: #fff;
+}
+
+.ProductButton {
+  opacity: 0;
+  display: block;
+  top: -20px;
+  bottom: 5px;
+  left: 50px;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  width: 160px;
+  height: 50px;
+  font-weight: 600;
+  line-height: 50px;
+  border-radius: 5px;
+  background: rgb(3, 176, 250);
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(3, 176, 250, 1) 0%,
+    rgba(24, 67, 212, 1) 69%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(3, 176, 250, 1) 0%,
+    rgba(24, 67, 212, 1) 69%
+  );
+  background: linear-gradient(
+    90deg,
+    rgba(3, 176, 250, 1) 0%,
+    rgba(24, 67, 212, 1) 69%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#03b0fa",endColorstr="#1843d4",GradientType=1);
+  font-size: 14px;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
+  text-align: center;
+  color: #fff !important;
+}
+.ProductButton i {
+  font-size: 12px;
+  transition: all 0.3s ease-in-out;
+}
+.ProductButton:hover i {
+  margin-left: 20px;
+  transition: all 0.3s ease-in-out;
+}
+.ProductButton:hover {
+  box-shadow: 0 0 15px rgba(24, 67, 212, 1);
+  transition: all 0.2s ease-in-out;
+}
+
+.AllProduct {
+  float: right;
+}
+
+.Products1 {
+  padding: 50px 0;
+  width: 100%;
+}
+.Products {
+  min-height: 300px;
+  margin-top: 0px;
+  position: relative;
+  z-index: 6;
+}
+.Products1 h1 {
+  color: #fff !important;
+}
+.Products h1 {
+  font-size: 36px;
+  color: #fff !important;
+  display: inline !important;
+  padding: 0 8px !important;
+  border-radius: 5px !important;
+}
+.Products h1 img {
+  max-height: 37px;
+  vertical-align: middle;
+}
+
+.pagination {
+  display: block;
+  margin: 50px auto;
+  text-align: center;
+}
+.pagination a {
+  color: #fff;
+  display: inline-block;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 20px;
+}
+.pagination a.active {
+  background-color: rgb(3, 176, 250);
+  color: white;
+  border: 1px solid rgb(3, 176, 250);
+}
+.pagination a:hover:not(.active) {
+  background-color: rgb(3, 176, 250);
+  border: 1px solid rgb(3, 176, 250);
+}
+.pagination a:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.pagination a:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.paginationDetail {
+  display: block !important;
+  margin: 50px auto;
+  text-align: center;
+}
+.paginationDetail a {
+  color: #777;
+  display: inline-block;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #777;
+  font-size: 20px;
+}
+.paginationDetail a.active {
+  background-color: rgb(3, 176, 250);
+  color: white;
+  border: 1px solid rgb(3, 176, 250);
+}
+.paginationDetail a:hover:not(.active) {
+  background-color: rgb(3, 176, 250);
+  border: 1px solid rgb(3, 176, 250);
+  color: #fff;
+}
+.paginationDetail a:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.paginationDetail a:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+/*Colors*/
+.factorynew {
+  background: #397439;
+}
+.minimalwear {
+  background: #488b48;
+}
+.fieldtested {
+  background: #f1ad4d;
+}
+.wellworn {
+  background: #b7625f;
+}
+.battlescarred {
+  background: #993a38;
+}
+.koserver {
+  background: linear-gradient(
+    90deg,
+    rgba(3, 176, 250, 1) 0%,
+    rgba(24, 67, 212, 1) 69%
+  );
+  padding: 2px 15px !important;
+  border-radius: 5px;
+  display: inline;
+}
+.streampartner {
+  background: linear-gradient(
+    90deg,
+    rgb(126, 0, 212) 0%,
+    rgb(166, 57, 241) 69%
+  );
+  padding: 2px 15px !important;
+}
+
+.exterior_knightcategory {
+  color: #fff !important;
+}
+.exterior_wearcategory0 {
+  color: #397439 !important;
+}
+.exterior_wearcategory1 {
+  color: #488b48 !important;
+}
+.exterior_wearcategory2 {
+  color: #f1ad4d !important;
+}
+.exterior_wearcategory3 {
+  color: #b7625f !important;
+}
+.exterior_wearcategory4 {
+  color: #993a38 !important;
+}
+.quality_normal {
+  color: #b2b2b2 !important;
+}
+.quality_tournament {
+  color: gold !important;
+}
+.quality_strange {
+  color: #cf6a32 !important;
+}
+.quality_unusual {
+  color: #8650ac !important;
+}
+.quality_unusual_strange {
+  color: #8650ac !important;
+}
+.rarity_ancient_weapon {
+  color: #eb4b4b !important;
+}
+.rarity_rare_weapon {
+  color: #4b69ff !important;
+}
+.rarity_mythical_weapon {
+  color: #8847ff !important;
+}
+.rarity_legendary_weapon {
+  color: #d32ce6 !important;
+}
+.rarity_uncommon_weapon {
+  color: #5e98d9 !important;
+}
+.rarity_common_weapon {
+  color: #b0c3d9 !important;
+}
+.rarity_common {
+  color: #b0c3d9 !important;
+}
+.rarity_rare {
+  color: #4b69ff !important;
+}
+.rarity_legendary {
+  color: #d32ce6 !important;
+}
+.rarity_mythical {
+  color: #8847ff !important;
+}
+.rarity_ancient {
+  color: #eb4b4b !important;
+}
+.rarity_contraband {
+  color: #e4ae39 !important;
+}
+.rarity_ancient_character {
+  color: #eb4b4b !important;
+}
+.rarity_rare_character {
+  color: #4b69ff !important;
+}
+.rarity_mythical_character {
+  color: #8847ff !important;
+}
+.rarity_legendary_character {
+  color: #d32ce6 !important;
+}
+
+/******************************************************/
+
+.ProductsArea {
+  width: 1360px;
+  min-height: 500px;
+  margin-top: 30px;
+}
+.ProductItem {
+  width: 300px;
+  height: 290px;
+  background: #23252b;
+  border-radius: 5px;
+  padding: 0 15px;
+  margin: 30px 0;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+.ProductPic {
+  width: 270px;
+  height: 200px;
+  background: #243557;
+  border-radius: 5px;
+  position: absolute;
+  top: -20px;
+  padding: 10px;
+  box-shadow: 0 10px 20px #191b1f;
+  transition: all 0.2s ease-in-out;
+}
+.ProductItem:hover {
+  background: #313339;
+}
+.ProductPic img {
+  max-width: 70%;
+  text-align: center;
+  margin: 20px auto;
+  display: block;
+  transition: all 0.2s ease-in-out;
+}
+.ProductItem:hover .ProductPic img {
+  transform: scale(1.3);
+  transition: all 0.2s ease-in-out;
+}
+.ProductPic h1 {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  margin-bottom: 15px !important;
+}
+.ProductDesc {
+  color: #fff;
+  position: absolute;
+  bottom: 12px;
+  width: calc(100% - 30px);
+  display: block !important;
+}
+.ProductDesc h2 {
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ProductDesc p {
+  display: block;
+}
+.ProductDesc p .left {
+  width: 50%;
+  float: left;
+  text-align: left;
+  font-size: 20px;
+  font-weight: 600;
+  color: #e4ae39;
+}
+.ProductDesc p .right {
+  width: 50%;
+  float: left;
+  text-align: right;
+  padding-top: 5px;
+}
+.ProductDesc .earning {
+  font-size: 16px;
+  text-align: right;
+  font-weight: 500;
+  margin-top: -14px;
+  margin-bottom: -10px;
+  color: #8a8a8a;
+  display: block !important;
+}
+.ProductDesc .earning b {
+  color: #fff;
+}
+.ProductDesc h6 {
+  font-size: 16px;
+  text-align: center;
+  font-weight: 500;
+  margin-top: -21px;
+  margin-bottom: -10px;
+  color: #8a8a8a;
+}
+.ProductDesc h6 b {
+  color: #fff;
+}
+
+.SteamTradeURL {
+  cursor: pointer;
+  background: rgba(3, 176, 250, 1);
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  padding: 0 15px;
+  height: 30px;
+  font-weight: 600;
+  line-height: 32px;
+  border-radius: 5px;
+  display: block;
+  font-size: 15px !important;
+  float: left;
+}
+.SteamTradeURL i {
+  margin-right: 6px;
+}
+.SteamTradeURL:hover {
+  background: rgba(24, 67, 212, 1);
+  transition: all 0.3s ease-in-out;
+  background-position: right center;
+  color: #fff !important;
+}
+
+.util-navigation {
+  position: absolute;
+  top: 44%;
+}
+
+.Products ul {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: start;
+}
+.Products ul li {
+  justify-content: flex-start;
+}
+.Products ul li:hover .ProductPic {
+  transition: all 0.2s ease-in-out;
+  top: -40px;
+}
+.Products ul li:hover .ProductButton {
+  opacity: 1;
+}
+.SkinDetailFilterArea .SetContent{
+  width: 100%;
+}
+.SkinDetailProducts .Products{
+  width: 100%;
+}
+.Products ul li:nth-child(n) .ProductPic {
+  background: rgb(35, 54, 93);
+  background: -moz-linear-gradient(
+    145deg,
+    rgba(35, 54, 93, 1) 0%,
+    rgba(43, 49, 58, 1) 51%,
+    rgba(39, 59, 69, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    145deg,
+    rgba(35, 54, 93, 1) 0%,
+    rgba(43, 49, 58, 1) 51%,
+    rgba(39, 59, 69, 1) 100%
+  );
+  background: linear-gradient(
+    145deg,
+    rgba(35, 54, 93, 1) 0%,
+    rgba(43, 49, 58, 1) 51%,
+    rgba(39, 59, 69, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#23365d",endColorstr="#273b45",GradientType=1);
+}
+.Products ul li:nth-child(2n) .ProductPic {
+  background: rgb(35, 85, 71);
+  background: -moz-linear-gradient(
+    145deg,
+    rgba(35, 85, 71, 1) 0%,
+    rgba(43, 49, 58, 1) 51%,
+    rgba(39, 62, 51, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    145deg,
+    rgba(35, 85, 71, 1) 0%,
+    rgba(43, 49, 58, 1) 51%,
+    rgba(39, 62, 51, 1) 100%
+  );
+  background: linear-gradient(
+    145deg,
+    rgba(35, 85, 71, 1) 0%,
+    rgba(43, 49, 58, 1) 51%,
+    rgba(39, 62, 51, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#235547",endColorstr="#273e33",GradientType=1);
+}
+.Products ul li:nth-child(3n) .ProductPic {
+  background: rgb(80, 80, 46);
+  background: -moz-linear-gradient(
+    145deg,
+    rgba(80, 80, 46, 1) 0%,
+    rgba(43, 49, 58, 1) 51%,
+    rgba(58, 51, 50, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    145deg,
+    rgba(80, 80, 46, 1) 0%,
+    rgba(43, 49, 58, 1) 51%,
+    rgba(58, 51, 50, 1) 100%
+  );
+  background: linear-gradient(
+    145deg,
+    rgba(80, 80, 46, 1) 0%,
+    rgba(43, 49, 58, 1) 51%,
+    rgba(58, 51, 50, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#50502e",endColorstr="#3a3332",GradientType=1);
+}
+.Products ul li:nth-child(4n) .ProductPic {
+  background: rgb(81, 39, 68);
+  background: -moz-linear-gradient(
+    145deg,
+    rgba(81, 39, 68, 1) 0%,
+    rgba(43, 49, 58, 1) 51%,
+    rgba(57, 43, 68, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    145deg,
+    rgba(81, 39, 68, 1) 0%,
+    rgba(43, 49, 58, 1) 51%,
+    rgba(57, 43, 68, 1) 100%
+  );
+  background: linear-gradient(
+    145deg,
+    rgba(81, 39, 68, 1) 0%,
+    rgba(43, 49, 58, 1) 51%,
+    rgba(57, 43, 68, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#512744",endColorstr="#392b44",GradientType=1);
+}
+
+.sample-img .item {
+  margin: 0px !important;
+}
+.util-theme-default .util-prev,
+.util-theme-default .util-next {
+  background: none;
+  color: #03aff9 !important;
+  position: absolute;
+}
+.util-theme-default .util-next {
+  right: 0;
+}
+.util-theme-default .util-prev {
+  left: 0;
+}
+.util-theme-default .util-next i {
+  font-size: 40px;
+}
+.util-theme-default .util-prev i {
+  font-size: 40px;
+}
+.util-theme-default .util-prev:hover,
+.util-theme-default .util-next:hover {
+  color: #1746d5 !important;
+}
+.slick-next:before {
+  content: "" !important;
+}
+.slick-prev:before {
+  content: "" !important;
+}
+#News {
+  height: 100%;
+}
+.News {
+  width: 100%;
+  min-height: 750px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.News:after {
+  background: url(../images/NewsBg.jpg) no-repeat center bottom;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 691px;
+  z-index: -1;
+}
+.News h1 {
+  font-size: 36px;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.News ul li {
+  width: 60%;
+  height: 500px;
+  border-radius: 5px;
+  float: left;
+  background: rgba(43, 49, 58, 0.6);
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+.News ul li .item:after {
+  content: "";
+  position: absolute;
+  z-index: 65;
+  border-radius: 5px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(10, 10, 32);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(10, 10, 32, 1) 0%,
+    rgba(10, 10, 32, 0) 100%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(10, 10, 32, 1) 0%,
+    rgba(10, 10, 32, 0) 100%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(10, 10, 32, 1) 0%,
+    rgba(10, 10, 32, 0) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0a0a20",endColorstr="#0a0a20",GradientType=1);
+}
+.News ul li:nth-child(2n) {
+  width: 38%;
+  height: 235px;
+  float: right;
+  margin-bottom: 2.3%;
+}
+.News ul li:nth-child(3n) {
+  width: 38%;
+  height: 235px;
+  float: right;
+}
+.News ul li:nth-child(2n):after,
+.News ul li:nth-child(3n):after {
+  content: "";
+  position: absolute;
+  z-index: 65;
+  border-radius: 5px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(10, 10, 32);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(10, 10, 32, 1) 0%,
+    rgba(10, 10, 32, 0) 100%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(10, 10, 32, 1) 0%,
+    rgba(10, 10, 32, 0) 100%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(10, 10, 32, 1) 0%,
+    rgba(10, 10, 32, 0) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0a0a20",endColorstr="#0a0a20",GradientType=1);
+}
+
+.News ul li:nth-child(1) a {
+  bottom: 34px;
+}
+.News ul li:nth-child(2n) a,
+.News ul li:nth-child(3n) a {
+  padding-bottom: 10px;
+}
+
+.News ul li a {
+  color: #fff;
+  position: absolute;
+  width: 100%;
+  z-index: 1234;
+  bottom: 20px;
+}
+.NewsDesc {
+  padding: 0 20px;
+}
+.News ul li a h2 {
+  font-size: 26px;
+  font-weight: bold;
+}
+.News ul li a p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #818aa3;
+}
+.News ul li .item img {
+  height: 500px;
+  position: relative;
+  z-index: 54;
+}
+
+.FooterArea {
+  border-top: 1px solid #22252a;
+  padding: 20px 0;
+  width: 1360px;
+  margin: 0 auto;
+}
+.FooterArea .SetContent > ul > li {
+  float: left;
+  width: 20%;
+  min-height: 1px;
+}
+.FooterArea .SetContent > ul > li a {
+  display: block;
+}
+.FooterArea .SetContent > ul > li:nth-child(2n) {
+  width: 80%;
+  float: right;
+  min-height: 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.FooterArea .SetContent > ul > li .FooterMenu h2 {
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.FooterArea .SetContent > ul > li .FooterMenu ul li a {
+  color: #fff;
+  padding: 5px 10px 5px 3px;
+  display: block;
+  transition: all 0.3s ease-in-out;
+}
+.FooterArea .SetContent > ul > li .FooterMenu ul li a i {
+  margin-right: 3px;
+}
+.FooterArea .SetContent > ul > li .FooterMenu ul li a:hover {
+  text-shadow: 0 0 15px rgb(3, 176, 250);
+  transition: all 0.3s ease-in-out;
+}
+
+.FooterArea .SetContent > ul > li img {
+  width: 218px;
+}
+
+.Carts {
+  border-top: 1px solid #22252a;
+  padding: 20px 0;
+  width: 1360px;
+  margin: 0 auto;
+}
+.Carts ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+.Carts ul li a {
+  color: #fff;
+  font-weight: 600;
+}
+.Carts ul li a:hover {
+  color: #01bdfc;
+  transition: all 0.3s ease-in-out;
+}
+
+.FooterSocial {
+  border-top: 1px solid #22252a;
+  padding: 20px 0;
+  width: 1360px;
+  margin: 0 auto;
+}
+.FooterSocial ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+.FooterSocial .SetContent > ul > li a {
+  color: #fff;
+  padding-right: 15px;
+  transition: all 0.3s ease-in-out;
+}
+.FooterSocial .SetContent > ul > li a:hover {
+  text-shadow: 0 0 15px rgb(3, 176, 250);
+  transition: all 0.3s ease-in-out;
+}
+
+.MarketArea {
+  min-height: 500px;
+}
+.MarketArea:before {
+  content: "";
+  background: url(../images/Slider/Slide1.jpg) no-repeat top center;
+  position: absolute;
+  top: 0;
+  opacity: 1;
+  width: 100%;
+  min-height: 700px;
+  z-index: -1;
+}
+.MarketArea.Ko:before {
+  content: "";
+  background: url(../images/Slider/Slide2.jpg) no-repeat top center !important;
+  position: absolute;
+  top: 0;
+  opacity: 1;
+  width: 100%;
+  min-height: 700px;
+  z-index: -1;
+}
+.MarketArea.Valorant:before {
+  content: "";
+  background: url(../images/Slider/Slide3.jpg) no-repeat top center !important;
+  position: absolute;
+  top: 0;
+  opacity: 1;
+  width: 100%;
+  min-height: 700px;
+  z-index: -1;
+}
+.MarketArea.Pubg:before {
+  content: "";
+  background: url(../images/Slider/Slide4.jpg) no-repeat top center !important;
+  position: absolute;
+  top: 0;
+  opacity: 1;
+  width: 100%;
+  min-height: 700px;
+  z-index: -1;
+}
+.MarketArea.Streambg:before {
+  content: "";
+  background: url(../images/Streamer.jpg) no-repeat top center !important;
+  position: absolute;
+  top: 0;
+  opacity: 1;
+  width: 100%;
+  min-height: 700px;
+  z-index: -1;
+}
+.MarketHeader {
+  width: 100%;
+  position: relative;
+  z-index: 123;
+}
+.MarketHeader h1 {
+  font-size: 40px;
+  color: #fff;
+  margin: 10px 0 10px 0;
+  letter-spacing: -1px;
+}
+.MarketHeader h1 img {
+  margin: 5px 12px 0 0;
+  float: left;
+}
+
+.SepetArea {
+  min-height: 500px;
+}
+.SepetArea:before {
+  content: "";
+  background: url(../images/Generalbg.jpg) no-repeat top center;
+  position: absolute;
+  top: 0;
+  opacity: 1;
+  width: 100%;
+  min-height: 700px;
+  z-index: -1;
+}
+.SepetArea.Streambg:before {
+  content: "";
+  background: url(../images/Streamer.jpg) no-repeat top center !important;
+  position: absolute;
+  top: 0;
+  opacity: 1;
+  width: 100%;
+  min-height: 700px;
+  z-index: -1;
+}
+.SepetHeader {
+  width: 100%;
+  position: relative;
+  z-index: 123;
+}
+.SepetHeader h1 {
+  font-size: 40px;
+  color: #fff;
+  margin: 10px 0 10px 0;
+  letter-spacing: -1px;
+}
+.SepetHeader h1 img {
+  margin: 5px 12px 0 0;
+  float: left;
+}
+
+.itemAciklama {
+}
+.itemAciklama h2 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+.itemAciklama p {
+  color: #fff;
+  font-size: 16px;
+}
+.itemAciklama p img {
+  width: 49%;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  float: left;
+}
+
+.FullPageArea {
+  min-height: 300px;
+}
+.FullPageArea:before {
+  content: "";
+  background: url(../images/FullPage.jpg) no-repeat top center;
+  position: absolute;
+  top: 0;
+  opacity: 1;
+  width: 100%;
+  min-height: 300px;
+  z-index: -1;
+}
+
+.FullPageHeader {
+  width: 100%;
+  position: relative;
+  z-index: 123;
+}
+.FullPageHeader h1 {
+  font-size: 40px;
+  color: #fff;
+  margin: 10px 0 10px 0;
+}
+
+.FullPageContent {
+  min-height: 500px;
+  color: #fff;
+  margin-top: 70px;
+}
+.FullPageContent h1 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.FullPageContent h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.FullPageContent p {
+  margin-bottom: 20px;
+  line-height: 25px;
+}
+
+.ContactArea {
+  padding-top: 40px;
+  margin-bottom: 50px;
+}
+.ContactArea h5 {
+  font-size: 22px;
+  text-align: center;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  line-height: 30px;
+}
+.ContactLeft {
+  width: 70%;
+  float: left;
+}
+.ContactRight h2 {
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+}
+.ContactRight p {
+  font-size: 17px;
+  margin-bottom: 20px;
+  line-height: 22px;
+}
+.ContactRight {
+  width: 28%;
+  float: right;
+}
+
+.GenelPageContent {
+  width: 100%;
+  max-width: 1360px;
+  margin: 20px auto;
+  background: #fff;
+  font-weight: 400;
+  line-height: 25px;
+  font-size: 16px;
+  color: #555;
+  padding: 0 10px;
+}
+.GenelPageContent h1 {
+  font-size: 24px;
+  font-weight: 600;
+  padding-bottom: 10px;
+  margin: 24px 0 24px 0;
+  border-bottom: 1px solid #1e5799;
+  color: #1e5799;
+}
+
+.Alt-Page-Area {
+  width: 100%;
+  max-width: 1360px;
+  margin: 80px auto 0px;
+  min-height: 600px;
+}
+.Alt-Page-Area h5 {
+  font-size: 20px;
+  border-bottom: 1px solid #dadada;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.Alt-Page-Area p {
+  line-height: 22px;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 15px;
+}
+.Alt-Page-Area p a {
+  font-weight: 600;
+}
+.Alt-Page-Area p a:hover {
+  color: #01bdfc;
+  transition: all 0.3s ease-in-out;
+}
+
+.Alt-Page-Area table {
+  width: 100%;
+}
+.Alt-Page-Area table tr td:nth-child(1) img {
+  width: 100% !important;
+  height: 100% !important;
+}
+.Alt-Page-Area table tr td:nth-child(1) {
+  width: 28%;
+}
+.Alt-Page-Area table tr td:nth-child(2) {
+  width: 70%;
+  padding-left: 2%;
+  vertical-align: top;
+}
+
+.AltPageLeft {
+  width: 22%;
+  float: left;
+  min-height: 400px;
+  padding: 0 20px;
+}
+.AltPageRight {
+  width: 77%;
+  float: right;
+  min-height: 500px;
+  padding-left: 20px;
+  padding-bottom: 30px;
+  padding-right: 20px;
+}
+.AltPageRight h1 {
+  font-size: 22px;
+  font-weight: 600;
+  padding-bottom: 10px;
+  margin: 0 0 15px 0;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+}
+.AltPageRight h2 {
+  font-size: 20px;
+  font-weight: 600;
+  padding-bottom: 6px;
+  margin: 19px 0 20px 0;
+}
+.AltPageRight h3 {
+  font-size: 20px;
+  font-weight: 600;
+  padding-bottom: 6px;
+  margin: 5px 0 10px 0;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+}
+.AltPageRight img {
+  width: 100%;
+}
+.AltPageRight p {
+  line-height: 24px;
+  font-size: 15px;
+  text-align: justify;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.AltPageRight p a {
+  color: #fff;
+  font-weight: 600;
+}
+.AltPageRight p a:hover {
+  color: #01bdfc;
+}
+.AltPageRight p strong {
+  font-weight: 600;
+}
+
+/*Haberler*/
+.HaberArea {
+}
+.HaberArea .item {
+  width: 32%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+  height: 302px;
+  float: left;
+}
+.HaberArea .item:nth-child(3n) {
+  float: right;
+  margin-right: 0;
+}
+.HaberArea .item img {
+  width: 100%;
+}
+.HaberArea .item a {
+  display: table;
+}
+.HaberArea .item a:hover {
+  opacity: 0.88;
+}
+.HaberArea .item h2 {
+  font-size: 18px;
+  padding: 10px;
+  margin: 0 0 8px 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  bottom: 48px;
+  position: relative;
+}
+/*Haberler*/
+.PageNavigation ul{
+  display: flex;
+  gap: 8px;
+}
+.MarketFilterArea .SetContent{
+  width: 100%;
+}
+/*Yay�nc�*/
+.StreamerBG {
+  margin-bottom: 60px;
+}
+.StreamerBG .StreamVideo {
+  width: 60%;
+  float: left;
+}
+.StreamerBG .StreamVideo .info {
+  width: 100%;
+  height: 100px;
+  background: rgba(24, 67, 212, 1);
+  margin-top: 15px;
+}
+.StreamerBG .Streaminfo {
+  width: 38%;
+  height: 500px;
+  float: right;
+}
+.StreamerBG .Streaminfo label {
+  color: #fff;
+  margin: 5px 0 8px 0;
+  float: left;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+}
+.StreamerBG .Streaminfo p {
+  margin-bottom: 20px;
+}
+
+.StreamBasvuruListBG {
+  width: 100%;
+  min-height: 70px;
+}
+.StreamBasvuruListBG a {
+  float: left !important;
+}
+
+.StreamBasvuruBG {
+  width: 100%;
+  min-height: 70px;
+}
+.StreamBasvuruBG a {
+  float: right !important;
+}
+
+.streaminput {
+  width: 100%;
+  border: 1px solid rgba(43, 49, 58, 1);
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+  color: #fff;
+  padding: 8px 10px;
+  outline: 0;
+  line-height: 20px;
+  transition: background-position 0.2s, background-color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+}
+.streaminput:hover,
+.streaminput:focus,
+.streaminput:active {
+  border: 1px solid #0e86ca;
+}
+.text-jrv-red {
+  color: #eb4b4b;
+}
+
+.BtnStreamApp {
+  width: 260px;
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    rgb(126, 0, 212) 0%,
+    rgba(166, 57, 241, 1) 51%,
+    rgb(126, 0, 212) 100%
+  );
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  height: 40px;
+  font-weight: 600;
+  line-height: 40px;
+  border-radius: 5px;
+  display: block;
+  font-size: 15px !important;
+  float: left;
+  padding: 0 30px;
+}
+.BtnStreamApp:hover {
+  box-shadow: 0 0 0 rgba(166, 57, 241, 1);
+  transition: all 0.2s ease-in-out;
+  background-position: right center;
+  color: #fff !important;
+}
+
+.streamappinput {
+  width: 100%;
+  border: 1px solid rgba(43, 49, 58, 1);
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 16px;
+  color: #fff;
+  padding: 0 10px;
+  outline: 0;
+  line-height: 20px;
+  height: 40px;
+  transition: background-position 0.2s, background-color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+}
+.streamappinput:hover,
+.streamappinput:focus,
+.streamappinput:active {
+  border: 1px solid #0e86ca;
+}
+
+.streamapptable {
+  width: 100%;
+  font-size: 16px;
+}
+.streamapptable tr td {
+  padding: 15px 10px;
+}
+.streamapptable tr td a {
+  color: #fff;
+}
+.streamapptable tr td a:hover {
+  color: #03aff9;
+  transition: all 0.3s ease-in-out;
+}
+.streamapptable tr td:first-child {
+  width: 20%;
+}
+.streamapptable tr td:nth-child(2n) {
+  width: 60%;
+  font-weight: 600;
+  text-align: left !important;
+}
+.streamapptable tr td:last-child {
+  text-align: right;
+}
+/*Yay�nc�*/
+
+.Odemeler {
+}
+.Odemeler img {
+  width: 100%;
+}
+
+.Left-Menu {
+  max-width: 100%;
+}
+.Left-Menu h3 {
+  font-size: 22px;
+  padding-bottom: 10px;
+  color: #fff;
+  position: relative;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.Left-Menu h3:after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.Left-Menu ul {
+  padding: 0px;
+  margin-top: 5px;
+}
+.Left-Menu ul li {
+  margin-bottom: 7px;
+  line-height: 10px;
+  border-bottom: 1px dashed #dadada;
+}
+.Left-Menu ul li a {
+  display: block;
+  color: #999;
+  font-size: 15px;
+  padding: 5px 0 10px 0;
+  transition: all 0.3s ease-in-out;
+  line-height: 22px;
+  font-weight: 500;
+}
+.Left-Menu ul li a:hover {
+  color: #01bdfc;
+  transition: all 0.3s ease-in-out;
+}
+.Left-Menu ul li a.aktif {
+  color: #01bdfc;
+}
+.Left-Menu ul li a i {
+  margin-right: 5px;
+}
+.Left-Menu ul li ul li {
+  margin-left: 18px;
+}
+.Left-Menu ul li ul li:last-child {
+  border: none;
+}
+
+.Page-General-Area {
+  max-width: 1360px;
+  margin: 50px auto;
+  min-height: 500px;
+}
+.Page-General-Left {
+  width: 220px;
+  margin-right: 15px;
+  float: left;
+  min-height: 100px;
+}
+.Page-General-Right {
+  width: 720px;
+  margin-right: 15px;
+  float: right;
+  min-height: 100px;
+}
+.Page-General-Right h1 {
+  text-align: left;
+  font-size: 16px;
+  color: #2d2d2d;
+  font-weight: 500;
+}
+.Page-General-Right p {
+  padding: 10px 0px;
+  font-size: 14px;
+  color: #161213;
+  line-height: 25px;
+}
+
+.PageNavigation ul li {
+  display: inline-block;
+  color: #01bdfc;
+}
+.PageNavigation ul li i {
+  color: #fff;
+  font-weight: 400;
+}
+.PageNavigation ul li a {
+  color: #fff;
+}
+.PageNavigation ul li a:hover {
+  color: #01bdfc;
+  transition: all 0.3s ease-in-out;
+}
+.PageNavigation ul li:last-child a {
+  font-weight: 600;
+  color: rgb(3, 176, 250);
+}
+
+.MarketFilterArea {
+  background: rgba(43, 49, 58, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.2);
+  height: 100%;
+  width: 100%;
+  max-width: 1360px;
+  margin: 50px auto 50px;
+  padding: 20px;
+}
+.KoMarketFilterArea {
+  background: rgba(43, 49, 58, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.2);
+  height: 108px;
+  width: 100%;
+  max-width: 1360px;
+  margin: 50px auto 50px;
+  padding: 20px;
+}
+.StreamFilterArea {
+  background: rgba(43, 49, 58, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.2);
+  height: 108px;
+  width: 100%;
+  max-width: 1360px;
+  margin: 50px auto 50px;
+  padding: 20px;
+}
+.ProductCategories {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1052;
+}
+.ProductCategories > li {
+  position: relative;
+  width: 10%;
+  cursor: pointer;
+  z-index: 123;
+}
+.ProductCategories > li a:not(.ProductsWeapons a) {
+  display: block;
+  padding: 10px 20px;
+}
+.ProductCategories > li a:hover {
+  background: rgb(29, 32, 38);
+}
+.ProductCategories > li:hover .ProductsWeapons {
+  display: flex;
+}
+.ProductCategories > li a h2 {
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  margin: 10px 0;
+}
+.ProductCategories > li:last-child .ProductsWeapons {
+  right: 0;
+}
+.ProductCategories > li:nth-child(5) ul {
+  width: 150px;
+}
+.ProductCategories > li:nth-child(5) ul li {
+  width: 100%;
+}
+.ProductCategories > li:nth-child(6) ul {
+  width: 150px;
+}
+.ProductCategories > li:nth-child(6) ul li {
+  width: 100%;
+}
+.ProductCategories > li:nth-child(9) ul {
+  width: 150px;
+}
+.ProductCategories > li:nth-child(9) ul li {
+  width: 100%;
+}
+
+.ProductsWeapons {
+  width: 280px;
+  max-height: 440px;
+  padding: 10px;
+  overflow-y: auto;
+  position: absolute;
+  background: rgb(29, 32, 38);
+  box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.4);
+  display: none;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: space-between;
+}
+.ProductsWeapons li {
+  width: 48%;
+  margin: 2px;
+  text-align: center;
+}
+.ProductsWeapons li a {
+  display: block;
+  padding: 6px;
+  color: #fff;
+  background: rgba(43, 49, 58, 1);
+  font-size: 14px;
+}
+.ProductsWeapons li a:hover {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  background: rgb(75, 86, 103);
+}
+
+/*Skin Detay*/
+.SkinDetailFilterArea {
+  background: rgba(43, 49, 58, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.2);
+  min-height: 220px;
+  width: 100%;
+  max-width: 1360px;
+  margin: 50px auto 0;
+  padding: 20px;
+}
+
+.SkinsInfo {
+}
+
+.SkinsInfoLeft {
+  width: 18%;
+  float: left;
+}
+.SkinsInfoimage {
+  padding: 0 25px 0 0;
+}
+.SkinsInfoimage img {
+  width: 100%;
+  margin: -10px 0 0 0;
+}
+
+.SkinsInfoRight {
+  width: 78%;
+  float: right;
+}
+.SkinsInfoRight .SkinTitle h1 {
+  width: 78%;
+  float: left;
+  font-size: 26px;
+  line-height: 24px;
+  color: #fff;
+}
+.SkinsInfoRight .SkinTitle .favorite {
+  width: 20%;
+  float: right;
+  font-size: 14px;
+  color: #fff;
+  margin: 10px 0 10px 0;
+  text-align: right;
+}
+.SkinsInfoRight .SkinTitle .favorite a {
+  color: #fff;
+}
+.SkinsInfoRight .SkinTitle .favorite a:hover {
+  color: #01bdfc;
+  transition: all 0.3s ease-in-out;
+}
+.SkinsInfoRight .SkinTitle .favorite i {
+  margin: 0 22px 0 5px;
+}
+.SkinsInfoRight .explanation {
+  padding: 12px 0;
+  font-weight: 100;
+  font-size: 16px;
+}
+.SkinsInfoRight .explanation span {
+  margin-right: 15px;
+  color: #c6cad0;
+}
+.SkinsInfoRight .explanation span b {
+  margin-right: 15px;
+  color: #fff;
+  font-weight: 400;
+}
+.SkinsInfoRight .line {
+  background-image: linear-gradient(
+    -270deg,
+    rgba(1, 189, 252, 0.4) 0,
+    rgba(1, 189, 252, 0.4) 2%,
+    #16171c 100%
+  );
+  width: 422px;
+  height: 1px;
+  font-size: 0;
+  overflow: hidden;
+}
+
+.SkinsInfoRight .referenceprice {
+  margin-top: 16px;
+  color: #c6cad0;
+}
+.SkinsInfoRight .referenceprice b {
+  font-size: 22px;
+  margin-left: 8px;
+  color: #01bdfc;
+}
+.SkinsInfoRight .referenceprice a {
+  margin-left: 37px;
+  color: #c6cad0;
+}
+.SkinsInfoRight .referenceprice a i {
+  margin-left: 5px;
+  color: #01bdfc;
+}
+.SkinsInfoRight .referenceprice a:hover {
+  color: #01bdfc;
+  transition: all 0.3s ease-in-out;
+}
+
+.SkinsInfoRight .SatislarEnRight {
+  float: right;
+  margin: -40px 20px 0 0;
+}
+.SkinsInfoRight .SatisYapBtn {
+  float: left;
+  margin-right: 15px;
+}
+
+.SatisYapBtn a {
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    rgb(3, 176, 250) 0%,
+    rgba(24, 67, 212, 1) 51%,
+    rgb(3, 176, 250) 100%
+  );
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  width: 140px;
+  height: 46px;
+  font-weight: 600;
+  line-height: 46px;
+  border-radius: 5px;
+  display: block;
+  font-size: 16px !important;
+}
+.SatisYapBtn i {
+  font-size: 12px;
+  transition: all 0.3s ease-in-out;
+}
+.SatisYapBtn a:hover i {
+  margin-left: 20px;
+  transition: all 0.3s ease-in-out;
+}
+.SatisYapBtn a:hover {
+  box-shadow: 0 0 15px rgba(24, 67, 212, 1);
+  transition: all 0.2s ease-in-out;
+  color: #fff;
+}
+
+.SkinsInfoRight .SiparisOlustur {
+  float: left;
+}
+
+.SiparisOlustur a {
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    rgb(119, 53, 53) 0%,
+    rgba(119, 53, 53, 1) 51%,
+    rgb(119, 53, 53) 100%
+  );
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  width: 140px;
+  height: 46px;
+  font-weight: 600;
+  line-height: 46px;
+  border-radius: 5px;
+  display: block;
+  font-size: 16px !important;
+}
+.SiparisOlustur i {
+  font-size: 12px;
+  transition: all 0.3s ease-in-out;
+}
+.SiparisOlustur a:hover i {
+  margin-left: 20px;
+  transition: all 0.3s ease-in-out;
+}
+.SiparisOlustur a:hover {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transition: all 0.2s ease-in-out;
+  color: #fff;
+}
+
+.SkinDetailFloatArea {
+  width: 100%;
+  height: auto;
+  max-width: 1360px;
+  margin: 0 auto;
+  background: rgba(43, 49, 58, 1);
+  padding: 10px 20px;
+}
+.SkinDetailFloat {
+  float: left;
+  margin-right: 14px;
+  color: #899ab9;
+}
+.SkinDetailFloat a {
+  height: 37px;
+  border: 1px solid #899ab9;
+  color: #899ab9;
+  display: table;
+  padding: 6px 10px;
+  line-height: 24px;
+  border-radius: 3px;
+}
+.SkinDetailFloat a:hover {
+  background-color: rgba(3, 176, 250, 1);
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid #899ab9;
+}
+.SkinDetailFloat .selected {
+  background-color: rgba(3, 176, 250, 1);
+  color: #fff !important;
+}
+.SkinDetailFloat .value {
+  font-size: 16px;
+}
+
+.SkinDetailProducts {
+  width: 100%;
+  height: auto;
+  max-width: 1360px;
+  margin: 0 auto 50px auto;
+  padding: 20px;
+  background-color: #23272d;
+}
+.ProductFilterArea {
+  width: 100%;
+  height: 126px;
+  max-width: 1360px;
+  padding: 30px 20px 0;
+  background: rgba(43, 49, 58, 1);
+  margin: 24px auto 0;
+}
+
+.itemImg {
+  width: 10%;
+  height: 100px;
+  margin-right: 1%;
+  float: left;
+  display: block !important;
+  text-align: center;
+  background: rgb(30, 87, 153);
+  background: -moz-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(30, 87, 153, 1) 0%,
+    rgba(125, 185, 232, 1) 0%,
+    rgba(30, 87, 153, 1) 100%
+  );
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(30, 87, 153, 1) 0%,
+    rgba(125, 185, 232, 1) 0%,
+    rgba(30, 87, 153, 1) 100%
+  );
+  background: radial-gradient(
+    ellipse at center,
+    rgba(30, 87, 153, 1) 0%,
+    rgba(125, 185, 232, 1) 0%,
+    rgba(30, 87, 153, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#1e5799',GradientType=1 );
+}
+.itemImg img {
+  object-fit: contain;
+  max-width: 80%;
+  margin: auto;
+  max-height: 100%;
+  height: 100px;
+  margin: 0;
+}
+.itemImg i {
+  font-size: 16px;
+  float: left;
+  position: inherit;
+  margin: 78px 0 0 5px;
+}
+
+.saticionline {
+  color: #28a745 !important;
+}
+/*Skin Detay*/
+
+.Active {
+  background: rgb(29, 32, 38);
+}
+
+.FilterCombos {
+  display: flex;
+  justify-content: space-between;
+  align-items: self-start;
+  padding-top: 15px;
+  position: relative;
+  z-index: 300;
+}
+.FilterCombos > li {
+  position: relative;
+  width: calc(100% / 7);
+  padding: 0 5px;
+}
+.FilterCombos2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: self-start;
+  padding-top: 15px;
+  position: relative;
+  z-index: 300;
+}
+.FilterCombos2 > li {
+  position: relative;
+  width: calc(100% / 3);
+  padding: 0 5px;
+}
+
+.MarketProducts .ProductsArea {
+  padding-left: 0;
+}
+
+/*Tabz*/
+#container {
+}
+.tabs-nav {
+  border-bottom: 2px solid #03b0fa;
+  height: 33px;
+}
+.tabs-nav ul {
+  margin: 0;
+  padding: 0;
+}
+.tabs-nav li {
+  float: left;
+  margin-right: 40px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.tabs-nav a {
+  display: block;
+  font-weight: 700;
+  color: #90969c;
+}
+
+.tabs-nav li.activex {
+  color: #fff;
+  text-align: center;
+}
+.tabs-nav li.activex:after {
+  font-family: "Font Awesome 5 Free Solid";
+  content: "\f0de";
+  color: rgba(3, 176, 250, 1);
+  font-size: 22px;
+}
+.tabs-nav li.activex a:hover {
+  color: #fff !important;
+}
+.tabs-nav li.activex a {
+  color: #fff !important;
+}
+.tabs-nav li a h4 {
+  font-size: 24px;
+  padding-bottom: 10px;
+}
+.tabs-nav li.activex a h4 {
+  font-size: 24px;
+  padding-bottom: 10px;
+}
+.tabs-content {
+}
+.tabs-content IMG {
+  /*margin-right: 0;*/
+}
+/*Tabz*/
+
+/*Tabz Adxz*/
+#container1 {
+}
+.tabs-nav1 {
+  height: 63px;
+}
+.tabs-nav1 ul {
+  margin: 0;
+  padding: 0;
+}
+.tabs-nav1 li {
+  width: 50%;
+  float: left;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.tabs-nav1 a {
+  display: block;
+  font-weight: 700;
+  color: #90969c;
+  background: #4d4d4d;
+}
+
+.tabs-nav1 li.activex {
+  color: #fff;
+  text-align: center;
+}
+.tabs-nav1 li.activex:after {
+  font-family: "Font Awesome 5 Free Solid";
+  content: "\f0de";
+  color: rgba(3, 176, 250, 1);
+  font-size: 28px;
+}
+.tabs-nav1 li.activex a:hover {
+  color: #fff !important;
+}
+.tabs-nav1 li.activex a {
+  color: #fff !important;
+}
+.tabs-nav1 li a h4 {
+  font-size: 20px;
+  padding: 18px 0;
+  text-align: center;
+}
+.tabs-nav1 li.activex a h4 {
+  font-size: 20px;
+  padding: 18px 0;
+  background: #858585;
+}
+.tabs-content1 {
+}
+.tabs-content1 IMG {
+  /*margin-right: 0;*/
+}
+/*Tabz Adxz */
+
+/*Tabz Adz*/
+#container2 {
+}
+.tabs-nav2 {
+  height: 63px;
+}
+.tabs-nav2 ul {
+  margin: 0;
+  padding: 0;
+}
+.tabs-nav2 li {
+  width: 33.3333%;
+  float: left;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.tabs-nav2 a {
+  display: block;
+  font-weight: 700;
+  color: #90969c;
+  background: #4d4d4d;
+}
+
+.tabs-nav2 li.activex {
+  color: #fff;
+  text-align: center;
+}
+.tabs-nav2 li.activex:after {
+  font-family: "Font Awesome 5 Free Solid";
+  content: "\f0de";
+  color: rgba(3, 176, 250, 1);
+  font-size: 28px;
+}
+.tabs-nav2 li.activex a:hover {
+  color: #fff !important;
+}
+.tabs-nav2 li.activex a {
+  color: #fff !important;
+}
+.tabs-nav2 li a h4 {
+  font-size: 20px;
+  padding: 18px 0;
+  text-align: center;
+}
+.tabs-nav2 li.activex a h4 {
+  font-size: 20px;
+  padding: 18px 0;
+  background: #858585;
+}
+.tabs-content2 {
+}
+.tabs-content2 IMG {
+  /*margin-right: 0;*/
+}
+.tabs-content2 div:not(:first-child) {
+  display: none;
+}
+/*Tabz Adz*/
+
+.SkinsFeatures {
+  width: 100%;
+}
+.SkinsFeatures .FilterCombos {
+  width: 100%;
+  padding: 0;
+  justify-content: left;
+  float: left;
+  display: block;
+}
+.SkinsFeatures .FilterCombos > li {
+  width: 14%;
+  float: left;
+  margin-right: 20px;
+  padding: 0;
+}
+
+.SkinsFeaturesRight {
+  width: 34%;
+  float: right;
+  margin-top: -38px;
+  text-align: right;
+  position: relative;
+  z-index: 999;
+}
+.minmaxPrice {
+  padding: 10px;
+  background: none;
+  color: #90969c;
+  border: 1px solid #90969c;
+  width: 24%;
+}
+.BtnMinMaxPrice {
+  cursor: pointer;
+  color: #fff;
+  font-weight: 400;
+  background: none;
+  border: none;
+}
+.BtnMinMaxPrice:hover {
+  transition: all 0.3s ease-in-out;
+}
+.BtnMinMaxPrice i {
+  font-size: 20px;
+}
+.BtnMinMaxPrice i:hover {
+  color: #01bdfc;
+}
+
+.itemsFeaturesRight {
+  width: 34%;
+  float: right;
+  margin-top: 8px;
+  text-align: right;
+  position: relative;
+  z-index: 999;
+}
+
+/*Product Detail*/
+.SkinDetailProductsTitle {
+  width: 100%;
+  height: 30px;
+}
+.SkinDetailProductsTitle .item {
+  float: left;
+  display: block !important;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+}
+.SkinDetailProductsTitle .item:nth-child(1) {
+  width: 10%;
+  padding: 0 0 0 2px;
+}
+.SkinDetailProductsTitle .item:nth-child(2) {
+  width: 18%;
+  padding: 0 0 0 22px;
+}
+.SkinDetailProductsTitle .item:nth-child(3) {
+  width: 15%;
+}
+.SkinDetailProductsTitle .item:nth-child(4) {
+  width: 16%;
+  padding: 0 0 0 38px;
+}
+.SkinDetailProductsTitle .item:nth-child(5) {
+  width: 14%;
+  padding: 0 0 0 48px;
+}
+.SkinDetailProductsTitle .item:nth-child(6) {
+  width: 22%;
+}
+
+.Product-item {
+  width: 100%;
+  height: 100px;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between !important;
+  margin-bottom: 12px;
+  display: block;
+  border: 1px solid rgba(43, 49, 58, 0.8);
+}
+.Product-item:hover {
+  background: rgba(43, 49, 58, 1);
+}
+.ProductImg {
+  width: 10%;
+  height: 84px;
+  margin: 8px;
+  float: left;
+  display: block !important;
+  text-align: center;
+  background: rgb(30, 87, 153);
+  background: -moz-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(30, 87, 153, 1) 0%,
+    rgba(125, 185, 232, 1) 0%,
+    rgba(30, 87, 153, 1) 100%
+  );
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(30, 87, 153, 1) 0%,
+    rgba(125, 185, 232, 1) 0%,
+    rgba(30, 87, 153, 1) 100%
+  );
+  background: radial-gradient(
+    ellipse at center,
+    rgba(30, 87, 153, 1) 0%,
+    rgba(125, 185, 232, 1) 0%,
+    rgba(30, 87, 153, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#1e5799',GradientType=1 );
+}
+.ProductImg a {
+  display: block;
+  float: left;
+  position: inherit;
+  margin: 50px 0 0 -5px;
+  padding: 10px;
+}
+.ProductImg img {
+  object-fit: contain;
+  max-width: 80%;
+  margin: auto;
+  max-height: 100%;
+  height: 100px;
+  margin: 0 0 0 -32px;
+}
+.ProductImg i {
+  font-size: 18px;
+  color: #fff;
+}
+
+.ProductFloat {
+  width: 18%;
+  height: 100px;
+  margin-right: 1%;
+  float: left;
+  padding: 20px 0 20px 10px;
+  display: block !important;
+  color: #fff;
+}
+
+.ProductSticker {
+  width: 15%;
+  height: 100px;
+  margin-right: 1%;
+  float: left;
+  padding: 36px 0;
+  display: block !important;
+}
+.ProductSticker img {
+  width: 20%;
+  float: left;
+  margin: 0;
+}
+
+.ProductSeller {
+  width: 16%;
+  height: 100px;
+  margin-right: 1%;
+  float: left;
+  padding: 12px 0;
+  display: block !important;
+}
+.ProductSeller .profilephoto img {
+  width: 18%;
+  border-radius: 100px;
+  margin-right: 10px;
+  float: left;
+  display: block;
+  margin-top: 8px;
+}
+.ProductSeller .profilephoto {
+  margin-top: 10px;
+  display: block !important;
+}
+.ProductSeller .sellername {
+  float: left;
+  display: block !important;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 8px 0;
+  color: #fff;
+}
+.ProductSeller .sellername p {
+  font-size: 13px;
+  color: #777;
+}
+.ProductSeller a:hover {
+  color: #1e5799;
+  transition: all 0.3s ease-in-out;
+}
+
+.ProductPrice {
+  width: 14%;
+  height: 100px;
+  margin-right: 1%;
+  float: left;
+  display: block !important;
+}
+.ProductPrice p {
+  padding: 35px 0;
+  font-size: 24px;
+  color: #70d929;
+  font-weight: 700;
+}
+.ProductPrice p span {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.ProductBuy {
+  width: 12%;
+  height: 100px;
+  float: left;
+  display: block !important;
+  text-align: right;
+  padding: 27px 0;
+}
+.ProductBuy .BtnSepeteEkle {
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    rgb(3, 176, 250) 0%,
+    rgba(24, 67, 212, 1) 51%,
+    rgb(3, 176, 250) 100%
+  );
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  width: 124px;
+  height: 40px;
+  font-weight: 600;
+  line-height: 40px;
+  border-radius: 5px;
+  display: block;
+  font-size: 15px !important;
+  float: left;
+}
+.ProductBuy .BtnSepeteEkle:hover {
+  box-shadow: 0 0 0 rgba(24, 67, 212, 1);
+  transition: all 0.2s ease-in-out;
+  background-position: right center;
+  color: #fff;
+}
+.ProductBuy .BtnSiparisOlustur {
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    rgb(3, 176, 250) 0%,
+    rgba(24, 67, 212, 1) 51%,
+    rgb(3, 176, 250) 100%
+  );
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  width: 124px;
+  height: 46px;
+  font-weight: 600;
+  line-height: 46px;
+  border-radius: 5px;
+  display: block;
+  font-size: 15px !important;
+  float: right;
+  margin-right: 12px;
+}
+.ProductBuy .BtnSiparisOlustur:hover {
+  box-shadow: 0 0 0 rgba(24, 67, 212, 1);
+  transition: all 0.2s ease-in-out;
+  background-position: right center;
+  color: #fff;
+}
+.ProductFavorite i {
+  color: #f1ad4d;
+  font-size: 22px;
+  cursor: pointer;
+}
+.ProductFavorite i:hover {
+  color: #01bdfc;
+  transition: all 0.3s ease-in-out;
+}
+
+.ProductComment i {
+  color: #1e5799;
+  font-size: 26px;
+  cursor: pointer;
+}
+.ProductComment i:hover {
+  color: #01bdfc;
+  transition: all 0.3s ease-in-out;
+}
+
+.ThreeD {
+  cursor: pointer;
+  display: inline-block;
+  border: 1px solid #959595;
+  color: #777;
+  border-radius: 4px;
+  font-size: 13px;
+  padding: 2px 10px;
+  line-height: 18px;
+  font-weight: 600;
+}
+.ThreeD:hover {
+  border: 1px solid #1e5799;
+  background: #1e5799;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+/*Product Detail*/
+
+/*Sepet*/
+.BasketArea {
+  margin: 50px 0;
+  min-height: 480px;
+}
+.BasketArea .SkinBasket {
+  width: 75%;
+  float: left;
+}
+.BasketArea .SkinBasket .itemArea {
+}
+.BasketArea .SkinBasket .itemArea .item {
+  width: 100%;
+  padding: 20px 10px;
+  min-height: 170px;
+  background: rgba(46, 52, 61, 1);
+}
+.BasketArea .SkinBasket .itemArea .item .itemPhoto {
+  width: 15%;
+  float: left;
+}
+.BasketArea .SkinBasket .itemArea .item .itemPhoto img {
+  width: 100%;
+  margin: 0 20px;
+}
+.BasketArea .SkinBasket .itemArea .item .itemDesc {
+  width: 75%;
+  min-height: 150px;
+  margin: 0 0 0 60px;
+  float: left;
+  color: #fff;
+}
+.BasketArea .SkinBasket .itemArea .item .itemDesc .itemName {
+  font-size: 28px;
+  display: block;
+  font-weight: 600;
+}
+.BasketArea .SkinBasket .itemArea .item .itemDesc .serverName {
+  font-size: 18px;
+  display: block;
+  font-weight: 600;
+  margin: 12px 0;
+}
+.BasketArea .SkinBasket .itemArea .item .itemDesc .serverName span {
+  background: linear-gradient(
+    90deg,
+    rgba(3, 176, 250, 1) 0%,
+    rgba(24, 67, 212, 1) 69%
+  );
+  padding: 2px 10px !important;
+  border-radius: 5px;
+  margin: 0 0 0 3px;
+}
+.BasketArea .SkinBasket .itemArea .item .itemDesc .itemPrice {
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+.BasketArea .SkinBasket .itemArea .item .itemDesc .itemFloat {
+  margin-top: 10px;
+}
+.BasketArea .SkinBasket .itemArea .item .itemDelete {
+  width: 3%;
+  float: left;
+  line-height: 130px;
+}
+.BasketArea .SkinBasket .itemArea .item .itemDelete i {
+  color: #fff;
+  font-size: 20px;
+}
+.BasketArea .SkinBasket .itemArea .item .itemDelete i:hover {
+  color: #01bdfc;
+  transition: all 0.3s ease-in-out;
+}
+.BasketArea .SkinBasket .itemArea .itemProcess {
+  background: rgb(33, 38, 44);
+  min-height: 100px;
+  margin-bottom: 20px;
+  padding: 30px 14px;
+}
+.BasketArea .SkinBasket .itemArea .itemProcess span:nth-child(1) {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  float: left;
+}
+.BasketArea .SkinBasket .itemArea .itemProcess span:nth-child(2) a {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  float: right;
+  text-align: right;
+}
+.BasketArea .SkinBasket .itemArea .itemProcess span:nth-child(2) a:hover {
+  color: #01bdfc;
+  transition: all 0.3s ease-in-out;
+}
+
+.BasketArea .PayBasket {
+  width: 24%;
+  float: right;
+  background: rgba(46, 52, 61, 1);
+  padding: 30px 15px 30px 15px;
+  border-radius: 20px;
+}
+.BasketArea .PayBasket .OrderSummary {
+  font-size: 18px;
+  color: #fff;
+}
+.BasketArea .PayBasket .OrderSummary h1 {
+  font-size: 30px;
+  margin: 0 0 30px 0;
+}
+.BasketArea .PayBasket .OrderSummary .PayTotalAmount {
+  margin: 10px 0 10px 0;
+}
+.BasketArea .PayBasket .OrderSummary .PayTotalAmount span:nth-child(1) {
+  padding-top: 8px;
+  float: left;
+}
+.BasketArea .PayBasket .OrderSummary .PayTotalAmount span:nth-child(2) {
+  font-size: 30px;
+  font-weight: 600;
+  float: right;
+}
+.BasketArea .PayBasket .OrderSummary .DiscountCode {
+  margin-bottom: 30px;
+}
+.BasketArea .PayBasket .OrderSummary .DiscountCode span {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 2px 2px;
+  float: left;
+}
+.BasketArea .PayBasket .OrderSummary .PayTotalAmountBalance {
+  font-size: 18px;
+  margin: 20px 0 30px 0;
+  background: #171515;
+  padding: 10px 15px;
+}
+.BasketArea .PayBasket .OrderSummary .PayTotalAmountBalance span:nth-child(1) {
+  float: left;
+}
+.BasketArea .PayBasket .OrderSummary .PayTotalAmountBalance span:nth-child(2) {
+  font-size: 18px;
+  font-weight: 600;
+  float: right;
+}
+
+.indirimkoduinput {
+  width: 100%;
+  border: 1px solid rgba(43, 49, 58, 1);
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 16px;
+  color: #fff;
+  padding: 0 10px;
+  outline: 0;
+  line-height: 20px;
+  height: 40px;
+  transition: background-position 0.2s, background-color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+}
+.indirimkoduinput:hover,
+.indirimkoduinput:focus,
+.indirimkoduinput:active {
+  border: 1px solid #0e86ca;
+}
+
+.BtnSatinAl {
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    rgb(3, 176, 250) 0%,
+    rgba(24, 67, 212, 1) 51%,
+    rgb(3, 176, 250) 100%
+  );
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  height: 44px;
+  font-weight: 600;
+  line-height: 45px;
+  border-radius: 5px;
+  display: block;
+  font-size: 18px !important;
+  float: left;
+}
+.BtnSatinAl:hover {
+  box-shadow: 0 0 0 rgba(24, 67, 212, 1);
+  transition: all 0.2s ease-in-out;
+  background-position: right center;
+  color: #fff !important;
+}
+/*Sepet*/
+
+.iconCsgo {
+  width: 32px;
+  height: 32px;
+  display: block;
+  margin: 0 auto;
+}
+.iconCsgo_sticker,
+.iconCsgo_customplayer,
+.iconCsgo_knife,
+.iconCsgo_machinegun,
+.iconCsgo_other,
+.iconCsgo_pistol,
+.iconCsgo_rifle,
+.iconCsgo_shotgun,
+.iconCsgo_smg,
+.iconCsgo_weaponcase,
+.iconCsgo_hands {
+  background: url(../images/icon_csgo.png) no-repeat center center;
+}
+
+.iconCsgo_sticker {
+  background-position: 0 0;
+}
+.iconCsgo_knife {
+  background-position: -34px 0;
+}
+.iconCsgo_machinegun {
+  background-position: 0 -34px;
+}
+.iconCsgo_other {
+  background-position: -34px -34px;
+}
+.iconCsgo_pistol {
+  background-position: 0 -68px;
+}
+.iconCsgo_rifle {
+  background-position: -68px 0;
+}
+.iconCsgo_shotgun {
+  background-position: -68px -34px;
+}
+.iconCsgo_smg {
+  background-position: -34px -68px;
+}
+.iconCsgo_weaponcase {
+  background-position: -68px -68px;
+}
+.iconCsgo_hands {
+  background-position: -102px 0;
+}
+.iconCsgo_customplayer {
+  background-position: 0 -102px;
+}
+
+.Streamer {
+  width: 100%;
+  min-height: 300px;
+  padding: 50px; /*background: url(../images/Test/SkinTrade.jpg) no-repeat center center;*/
+  color: #fff;
+  text-align: center;
+  margin-top: 472px;
+}
+.Streamer h1 {
+  font-size: 35px;
+  font-weight: bold;
+}
+.Streamer p {
+  font-size: 16px;
+  margin: 15px 0 20px 0;
+  font-weight: 600;
+}
+.Streamer p:nth-child(3) {
+  font-size: 22px;
+}
+.Streamer a {
+  margin: 0px auto;
+}
+
+.LoginForm {
+  max-width: 400px;
+  margin: 0px auto;
+}
+.LoginForm input {
+  width: 400px;
+  display: block;
+  height: 40px;
+  color: #fff;
+  line-height: 30px;
+  padding: 5px 10px;
+  background: #202329;
+  border: 1px solid rgba(43, 49, 58, 1);
+}
+.LoginForm input:hover {
+  border-color: rgb(3, 176, 250);
+}
+.LoginForm input:hover,
+.LoginLeft input:focus,
+LoginLeft input:active {
+  border-color: rgb(3, 176, 250);
+  transition: all 0.3s ease-in-out;
+}
+.LoginForm h5 {
+  color: #fff;
+  font-size: 16px;
+}
+.LoginForm li span {
+  display: block;
+  text-decoration: underline;
+  margin-bottom: 10px;
+  color: #fff;
+  text-align: right;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.3s ease-in-out;
+}
+.LoginForm li span:hover {
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
+.LoginText {
+  text-align: center;
+  color: #a0a0a0;
+  width: 100%;
+  max-width: 400px;
+  margin: 10px auto 0;
+}
+.LoginText a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.Or {
+  text-align: center;
+  max-width: 400px;
+  margin: 0px auto;
+  position: relative;
+  margin: 0px auto;
+  color: #fff;
+  margin: 20px auto 0;
+}
+.Or span {
+  background: #262930;
+  z-index: 2;
+  position: relative;
+  padding: 0 10px;
+}
+.Or:after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  z-index: -1;
+  background: #31353e;
+  left: 0;
+  top: 10px;
+}
+
+.LoginButton {
+  width: 100%;
+  max-width: 400px;
+  margin: 0px auto;
+  padding: 10px;
+  display: block;
+  text-align: center;
+  background: rgba(3, 176, 250, 1);
+  color: #fff;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.LoginButton:hover {
+  background: rgba(3, 176, 250, 0.9);
+}
+
+.ResetPassword {
+  width: 100%;
+  max-width: 400px;
+  margin: 0px auto;
+  padding: 0.415em 1.1em;
+  display: block;
+  text-align: center;
+  background: #eb4b4b;
+  color: #fff;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.ResetPassword:hover {
+  background: rgba(235, 75, 75, 0.9);
+}
+
+.SteamLoginButton {
+  width: 100%;
+  max-width: 400px;
+  margin: 0px auto;
+  padding: 0.415em 1.1em;
+  display: block;
+  text-align: center;
+  background: #444444;
+  color: #fff;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.SteamLoginButton:hover {
+  background: #333333;
+}
+
+.Cp {
+  cursor: pointer;
+}
+.Sart {
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  max-width: 400px;
+  margin: 0px auto;
+}
+.Sart a {
+  font-weight: bold;
+  color: rgb(3, 176, 250);
+}
+
+@media (min-width: 980px) and (max-width: 1199px) {
+  .SetContent {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 979px) {
+  .SetContent {
+    padding: 6px;
+  }
+}
+
+.ScrollTop {
+  width: 42px;
+  height: 50px;
+  position: fixed;
+  bottom: 20px;
+  background: url(../images/jervis_scrollup.png) no-repeat;
+  right: 10px;
+  display: table;
+  cursor: pointer;
+  z-index: 999999;
+}
+.ScrollTop i {
+  display: table-cell;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.ProfileMenu {
+  position: absolute;
+  right: 20px;
+  top: 30px;
+}
+.ProfileMenu .bars {
+  display: none;
+}
+.FilterTitle {
+  display: none;
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.FilterTitle i {
+  margin-right: 10px;
+}
+.MobileFilter {
+  text-align: center;
+  display: none;
+  font-size: 15px;
+  color: #fff;
+  margin: 40px auto 0;
+  border: 1px solid rgba(255, 255, 255, 0.37);
+  max-width: 200px;
+  padding: 20px;
+  background: #14141e;
+}
+
+@media (min-width: 375px) and (max-width: 1279px) {
+  html {
+    overflow-x: hidden;
+  }
+  .MobileFilter {
+    display: block;
+  }
+  .MobileFilter i {
+    margin-right: 5px;
+  }
+  .Header {
+    padding: 10px;
+  }
+  .HeaderTop {
+    padding: 0;
+  }
+  .HeaderTop .SetContent {
+    padding: 10px;
+  }
+  .GamesTop {
+    margin-top: 5px;
+    line-height: 10px;
+  }
+  .GamesTop ul li {
+    float: left;
+  }
+  .GamesTop ul li a {
+    padding: 0 5px;
+  }
+  .FullPageHeader h1 {
+    font-size: 16px;
+  }
+  .HeaderTop .bars {
+    display: block;
+    position: relative;
+    text-align: left;
+    float: right;
+    color: #fff;
+    font-size: 25px;
+    margin-right: 3px;
+  }
+  .ProfileMenu .bars {
+    display: block;
+    position: relative;
+    text-align: left;
+    float: right;
+    color: #fff;
+    font-size: 25px;
+    margin-right: 3px;
+  }
+  .Social {
+    width: 100%;
+  }
+  .ProfilPageContent .ProfilMenu {
+    width: 100%;
+    float: none;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #1b2034;
+    z-index: 999999;
+    left: -100%;
+  }
+  .ProfilPageContent .ProfilMenu .ProfilMenuler {
+    overflow-x: scroll;
+    height: calc(100vh + 110px);
+  }
+  .ProfilPageContent .ProfilMenu .ProfilMenuFoto {
+    width: 20%;
+  }
+  .ProfilPageContent .ProfilMenu .ProfilMenuler ul {
+    height: calc(100% + 110px);
+  }
+  .PageNavigation {
+    font-size: 12px;
+  }
+
+  .ProfilPageContent .SaticiMenu {
+    width: 100%;
+  }
+  .ProfilPageContent .SaticiDetay .suggested {
+    display: none;
+  }
+  .ProfilPageContent .SaticiDetay .bottom {
+    width: 100%;
+  }
+
+  .tabs-nav li {
+    width: 100%;
+    float: none;
+    padding: 4px 0;
+  }
+  .tabs-nav {
+    height: auto;
+  }
+  .tabs-nav li.activex {
+    text-align: left;
+  }
+  .ProductFilterArea {
+    height: auto;
+    padding: 10px;
+  }
+  .SkinsFeatures {
+    margin: 10px 0;
+  }
+  .SkinsFeatures .FilterCombos {
+    float: none;
+  }
+  .SkinsFeatures .FilterCombos > li {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .SkinsFeaturesRight {
+    float: none;
+    width: 100%;
+    margin: 0;
+    z-index: auto;
+  }
+
+  #FilterMarket {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    margin: 0;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: rgba(43, 49, 58, 1);
+    left: -100%;
+  }
+  #FilterMarket > .SetContent {
+    display: none;
+  }
+  #FilterMarket .KoMarketFilterArea,
+  #FilterMarket .MarketFilterArea {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 10px;
+    overflow-y: auto;
+  }
+
+  #FilterMarket .FilterTitle {
+    display: block;
+  }
+  #FilterMarket .ProductCategories {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  #FilterMarket .ProductCategories li {
+    width: 100%;
+  }
+  #FilterMarket .iconCsgo {
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  #FilterMarket .ProductCategories > li a h2 {
+    display: inline-block;
+  }
+  #FilterMarket .ProductCategories > li a:not(.ProductsWeapons a) {
+    display: block;
+    padding: 5px;
+  }
+  #FilterMarket .ProductsWeapons {
+    position: relative;
+    width: 100%;
+    max-height: 100%;
+  }
+  #FilterMarket .FilterCombos {
+    flex-wrap: wrap;
+  }
+  #FilterMarket .FilterCombos > li {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .MainMenu {
+    width: 100%;
+    float: none;
+    display: table;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #14141e !important;
+    z-index: 999999 !important;
+    left: -100%;
+  }
+
+  .TopMenu {
+    float: none;
+    margin-top: 50px;
+    width: 100%;
+    overflow-y: auto;
+    height: 100%;
+  }
+  .TopMenu ul {
+    width: 100%;
+  }
+  .TopMenu ul li {
+    width: 100%;
+    float: none;
+    display: block;
+  }
+  .TopMenu ul li a {
+    padding: 12px 30px;
+    width: 100%;
+    display: block;
+    font-size: 16px;
+  }
+  .lang {
+    width: 100%;
+    text-align: center;
+    background: #090b11;
+  }
+  .lang li {
+    width: 100%;
+    text-align: left;
+  }
+  .lang li a {
+    padding: 12px 26px !important;
+    width: 5% !important;
+    float: left;
+    font-size: 16px;
+  }
+  .Menu ul li span {
+    margin-top: -10px;
+  }
+  .Logo {
+    width: 170px;
+  }
+  .Menu {
+    width: 100%;
+    margin: 12px 0 0 0;
+  }
+  .Menu ul li a {
+    line-height: 45px;
+  }
+  .Search {
+    margin: 5px 0 0 0;
+    width: 100%;
+  }
+  .Search input::placeholder {
+    color: #fff;
+  }
+  .FilterClose,
+  .ProfileClose,
+  .MenuClose {
+    display: block;
+    color: #fff;
+  }
+  .SliderArea {
+    height: 280px;
+    top: 230px;
+  }
+  .SliderDescArea {
+    width: 100%;
+  }
+  .SliderDesc {
+    width: 100%;
+  }
+  .Desc {
+    margin-top: 180px;
+    padding: 0 8px;
+  }
+  .Desc span {
+    font-size: 14px;
+  }
+  .Desc h2 {
+    font-size: 20px;
+  }
+  .Desc p {
+    width: 100% !important;
+    margin: 0 0 10px 0;
+    font-size: 15px;
+  }
+  .DownArrow {
+    display: none;
+  }
+  .betas {
+    margin: 3px 5px 0 0;
+    font-size: 30px;
+  }
+
+  .BasketArea .SkinBasket .itemArea .itemProcess span:nth-child(1) {
+    font-size: 14px;
+  }
+  .BasketArea .SkinBasket .itemArea .itemProcess span:nth-child(2) a {
+    font-size: 14px;
+  }
+  .BasketArea .PayBasket .OrderSummary h1 {
+    font-size: 24px;
+  }
+  .BasketArea .PayBasket .OrderSummary .PayTotalAmount span:nth-child(2) {
+    font-size: 24px;
+  }
+  .BasketArea .SkinBasket .itemArea .item .itemDesc .serverName {
+    font-size: 15px;
+  }
+  .Basket {
+    position: absolute;
+    top: 72px;
+    right: 15px;
+  }
+  .Notifications {
+    position: absolute;
+    top: 72px;
+    right: 58px;
+  }
+  .NotificationsMain {
+    position: absolute;
+    top: 72px;
+    right: 58px;
+  }
+  .NavbarNotificationsMain {
+    top: 60px;
+    right: -22px;
+  }
+  .Login {
+    margin-top: 12px;
+    position: absolute;
+    right: 8px;
+  }
+  .GlobalButton {
+    width: 140px;
+    height: 40px;
+    line-height: 42px;
+    margin: 0 0 10px 0;
+    font-size: 14px !important;
+    float: left;
+  }
+
+  .Games {
+    margin: 320px auto 0 auto;
+    padding: 10px 36px;
+  }
+
+  .ProductsArea {
+    margin-top: 40px;
+    min-height: 100px;
+  }
+  .Products ul li {
+    width: 47%;
+    margin: 0 6px 0 0;
+  }
+
+  .BtnMinMaxPrice {
+    margin-top: 2px;
+  }
+  .DestekBtnArea a {
+    margin-right: 10px;
+    padding: 0 10px;
+    float: left;
+  }
+
+  .AllProduct {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .Products1 {
+    padding: 30px 0;
+  }
+  .Products h1 {
+    font-size: 24px;
+    float: left;
+  }
+  .Products h1 span {
+    width: 100%;
+    display: block;
+  }
+  .Products h1 img {
+    max-height: 26px;
+  }
+  .ProductPic h1 {
+    font-size: 16px;
+  }
+  .ProductItem {
+    width: 170px;
+    height: 258px;
+  }
+  .ProductPic {
+    width: 144px;
+  }
+  .ProductPic img {
+    max-width: 100%;
+  }
+  .ProductButton {
+    left: 0;
+    width: 100%;
+  }
+  .SetMarginTop {
+    margin: 0 auto !important;
+  }
+  .ProductDesc p .left {
+    width: 64%;
+    font-size: 18px;
+  }
+  .ProductDesc p .right {
+    width: 36%;
+    float: right;
+    padding-top: 1px;
+  }
+
+  .ProductImg {
+    width: 30%;
+  }
+  .ProductFloat {
+    width: 64%;
+    border-bottom: 1px solid rgba(43, 49, 58, 0.8);
+    height: auto;
+    padding: 13px 0 13px 10px;
+    margin: 0 0 8px 0;
+  }
+  .ProductSticker {
+    width: 45%;
+    height: 55px;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid rgba(43, 49, 58, 0.8);
+  }
+  .ProductSticker img {
+    width: 24%;
+    margin: 14px 0;
+  }
+  .ProductSeller {
+    width: 55%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid rgba(43, 49, 58, 0.8);
+  }
+  .ProductSeller .profilephoto {
+    margin: 0;
+  }
+  .ProductPrice {
+    width: 40%;
+    height: auto;
+    padding: 0 10px;
+    margin: 0;
+  }
+  .ProductPrice p {
+    padding: 26px 0;
+  }
+  .ProductBuy {
+    width: 36%;
+    height: auto;
+    padding: 20px 0;
+  }
+  .ProductFavorite {
+    width: 10%;
+    height: auto;
+    padding: 30px 5px 0 5px;
+  }
+  .ProductComment {
+    width: 10%;
+    height: auto;
+    padding: 30px 5px 0 5px;
+  }
+
+  .itemImg {
+    width: 35%;
+  }
+
+  .News h1 span {
+    width: 100%;
+    display: block;
+  }
+
+  .ProfilPageContent .ProfilArea,
+  .ProfilArea {
+    margin: 0;
+  }
+  .TradeProfil .Right,
+  .TradeProfil .Left {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .TradeProfil .Left img {
+    width: 70%;
+  }
+  .TradeProfil .Right img {
+    width: 70%;
+  }
+
+  .TradeListFilter {
+    width: 100%;
+    margin: 10px 0 20px 0;
+  }
+  .tradefilters {
+    width: 100%;
+  }
+
+  .TradeDetailArea {
+    margin: 30px 0 0 0;
+  }
+  .TradeDetail .SkinPhoto {
+    width: 100%;
+    min-height: 1px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .TradeDetail .SkinPhoto img {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .TradeDetail .SkinDetail {
+    width: 100%;
+    margin: 0 0 40px 0;
+  }
+  .SkinMessage {
+    margin: 0 0 40px 0;
+  }
+  .SkinMessage .MessageArea {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .SkinMessage .MessageArea h2 {
+    font-size: 18px;
+  }
+  .SkinMessage .MessageSend {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .SkinMessage h1 {
+    font-size: 20px;
+  }
+
+  .TradeDetail .SkinDetailOurs ul li {
+    font-size: 15px;
+  }
+  .TradeDetail .SkinDetailOurs {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .TradeDetail .SkinDetailOurs ul li h4 {
+    width: 30%;
+  }
+  .TradeDetail .SkinDetailOurs ul li h5 {
+    width: 70%;
+  }
+  .TradeDetail .SkinDetailOurs ul li h5 a {
+    font-size: 15px;
+  }
+  .TradeDetail .SkinDetailAgainst ul li {
+    font-size: 15px;
+  }
+  .TradeDetail .SkinDetailAgainst ul li h4 {
+    width: 48%;
+  }
+  .TradeDetail .SkinDetailAgainst ul li h5 {
+    width: 52%;
+  }
+  .TradeDetail .SkinDetailAgainst ul li h5 a {
+    font-size: 15px;
+  }
+  .TradeDetail .SkinDetailAgainst {
+    width: 100%;
+  }
+
+  .SkinDetailFilterArea {
+    padding: 5px;
+    height: auto;
+  }
+  .SkinsInfoLeft {
+    width: 100%;
+  }
+  .SkinsInfoimage {
+    padding: 0;
+    text-align: center;
+    margin-top: 15px;
+  }
+  .SkinsInfoimage img {
+    width: 50%;
+  }
+  .SkinsInfoRight {
+    width: 100%;
+  }
+  .SkinsInfoRight .SkinTitle h1 {
+    width: 100%;
+  }
+  .SkinsInfoRight .SkinTitle .favorite {
+    width: 100%;
+  }
+  .SkinsInfoRight .explanation {
+    width: 100%;
+  }
+  .SkinsInfoRight .explanation span {
+    margin-right: 0;
+  }
+  .SkinsInfoRight .referenceprice {
+  }
+  .SkinsInfoRight .referenceprice a {
+    margin-left: 0;
+    display: block;
+    margin-top: 10px;
+  }
+  .SkinsInfoRight .SatislarEnRight {
+    width: 100%;
+    margin: 10px 0 0 0;
+  }
+
+  .SkinDetailFloatArea {
+    padding: 10px;
+  }
+  .SkinDetailFloat {
+    width: 49%;
+    float: left;
+    margin: 0 1% 1% 0;
+  }
+  .SkinDetailFloat a {
+    width: 100%;
+  }
+  .SkinDetailFloat .value {
+    font-size: 14px;
+  }
+
+  .BasketArea {
+    margin: 30px 0 50px 0;
+  }
+  .BasketArea .SkinBasket {
+    width: 100%;
+  }
+  .BasketArea .SkinBasket .itemArea .item .itemPhoto {
+    width: 30%;
+  }
+  .BasketArea .SkinBasket .itemArea .item .itemPhoto img {
+    margin: 0;
+  }
+  .BasketArea .SkinBasket .itemArea .item .itemDesc {
+    width: 60%;
+    margin: 0 0 0 15px;
+  }
+  .BasketArea .SkinBasket .itemArea .item .itemDesc .itemName {
+    font-size: 18px;
+  }
+  .BasketArea .SkinBasket .itemArea .item .itemDelete {
+    width: 5%;
+  }
+
+  .BasketArea .PayBasket {
+    width: 100%;
+  }
+
+  .News {
+    margin-top: 0;
+  }
+  .News ul li {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .News ul li:nth-child(2n) {
+    width: 100%;
+  }
+  .News ul li:nth-child(3n) {
+    width: 100%;
+  }
+
+  .FooterArea .SetContent > ul > li {
+    width: 100%;
+  }
+  .FooterArea .SetContent > ul > li:nth-child(2n) {
+    width: 100%;
+    display: block;
+  }
+  .FooterMenu {
+    width: 50%;
+    margin: 20px 0;
+    float: left;
+  }
+
+  .Carts {
+    padding: 20px 0 0 0;
+  }
+  .Carts ul {
+    display: block;
+  }
+  .Carts ul li {
+    width: 100%;
+    text-align: center;
+    margin: 0 0 20px 0;
+  }
+
+  .FooterSocial {
+    padding: 0 0 10px 0;
+  }
+  .FooterSocial ul {
+    display: block;
+  }
+  .FooterSocial ul li {
+    margin: 0;
+    display: inline-block;
+  }
+  .FooterSocial ul li:last-child {
+    margin: 0 0 20px 0;
+  }
+
+  .ScrollTop {
+    width: 50px;
+    height: 50px;
+    right: 2px;
+    bottom: 14px;
+  }
+
+  /*Login*/
+  .LoginForm {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .LoginForm input {
+    width: 320px;
+  }
+  .swal2-popup {
+    width: 100% !important;
+  }
+  /*Login*/
+
+  .FullPageArea::before {
+    background: none;
+  }
+  .FullPageHeader {
+    border-bottom: 10px solid;
+    padding-bottom: 15px;
+  }
+
+  .Alt-Page-Area {
+    margin: 30px auto 0px;
+  }
+  .AltPageLeft {
+    width: 100%;
+    min-height: 300px;
+  }
+  .AltPageRight {
+    width: 100%;
+    min-height: 300px;
+    padding-top: 30px;
+  }
+  .FullPageContent {
+    margin: 30px 0 0;
+  }
+
+  .pagination {
+    margin: 20px auto;
+  }
+  .pagination a {
+    padding: 4px 10px;
+    font-size: 16px;
+  }
+
+  .HaberArea .item {
+    width: 100%;
+    height: 350px;
+    float: none;
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+
+  /*Profil*/
+  .ProfilPageContent .ProfilMenu {
+    width: 100%;
+  }
+  .ProfilPageContent .ProfilDetail {
+    width: 100%;
+    padding-bottom: 80px;
+  }
+
+  .CardContent {
+    padding: 10px;
+  }
+  .ProfilPageContent h5 {
+    margin: 20px 0;
+    font-size: 28px;
+  }
+  .streamapptable tr td:first-child {
+    width: 30%;
+  }
+  .streamapptable tr td:nth-child(2n) {
+    width: 80%;
+    padding: 15px 0;
+  }
+  .streamapptable tr td {
+    padding: 15px 10px;
+  }
+
+  .itemAciklama p img {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 2%;
+  }
+
+  .itemsFeaturesRight {
+    width: 100%;
+  }
+  .minmaxPrice {
+    width: calc(100% / 2 - 20px);
+  }
+  .SkinDetailProductsTitle {
+    display: none;
+  }
+  .Product-item {
+    width: 100%;
+    height: auto;
+  }
+  .SkinDetailProducts {
+    padding: 10px;
+    overflow: hidden;
+    overflow-x: auto;
+  }
+
+  .SkinDetailProductsTitle .item:nth-child(1) {
+    width: 100px;
+    padding: 0 0 0 2px;
+  }
+  .SkinDetailProductsTitle .item:nth-child(2) {
+    width: 180px;
+    padding: 0 0 0 22px;
+  }
+  .SkinDetailProductsTitle .item:nth-child(3) {
+    width: 150px;
+  }
+  .SkinDetailProductsTitle .item:nth-child(4) {
+    width: 160px;
+    padding: 0 0 0 38px;
+  }
+  .SkinDetailProductsTitle .item:nth-child(5) {
+    width: 140px;
+    padding: 0 0 0 48px;
+  }
+  .SkinDetailProductsTitle .item:nth-child(6) {
+    width: 220px;
+  }
+  .SkinsInfoRight .SkinTitle .favorite {
+    text-align: left;
+  }
+  .SkinDetailFilterArea {
+    margin-top: 10px;
+  }
+  .paginationDetail {
+    width: 100%;
+  }
+
+  .HeaderProfil {
+    text-align: center;
+  }
+  .HeaderProfil .Login {
+    width: 100%;
+    position: relative;
+  }
+  .NavbarAccount {
+    text-align: left;
+    right: -24px;
+  }
+  .NavbarAccount::after {
+    right: 66px;
+  }
+  .NavbarNotifications {
+    text-align: left;
+    left: -35px;
+  }
+  .NavbarNotifications::after {
+    left: 43px;
+  }
+
+  .CardBlok {
+    display: block;
+  }
+  .CardContent table {
+    float: left;
+    display: block;
+  }
+  .CardContent table tbody tr td:last-child {
+    display: block;
+  }
+  .accountinfo tr td:first-child {
+  }
+  .accountinfotable tr td {
+    font-size: 14px;
+  }
+  .accountinfotable tr td:nth-child(2n) {
+    display: block;
+  }
+
+  .CardBlokFull li {
+    width: 100%;
+  }
+  .CardTitle {
+    width: 100%;
+  }
+  .AccountTable tr td {
+    font-size: 12px;
+  }
+  .AccountTable tr td:first-child {
+    display: none;
+  }
+
+  .PeymentLeft {
+    width: 100%;
+  }
+  .PeymentRight {
+    width: 100%;
+    padding: 0 10px;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+  .destekinput {
+    width: 100%;
+  }
+  .magazainput {
+    width: 100%;
+  }
+  .magazainputArea {
+    width: 100%;
+  }
+  .tabs-nav2 li.activex a h4 {
+    font-size: 16px;
+    height: 74px;
+  }
+  .tabs-nav2 li a h4 {
+    font-size: 16px;
+  }
+  .tabs-nav2 a {
+    height: 74px;
+  }
+
+  .tabs-nav1 li {
+    width: 100%;
+  }
+  .ilanekletable tr td:nth-child(2n) {
+    width: 100%;
+  }
+  .ilanekletable tr td:first-child {
+    width: 100%;
+  }
+  .ilanekletable tr td {
+    display: block;
+    padding: 10px;
+  }
+  .SteamTradeURL {
+  }
+  .BtnCekimYap {
+    margin-bottom: 10px;
+  }
+  /*Profil*/
+
+  .paginationDetail a {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+
+  .ContactArea h5 {
+    font-size: 16px;
+  }
+  .ContactLeft {
+    width: 100%;
+  }
+  .ContactRight {
+    width: 100%;
+    margin-top: 26px;
+  }
+}
+
+/* T�m Haklar� Jervis Game� Firmas�na Aittir. �zinsiz Kopyalanamaz ve �o�alt�lamaz. | www.mymedya.com.tr */
+
+/* Wear Condition Tabs Styling */
+.WearConditionTabs {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 20px;
+}
+
+/* SkinDetailFilterArea içindeki wear condition tabs için özel stiller */
+.SkinDetailFilterArea .WearConditionTabs {
+  background: transparent;
+  padding: 15px 0 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 15px;
+}
+
+.WearTabs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.wear-tab {
+  background: rgba(45, 45, 45, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  min-width: 180px;
+  text-align: center;
+}
+
+/* SkinDetailFilterArea içindeki wear tabs için özel stiller */
+.SkinDetailFilterArea .wear-tab {
+  background: rgba(26, 30, 35, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 10px 16px;
+  font-size: 13px;
+  min-width: 160px;
+}
+
+/* Favori butonları için stiller */
+.favorite-btn {
+  transition: all 0.3s ease;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+}
+
+.favorite-btn.active {
+  color: #ffd700 !important;
+}
+
+.favorite-btn.active i {
+  color: #ffd700 !important;
+}
+
+.favorite-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.wear-tab:hover {
+  background: rgba(3, 176, 250, 0.1);
+  border-color: rgba(3, 176, 250, 0.5);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.wear-tab.active {
+  background: rgba(3, 176, 250, 0.2);
+  border-color: rgba(3, 176, 250, 0.8);
+  color: #03b0fa;
+  box-shadow: 0 0 10px rgba(3, 176, 250, 0.3);
+}
+
+.wear-tab.statTrak {
+  background: rgba(255, 193, 7, 0.1);
+  border-color: rgba(255, 193, 7, 0.3);
+  color: #ffc107;
+}
+
+.wear-tab.statTrak:hover {
+  background: rgba(255, 193, 7, 0.2);
+  border-color: rgba(255, 193, 7, 0.6);
+}
+
+/* Steam Market Link Styling */
+.steam-market-link {
+  color: #03b0fa;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.steam-market-link:hover {
+  color: #82c5ff;
+  text-decoration: underline;
+}
+
+/* Market Dropdown Styling */
+.MarketFilterArea .FilterCombos .Select {
+  background: rgb(26, 30, 35);
+  border: 1px solid rgba(43,49,58,1);
+  border-radius: 0;
+  color: white;
+  padding: 8px 12px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.MarketFilterArea .FilterCombos .Select:focus {
+  outline: none;
+  border-color: #03b0fa;
+}
+
+.MarketFilterArea .FilterCombos .Select::after {
+  content: '▼';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 10px;
+  pointer-events: none;
+}
+
+.MarketFilterArea .FilterCombos .Select:focus::after {
+  content: '▲';
+  color: #03b0fa;
+}
+
+.MarketFilterArea .FilterCombos optgroup {
+  background: rgb(29, 32, 38);
+  color: white;
+  font-weight: 700;
+  padding: 8px;
+}
+
+.MarketFilterArea .FilterCombos option {
+  background: rgb(29, 32, 38);
+  color: white;
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+/* Quality-specific colors */
+.MarketFilterArea .FilterCombos option.exterior_wearcategory0 {
+  color: #4ade80; /* Light green for "All" */
+}
+
+.MarketFilterArea .FilterCombos option.exterior_wearcategory1 {
+  color: #22c55e; /* Green for "Contraband" */
+}
+
+.MarketFilterArea .FilterCombos option.exterior_wearcategory2 {
+  color: #f97316; /* Orange for "Covert" */
+}
+
+.MarketFilterArea .FilterCombos option.exterior_wearcategory3 {
+  color: #ef4444; /* Red for "Classified" */
+}
+
+.MarketFilterArea .FilterCombos option.exterior_wearcategory4 {
+  color: #dc2626; /* Dark red for "Restricted" */
+}
+
+.MarketFilterArea .FilterCombos option.quality_normal {
+  color: #e5e7eb; /* Light grey for "Mil-Spec Grade" */
+}
+
+.MarketFilterArea .FilterCombos option.quality_tournament {
+  color: #fbbf24; /* Yellow for "Industrial Grade" */
+}
+
+.MarketFilterArea .FilterCombos option.quality_strange {
+  color: #d97706; /* Orange-brown for "Consumer Grade" */
+}
+
+.MarketFilterArea .FilterCombos option.quality_unusual {
+  color: #a855f7; /* Purple for "Extraordinary" */
+}
+
+.MarketFilterArea .FilterCombos option.quality_unusual_strange {
+  color: #8b5cf6; /* Purple for "Remarkable" */
+}
+
+.MarketFilterArea .FilterCombos option.rarity_ancient_weapon {
+  color: #f59e0b; /* Amber for "Exotic" */
+}
+
+.MarketFilterArea .FilterCombos option.rarity_rare_weapon {
+  color: #10b981; /* Emerald for "High Grade" */
+}
+
+.MarketFilterArea .FilterCombos option.rarity_mythical_weapon {
+  color: #6b7280; /* Gray for "Base Grade" */
+}
+
+.MarketFilterArea .FilterCombos option.rarity_legendary_weapon {
+  color: #3b82f6; /* Blue for "Agent Quality" */
+}
+
+/* Dropdown hover effects */
+.MarketFilterArea .FilterCombos option:hover {
+  background: rgba(3, 176, 250, 0.1);
+}
+
+/* Custom select2 styling for better dropdown experience */
+.MarketFilterArea .FilterCombos .select2-container--default .select2-selection--single {
+  background: rgb(26, 30, 35);
+  border: 1px solid rgba(43,49,58,1);
+  border-radius: 0;
+  height: 38px;
+}
+
+.MarketFilterArea .FilterCombos .select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: white;
+  line-height: 36px;
+  padding-left: 12px;
+  font-weight: 600;
+}
+
+.MarketFilterArea .FilterCombos .select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 36px;
+  right: 8px;
+}
+
+.MarketFilterArea .FilterCombos .select2-container--default .select2-selection--single .select2-selection__arrow b {
+  border-color: #888 transparent transparent transparent;
+  border-width: 5px 4px 0 4px;
+}
+
+.MarketFilterArea .FilterCombos .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  border-color: transparent transparent #03b0fa transparent;
+  border-width: 0 4px 5px 4px;
+}
+
+.MarketFilterArea .FilterCombos .select2-dropdown {
+  background: rgb(29, 32, 38);
+  border: 1px solid rgba(43,49,58,1);
+  border-radius: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.MarketFilterArea .FilterCombos .select2-search--dropdown {
+  padding: 8px;
+}
+
+.MarketFilterArea .FilterCombos .select2-search--dropdown .select2-search__field {
+  background: rgb(40, 44, 50);
+  border: 1px solid rgba(43,49,58,1);
+  color: white;
+  padding: 6px 8px;
+  border-radius: 0;
+}
+
+.MarketFilterArea .FilterCombos .select2-search--dropdown .select2-search__field:focus {
+  outline: none;
+  border-color: #03b0fa;
+}
+
+.MarketFilterArea .FilterCombos .select2-results__option {
+  color: white;
+  padding: 8px 12px;
+  background: rgb(29, 32, 38);
+}
+
+.MarketFilterArea .FilterCombos .select2-results__option--highlighted[aria-selected] {
+  background: rgba(3, 176, 250, 0.2);
+  color: white;
+}
+
+.MarketFilterArea .FilterCombos .select2-results__option[aria-selected=true] {
+  background: rgba(3, 176, 250, 0.1);
+  color: #4ade80;
+}
+
+/* Quality colors for select2 options */
+.MarketFilterArea .FilterCombos .select2-results__option[data-class="exterior_wearcategory0"] {
+  color: #4ade80;
+}
+
+.MarketFilterArea .FilterCombos .select2-results__option[data-class="exterior_wearcategory1"] {
+  color: #22c55e;
+}
+
+.MarketFilterArea .FilterCombos .select2-results__option[data-class="exterior_wearcategory2"] {
+  color: #f97316;
+}
+
+.MarketFilterArea .FilterCombos .select2-results__option[data-class="exterior_wearcategory3"] {
+  color: #ef4444;
+}
+
+.MarketFilterArea .FilterCombos .select2-results__option[data-class="exterior_wearcategory4"] {
+  color: #dc2626;
+}
+
+.MarketFilterArea .FilterCombos .select2-results__option[data-class="quality_normal"] {
+  color: #e5e7eb;
+}
+
+.MarketFilterArea .FilterCombos .select2-results__option[data-class="quality_tournament"] {
+  color: #fbbf24;
+}
+
+.MarketFilterArea .FilterCombos .select2-results__option[data-class="quality_strange"] {
+  color: #d97706;
+}
+
+.MarketFilterArea .FilterCombos .select2-results__option[data-class="quality_unusual"] {
+  color: #a855f7;
+}
+
+.MarketFilterArea .FilterCombos .select2-results__option[data-class="quality_unusual_strange"] {
+  color: #8b5cf6;
+}
+
+.MarketFilterArea .FilterCombos .select2-results__option[data-class="rarity_ancient_weapon"] {
+  color: #f59e0b;
+}
+
+.MarketFilterArea .FilterCombos .select2-results__option[data-class="rarity_rare_weapon"] {
+  color: #10b981;
+}
+
+.MarketFilterArea .FilterCombos .select2-results__option[data-class="rarity_mythical_weapon"] {
+  color: #6b7280;
+}
+
+.MarketFilterArea .FilterCombos .select2-results__option[data-class="rarity_legendary_weapon"] {
+  color: #3b82f6;
+}
+
+/* Takas sayfası için özel stiller */
+.TradeInfo {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.TradeItem {
+  margin: 5px 0;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.TradeItem strong {
+  color: #03b0fa;
+  margin-right: 8px;
+}
+
+.TradeDescription {
+  margin: 8px 0;
+  font-size: 12px;
+  color: #aaa;
+  font-style: italic;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 8px;
+}
+
+.TradeButton {
+  background: linear-gradient(135deg, #03b0fa, #0288d1);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: 8px;
+}
+
+.TradeButton:hover {
+  background: linear-gradient(135deg, #0288d1, #0277bd);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(3, 176, 250, 0.3);
+}
+
+.FavoriteButton {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.FavoriteButton:hover {
+  background: rgba(255, 193, 7, 0.1);
+  color: #ffc107;
+  border-color: #ffc107;
+}
+
+.FavoriteButton.active {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+  border-color: #ffc107;
+}
+
+.ProductActions {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}

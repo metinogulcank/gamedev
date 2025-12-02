@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        Jervis Game - jervisgame.com
+    </title>
+    <link rel="icon" type="image/x-icon" href="images/fav.png">
+    <link href="css/fontawesome.css" rel="stylesheet">
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/site.css?v=2.0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!--Kütüphane-->
+    <script type="text/javascript" src="js/kutuphane/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="js/kutuphane/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="js/kutuphane/jquery.easing.1.3.js"></script>
+
+    <!--animate-->
+    <link href="js/animate/animate.css" rel="stylesheet">
+    <script type="text/javascript" src="js/animate/animate.js"></script>
+
+    <!--Modal-->
+    <link href="js/modal/modal.css" rel="stylesheet">
+    <script src="js/modal/promise.js"></script>
+    <script src="js/modal/modal.js"></script>
+
+    <!--slider-->
+    <link href="js/slider/slippry.css" rel="stylesheet">
+    <script type="text/javascript" src="js/slider/slippry.min.js"></script>
+
+    <!--carousel-->
+    <link href="js/carousel/util.carousel.css" rel="stylesheet">
+    <link href="js/carousel/util.animate.css" rel="stylesheet">
+    <script type="text/javascript" src="js/carousel/utilcarousel.source.js"></script>
+    <script type="text/javascript" src="js/carousel/utilcarousel.min.js"></script>
+
+    <!--Select-->
+    <script src="js/select/select2.min.js"></script>
+    <script src="js/select/i18n/tr.js"></script>
+    <link href="js/select/select2.css" rel="stylesheet">
+
+    <!--main-->
+    <script src="js/kutuphane/main.js"></script>
+</head>
+<body>
+    <section class="HeaderArea">
+        <div class="HeaderTop">
+            <div class="SetContent">
+                <div class="GamesTop">
+                    <ul>
+                        <li>Oyun Seçiniz :</li>
+                    </ul>
+                    <select id="konu" name="Oyunsec" class="GameSelected">
+                        <option value="CS2">CS2</option>
+                        <option value="Knight Online">Knight Online</option>
+                        <option value="Valorant VP">Valorant VP</option>
+                        <option value="PUBG UC">PUBG UC</option>
+                    </select>
+
+
+                </div>
+
+                <i class="fas fa-bars bars"></i>
+                <div class="MainMenu">
+                    <i class="fas fa-times MenuClose"></i>
+                    <div class="TopMenu">
+                        <ul>
+                            <li><a href="Kurumsal.html">KURUMSAL</a></li>
+                            <li><a href="Haberler.html">HABERLER</a></li>
+                            <li><a href="Kampanyalar.html">KAMPANYALAR</a></li>
+                            <li><a href="Donate.html">DESTEKLE</a></li>
+                            <li><a href="ilanEkle.html">SATIŞ YAP</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="Header">
+            <div class="Logo">
+                <a href="index.html">
+                    <img src="images/Logo.png">
+                </a>
+            </div>
+            <div class="Menu">
+                <ul>
+                    <li><a href="index.html">ANASAYFA</a></li>
+                    <li><a href="Market.html">MARKET</a></li>
+                    <li><a href="TakasListesi.html">TAKAS YAP</a><span class="Drky">Yeni</span></li>
+                </ul>
+            </div>
+            <div class="Search">
+                <input type="search" placeholder="Skin & Item Ara...">
+                <i class="fas fa-search"></i>
+                <div class="clear"></div>
+            </div>
+            <div class="Basket">
+                <a href="Sepet.html" title="Sepetim"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+            <div class="NotificationsMain">
+                <div class="BildirimNameMain" title="Bildirimler">
+                    <i class="fas fa-bell notificationsMain">
+                        <span class="figure">77</span>
+                    </i>
+                </div>
+                <div class="NavbarNotificationsMain">
+                    <ul>
+                        <li>
+                            <div class="BildirimYok">
+                                <i class="fa fa-bell"></i>Bildiriminiz bulunmamaktadır.
+                            </div>
+                        </li>
+                        <li><a href="Bildirimlerim.html">Tüm Bildirimleri Gör</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="Login">
+                <a class="GlobalButton" id="btn">GİRİŞ YAP / KAYIT OL</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </section>
+
+
+
+    <section class="MarketArea Pubg">
+        <div class="MarketHeader">
+            <div class="SetContent">
+                <div class="PageNavigation">
+                    <ul>
+                        <li><a href="index.html">Anasayfa</a></li>
+                        <li><i class="fas fa-angle-right"></i></li>
+                        <li><a href="PubgMarket.html">PUBG UC</a></li>
+                        <li><i class="fas fa-angle-right"></i></li>
+                        <li>Pubg Mobile 3350 UC</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="SkinDetailFilterArea">
+                <div class="SetContent">
+                    <div class="SkinsInfoLeft">
+                        <div class="SkinsInfoimage">
+                            <img src="images/Test/PubgUc.jpg">
+                        </div>
+                    </div>
+                    <div class="SkinsInfoRight">
+                        <div class="SkinTitle">
+                            <h1>Pubg Mobile 3350 UC</h1>
+                            <div class="favorite">
+                                <a href="#">Favorilere Ekle<i class="fa fa-star"></i></a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="explanation">
+                            <span>Sadece Türkiye Hesaplarında Geçerlidir.</span>
+                        </div>
+                        <div class="line"></div>
+                        <div class="referenceprice">
+                            &nbsp;
+                            <br>
+                            &nbsp;
+                        </div>
+                        <div class="SatislarEnRight">
+                            <div class="SatisYapBtn">
+                                <a href="javascript:;">SATIN AL</a>
+                            </div>
+                            <div class="SiparisOlustur">
+                                <a href="javascript:;">Satın Al</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+
+
+            <div class="SkinDetailProducts">
+                <div class="Products">
+                    <div id="container">
+                        <section class="tabs-content">
+                            <div class="itemAciklama">
+                                <h2>Pubg Mobile 3350 UC Hakkında</h2>
+                                <p>
+                                    PUBG Mobile 3350 Unknown cash satın al ve hemen PUBG Mobile hesabına yükle.
+                                </p>
+                                <p>
+                                    PUBG Mobile 3350 UC ile oyun içerisinde karakterinizi ve silahlarınızı dilediğiniz gibi özelleştirebilirsiniz.
+                                </p>
+                                <br>
+                                <h2>Pubg Mobile 3350 UC Nasıl Yüklenir?</h2>
+                                <p>
+                                    <a href="#">
+                                        <img src="images/Test/Pubg-adim-1.jpg">
+                                    </a>
+                                </p>
+                                <p>
+                                    <a href="#">
+                                        <img src="images/Test/Pubg-adim-2.jpg">
+                                    </a>
+                                </p>
+                                <p>
+                                    <a href="#">
+                                        <img src="images/Test/Pubg-adim-3.jpg">
+                                    </a>
+                                </p>
+                                <p>
+                                    <a href="#">
+                                        <img src="images/Test/Pubg-adim-4.jpg">
+                                    </a>
+                                </p>
+                                <p>
+                                    <a href="#">
+                                        <img src="images/Test/Pubg-adim-5.jpg">
+                                    </a>
+                                </p>
+                                <p>
+                                    <a href="#">
+                                        <img src="images/Test/Pubg-adim-6.jpg">
+                                    </a>
+                                </p>
+                                <div class="clear"></div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="FooterArea">
+        <div class="SetContent">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <img src="images/Logo.png">
+                    </a>
+                </li>
+                <li>
+                    <div class="FooterMenu">
+                        <h2>JERVIS GAME</h2>
+                        <ul>
+                            <li><a href="Kurumsal.html">Kurumsal</a></li>
+                            <li><a href="Haberler.html">Haberler</a></li>
+                            <li><a href="Sponsorluklar.html">Sponsorluklar</a></li>
+                            <li><a href="Blog.html">Blog</a></li>
+                            <li><a href="Logolar.html">Logolar</a></li>
+                            <li><a href="iletisim.html">İletişim</a></li>
+                        </ul>
+                    </div>
+                    <div class="FooterMenu">
+                        <h2>KULLANICI</h2>
+                        <ul>
+                            <li><a href="KullaniciBilgileri.html">Bilgilerim</a></li>
+                            <li><a href="MagazaAyarlari.html">Mağazam</a></li>
+                            <li><a href="Donate.html">Yayıncı Destekle</a></li>
+                            <li><a href="YayinciBasvuru.html">Yayıncı Başvurusu</a></li>
+                            <li><a href="KullaniciSozlesmesi.html">Kullanıcı Sözleşmesi</a></li>
+                            <li><a href="MagazaKurallari.html">Mağaza Kuralları</a></li>
+                        </ul>
+                    </div>
+                    <div class="FooterMenu">
+                        <h2>ÖDEME</h2>
+                        <ul>
+                            <li><a href="Odeme.html">Ödeme Seçenekleri</a></li>
+                            <li><a href="Odeme.html">Kredi Kartı</a></li>
+                            <li><a href="Odeme.html">Havale/EFT</a></li>
+                            <li><a href="Odeme.html">Ödeme Yap(tım)</a></li>
+                            <li><a href="Odeme.html">Mobil Ödeme</a></li>
+                            <li><a href="iptaliadekosullari.html">İade-İptal Koşulları</a></li>
+                        </ul>
+                    </div>
+                    <div class="FooterMenu">
+                        <h2>DESTEK</h2>
+                        <ul>
+                            <li><a href="Destek.html">Yardım & Destek</a></li>
+                            <li><a href="#">Canlı Destek</a></li>
+                            <li><a href="Destek.html">Destek Talepleri</a></li>
+                            <li><a href="DestekTalepOlustur.html">Öneri ve Şikayet</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+
+    </section>
+    <section class="Carts">
+        <div class="SetContent">
+            <ul>
+                <li>Jervis Game&reg; | Copyrights 2022. Tüm Hakları Saklıdır. Bir <a rel="nofollow" href="http://www.mymedya.com.tr" target="_blank">My Medya</a> markasıdır.</li>
+                <li>
+                    <img src="images/Carts.png">
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="FooterSocial">
+        <div class="SetContent">
+            <ul>
+                <li>
+                    <ul>
+                        <li><a href="#">Gizlilik Politikası</a></li>
+                        <li><a href="#">Üyelik ve Hizmet Alım Sözleşmesi</a></li>
+                        <li><a href="#">Aydınlatma Metni (Kişisel Verilerin Korunması)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="Social">
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitch"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                            <li><a href="#"><i class="fab fa-tiktok"></i></a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <div class="ScrollTop">
+    </div>
+    <div class="clear"></div>
+
+</body>
+</html>
