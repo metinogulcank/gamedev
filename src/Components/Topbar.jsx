@@ -20,7 +20,7 @@ const AuthModal = ({ open, onClose, setUser }) => {
       return;
     }
     try {
-      const res = await fetch('https://gamedev.mymedya.tr/api/register.php', {
+      const res = await fetch('https://elephunt.com/api/register.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ fullname, email, password }),
@@ -48,7 +48,7 @@ const AuthModal = ({ open, onClose, setUser }) => {
       return;
     }
     try {
-      const res = await fetch('https://gamedev.mymedya.tr/api/login.php', {
+      const res = await fetch('https://elephunt.com/api/login.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -182,6 +182,11 @@ const Topbar = () => {
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [unreadNotifications, setUnreadNotifications] = useState(0);
   const [recentNotifications, setRecentNotifications] = useState([]);
+  const releaseMatureProvisions = async () => {
+    try {
+      await fetch('https://elephunt.com/api/release_provision.php');
+    } catch (e) {}
+  };
 
   // Çıkış yap fonksiyonu
   const handleLogout = () => {
@@ -197,7 +202,7 @@ const Topbar = () => {
     const stored = localStorage.getItem("user");
     if (!stored) return;
     const { email } = JSON.parse(stored);
-    fetch("https://gamedev.mymedya.tr/api/get_user.php", {
+    fetch("https://elephunt.com/api/get_user.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),
@@ -225,7 +230,7 @@ const Topbar = () => {
   // Okunmamış bildirim sayısını getir
   const fetchUnreadNotifications = async (userId) => {
     try {
-      const response = await fetch(`https://gamedev.mymedya.tr/api/bildirimlerim.php?user_id=${userId}`);
+      const response = await fetch(`https://elephunt.com/api/bildirimlerim.php?user_id=${userId}`);
       const data = await response.json();
       if (data.success) {
         setUnreadNotifications(data.okunmamis);
@@ -238,7 +243,7 @@ const Topbar = () => {
   // Son bildirimleri getir
   const fetchRecentNotifications = async (userId) => {
     try {
-      const response = await fetch(`https://gamedev.mymedya.tr/api/bildirimlerim.php?user_id=${userId}`);
+      const response = await fetch(`https://elephunt.com/api/bildirimlerim.php?user_id=${userId}`);
       const data = await response.json();
       if (data.success) {
         // Sadece ilk 5 bildirimi göster
@@ -254,8 +259,12 @@ const Topbar = () => {
     
     // Bakiye bilgisini her 30 saniyede bir güncelle
     const interval = setInterval(updateUserInfo, 30000);
+    const provisionInterval = setInterval(releaseMatureProvisions, 10000);
     
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      clearInterval(provisionInterval);
+    };
   }, []);
 
   // Dropdown dışına tıklandığında kapat
@@ -457,6 +466,7 @@ const Topbar = () => {
                       </span>
                       <span className="NavAccMail">{user.email}</span>
                       <span className="NavAccBalance">Bakiye : {user.balance ? parseFloat(user.balance).toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '0,00'} TL</span>
+                      <span className="NavAccBalance">Provizyon : {user.provision_balance ? parseFloat(user.provision_balance).toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '0,00'} TL</span>
                     </h3>
                     <ul>
                       <li>

@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 // Veritabanı bağlantısı
 $host = 'localhost';
-$db   = 'gamedev_db';
+$db   = 'elep_gamedev';
 $user = 'root'; // Kendi kullanıcı adınızı yazın
 $pass = '';     // Kendi şifrenizi yazın
 $charset = 'utf8mb4';

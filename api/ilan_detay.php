@@ -42,9 +42,9 @@ set_exception_handler(function($e) {
 
 // Veritabanı bağlantı bilgileri
 $host = 'localhost';
-$db   = 'gamedev_db';
-$user = 'gamedev_User';
-$pass = 'gamedev_5815471';
+$db   = 'elep_gamedev';
+$user = 'elep_metinogulcank';
+$pass = '06ogulcan06';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -85,8 +85,19 @@ if (!$id) {
     exit;
 }
 
-// Belirli bir ilanı çek
-$stmt = $pdo->prepare('SELECT * FROM ilanlar WHERE id = ? LIMIT 1');
+// Belirli bir ilanı çek (aktif olmayanlar da görülebilir)
+$stmt = $pdo->prepare('SELECT i.*, 
+        u.store_name, 
+        u.store_logo, 
+        u.store_description,
+        u.store_url,
+        u.fullname as seller_username, 
+        u.fullname as username,
+        u.store_logo as seller_avatar,
+        u.trade_url as seller_trade_url
+        FROM ilanlar i 
+        LEFT JOIN `user` u ON i.user_id = u.id 
+        WHERE i.id = ? LIMIT 1');
 $stmt->execute([$id]);
 $ilan = $stmt->fetch();
 

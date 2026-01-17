@@ -19,9 +19,9 @@ file_put_contents('debug.txt', print_r([
 
 // Veritabanı bağlantı bilgileri
 $host = 'localhost';
-$db   = 'gamedev_db';
-$user = 'gamedev_User';
-$pass = 'gamedev_5815471';
+$db   = 'elep_gamedev';
+$user = 'elep_metinogulcank';
+$pass = '06ogulcan06';
 $charset = 'utf8mb4';
 
 // PDO ile bağlantı

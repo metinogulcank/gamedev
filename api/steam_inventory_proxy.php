@@ -33,8 +33,17 @@ set_exception_handler(function($e) {
     exit;
 });
 
-// steam/www/lib/steam.php dosyasını dahil et
-require_once __DIR__ . '/steam/www/lib/steam.php';
+$lib = __DIR__ . '/steam/www/lib/steam.php';
+if (!file_exists($lib)) {
+    $alt = dirname(__DIR__) . '/src/steam/www/lib/steam.php';
+    if (file_exists($alt)) {
+        $lib = $alt;
+    } else {
+        echo json_encode(['error' => 'steam library not found']);
+        exit;
+    }
+}
+require_once $lib;
 
 $steamid = $_GET['steamid'] ?? '';
 if (!$steamid) {
@@ -55,8 +64,49 @@ $count = $_GET['count'] ?? '5000';
 // 1. steam/www/lib/steam.php içindeki open_inventory fonksiyonu ile dene
 $inventory = open_inventory($steamid, 730, 2);
 if (!empty($inventory['success']) && !empty($inventory['items'])) {
-    echo json_encode($inventory);
-    exit;
+    if (isset($_GET['upsert']) && $_GET['upsert'] === '1') {
+        // DB'ye upsert
+        $host = 'localhost';
+        $db   = 'elep_gamedev';
+        $user = 'elep_metinogulcank';
+        $pass = '06ogulcan06';
+        $charset = 'utf8mb4';
+        $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+        $options = [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ];
+        $upserted = 0;
+        try {
+            $pdo = new PDO($dsn, $user, $pass, $options);
+            foreach ($inventory['items'] as $it) {
+                $name = $it['name'] ?? '';
+                $img = $it['image'] ?? '';
+                if (!$name) continue;
+                try {
+                    $stmt = $pdo->prepare("
+                        INSERT INTO skin_catalog (item_name, image, total_sales_count, first_seen_at, last_seen_at)
+                        VALUES (?, ?, 0, NOW(), NOW())
+                        ON DUPLICATE KEY UPDATE
+                            image = IF(VALUES(image) IS NOT NULL AND VALUES(image)!='', VALUES(image), image),
+                            last_seen_at = NOW(),
+                            first_seen_at = COALESCE(first_seen_at, VALUES(first_seen_at))
+                    ");
+                    $stmt->execute([$name, $img]);
+                    $upserted++;
+                } catch (\PDOException $e) {}
+            }
+        } catch (\PDOException $e) {
+            echo json_encode(['error' => 'catalog upsert db error', 'message' => $e->getMessage()]);
+            exit;
+        }
+        echo json_encode(['success' => true, 'upserted' => $upserted, 'items' => $inventory['items']]);
+        exit;
+    } else {
+        echo json_encode($inventory);
+        exit;
+    }
 }
 
 // 2. Eski yöntem: Herkese açık envanter endpoint'i
@@ -142,7 +192,7 @@ if ($json === null) {
 if (empty($json) || !isset($json['descriptions']) || empty($json['descriptions'])) {
     echo json_encode([
         'error' => 'Envanter boş',
-        'message' => 'Bu Steam hesabının CS2 envanterinde item bulunamadı',
+        'message' => 'Bu Steam hesabının CS2 envanteri boş olabilir veya envanter gizli olabilir',
         'steamid' => $steamid,
         'inventory_keys' => array_keys($json)
     ]);
@@ -150,6 +200,46 @@ if (empty($json) || !isset($json['descriptions']) || empty($json['descriptions']
 }
 
 // Başarılı yanıt
+if (isset($_GET['upsert']) && $_GET['upsert'] === '1') {
+    // descriptions üzerinden upsert
+    $host = 'localhost';
+    $db   = 'elep_gamedev';
+    $user = 'elep_metinogulcank';
+    $pass = '06ogulcan06';
+    $charset = 'utf8mb4';
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    $options = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES => false,
+    ];
+    $upserted = 0;
+    try {
+        $pdo = new PDO($dsn, $user, $pass, $options);
+        foreach ($json['descriptions'] as $d) {
+            $name = $d['name'] ?? '';
+            $icon = $d['icon_url'] ?? '';
+            if (!$name) continue;
+            try {
+                $stmt = $pdo->prepare("
+                    INSERT INTO skin_catalog (item_name, image, total_sales_count, first_seen_at, last_seen_at)
+                    VALUES (?, ?, 0, NOW(), NOW())
+                    ON DUPLICATE KEY UPDATE
+                        image = IF(VALUES(image) IS NOT NULL AND VALUES(image)!='', VALUES(image), image),
+                        last_seen_at = NOW(),
+                        first_seen_at = COALESCE(first_seen_at, VALUES(first_seen_at))
+                ");
+                $stmt->execute([$name, $icon]);
+                $upserted++;
+            } catch (\PDOException $e) {}
+        }
+    } catch (\PDOException $e) {
+        echo json_encode(['error' => 'catalog upsert db error', 'message' => $e->getMessage()]);
+        exit;
+    }
+    echo json_encode(['success' => true, 'upserted' => $upserted]);
+    exit;
+}
 echo $response; 
 
 // Yeni dosya: api/float_proxy.php

@@ -31,19 +31,19 @@
         document.getElementById('steamid64').textContent = steamId64;
         
         async function testInventory1() {
-            await testInventory(`https://gamedev.mymedya.tr/api/steam_inventory_proxy.php?steamid=${steamId64}`, 'CS2 Envanter (730/2)');
+            await testInventory(`https://elephunt.com/api/steam_inventory_proxy.php?steamid=${steamId64}`, 'CS2 Envanter (730/2)');
         }
         
         async function testInventory2() {
-            await testInventory(`https://gamedev.mymedya.tr/api/steam_inventory_proxy.php?steamid=${steamId64}&lang=turkish`, 'CS2 Envanter (Türkçe)');
+            await testInventory(`https://elephunt.com/api/steam_inventory_proxy.php?steamid=${steamId64}&lang=turkish`, 'CS2 Envanter (Türkçe)');
         }
         
         async function testInventory3() {
-            await testInventory(`https://gamedev.mymedya.tr/api/steam_inventory_proxy.php?steamid=${steamId64}&count=100`, 'CS2 Envanter (100 item)');
+            await testInventory(`https://elephunt.com/api/steam_inventory_proxy.php?steamid=${steamId64}&count=100`, 'CS2 Envanter (100 item)');
         }
         
         async function testProfile() {
-            await testInventory(`https://gamedev.mymedya.tr/api/steam_profile_proxy.php?steamid=${steamId64}`, 'Steam Profil');
+            await testInventory(`https://elephunt.com/api/steam_profile_proxy.php?steamid=${steamId64}`, 'Steam Profil');
         }
         
         async function testInventory(url, testName) {

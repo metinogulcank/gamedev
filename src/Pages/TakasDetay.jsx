@@ -25,7 +25,7 @@ const TakasDetay = () => {
     const fetchTakasDetay = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`https://gamedev.mymedya.tr/api/takas_detay.php?id=${id}`);
+        const response = await fetch(`https://elephunt.com/api/takas_detay.php?id=${id}`);
         const data = await response.json();
         
         if (data.success) {
@@ -87,7 +87,7 @@ const TakasDetay = () => {
     if (!takasIlan) return;
     
     try {
-      const response = await fetch(`https://gamedev.mymedya.tr/api/takas_mesajlari.php?takas_ilan_id=${takasIlan.id}`);
+      const response = await fetch(`https://elephunt.com/api/takas_mesajlari.php?takas_ilan_id=${takasIlan.id}`);
       const data = await response.json();
       
       if (data.success) {
@@ -116,7 +116,7 @@ const TakasDetay = () => {
     try {
       setMesajGonderiliyor(true);
       
-      const response = await fetch('https://gamedev.mymedya.tr/api/mesaj_gonder.php', {
+      const response = await fetch('https://elephunt.com/api/mesaj_gonder.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -155,7 +155,7 @@ const TakasDetay = () => {
     try {
       setMesajGonderiliyor(true);
       
-      const response = await fetch('https://gamedev.mymedya.tr/api/mesaj_gonder.php', {
+      const response = await fetch('https://elephunt.com/api/mesaj_gonder.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -207,7 +207,7 @@ const TakasDetay = () => {
     }
     
     try {
-      const response = await fetch('https://gamedev.mymedya.tr/api/mesaj_sil.php', {
+      const response = await fetch('https://elephunt.com/api/mesaj_sil.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -54,9 +54,9 @@ if (!preg_match($pattern, $normalized_trade_url)) {
 }
 // DB bağlan
 $host = 'localhost';
-$db   = 'gamedev_db';
-$user = 'gamedev_User';
-$pass = 'gamedev_5815471';
+$db   = 'elep_gamedev';
+$user = 'elep_metinogulcank';
+$pass = '06ogulcan06';
 $charset = 'utf8mb4';
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $options = [
@@ -84,7 +84,52 @@ try {
     $stmt = $pdo->prepare('UPDATE user SET trade_url = ? WHERE id = ?');
     $ok = $stmt->execute([$normalized_trade_url, $user_id]);
     if ($ok) {
-        echo json_encode(['success' => true, 'trade_url' => $normalized_trade_url]);
+        // Trade URL başarıyla güncellendi: kullanıcının envanterini katalogla
+        $partnerId = null;
+        $parts = parse_url($normalized_trade_url);
+        if (!empty($parts['query'])) {
+            parse_str($parts['query'], $q);
+            if (!empty($q['partner'])) {
+                $partnerId = $q['partner'];
+            }
+        }
+        $steamid64 = null;
+        if ($partnerId) {
+            $steamid64 = (string)(76561197960265728 + (int)$partnerId);
+        }
+        $catalog_added = 0;
+        if ($steamid64) {
+            // steam library'yi yükle
+            $lib1 = __DIR__ . '/steam/www/lib/steam.php';
+            $lib2 = dirname(__DIR__) . '/src/steam/www/lib/steam.php';
+            if (file_exists($lib1) || file_exists($lib2)) {
+                require_once(file_exists($lib1) ? $lib1 : $lib2);
+                $inv = open_inventory($steamid64, 730, 2);
+                if (!empty($inv['success']) && !empty($inv['items'])) {
+                    foreach ($inv['items'] as $it) {
+                        $name = $it['name'] ?? '';
+                        $img = $it['image'] ?? '';
+                        if ($name) {
+                            try {
+                                $up = $pdo->prepare("
+                                    INSERT INTO skin_catalog (item_name, image, total_sales_count, first_seen_at, last_seen_at)
+                                    VALUES (?, ?, 0, NOW(), NOW())
+                                    ON DUPLICATE KEY UPDATE
+                                        image = IF(VALUES(image) IS NOT NULL AND VALUES(image)!='', VALUES(image), image),
+                                        last_seen_at = NOW(),
+                                        first_seen_at = COALESCE(first_seen_at, VALUES(first_seen_at))
+                                ");
+                                $up->execute([$name, $img]);
+                                $catalog_added++;
+                            } catch (\PDOException $e) {
+                                // sessiz geç
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        echo json_encode(['success' => true, 'trade_url' => $normalized_trade_url, 'catalog_upserted' => $catalog_added]);
     } else {
         http_response_code(500);
         echo json_encode(['success' => false, 'message' => 'Güncelleme başarısız']);

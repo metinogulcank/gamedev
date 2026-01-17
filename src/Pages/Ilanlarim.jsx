@@ -20,7 +20,7 @@ const Ilanlarim = () => {
       setLoading(false);
       return;
     }
-    fetch('https://gamedev.mymedya.tr/api/ilanlarim.php', {
+    fetch('https://elephunt.com/api/ilanlarim.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ user_id: user.id })
@@ -78,7 +78,7 @@ const Ilanlarim = () => {
                               onClick={async () => {
                                 if (!window.confirm('Bu ilanı silmek istediğinize emin misiniz?')) return;
                                 try {
-                                  const res = await fetch('https://gamedev.mymedya.tr/api/ilan_sil.php', {
+                                  const res = await fetch('https://elephunt.com/api/ilan_sil.php', {
                                     method: 'POST',
                                     headers: { 'Content-Type': 'application/json' },
                                     body: JSON.stringify({ id: ilan.id })

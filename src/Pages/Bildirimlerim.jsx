@@ -26,7 +26,7 @@ const Bildirimlerim = () => {
     }
 
     // Yeni bildirimler API'sini kullan
-    fetch(`https://gamedev.mymedya.tr/api/bildirimlerim.php?user_id=${user.id}`, {
+    fetch(`https://elephunt.com/api/bildirimlerim.php?user_id=${user.id}`, {
       method: 'GET'
     })
       .then(res => res.json())
@@ -148,7 +148,7 @@ const Bildirimlerim = () => {
     try {
       console.log('Bildirim okundu işaretleniyor:', bildirimId);
       
-      const response = await fetch('https://gamedev.mymedya.tr/api/bildirim_okundu.php', {
+      const response = await fetch('https://elephunt.com/api/bildirim_okundu.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -185,7 +185,7 @@ const Bildirimlerim = () => {
     }
 
     try {
-      const response = await fetch('https://gamedev.mymedya.tr/api/bildirim_sil.php', {
+      const response = await fetch('https://elephunt.com/api/bildirim_sil.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -222,10 +222,10 @@ const Bildirimlerim = () => {
       let body = {};
 
       if (action === 'iptal') {
-        url = 'https://gamedev.mymedya.tr/api/karsi_teklif_iptal.php';
+        url = 'https://elephunt.com/api/karsi_teklif_iptal.php';
         body = { teklif_id: teklifId, user_id: user.id };
       } else {
-        url = 'https://gamedev.mymedya.tr/api/karsi_teklif_onay_red.php';
+        url = 'https://elephunt.com/api/karsi_teklif_onay_red.php';
         body = { teklif_id: teklifId, action: action, user_id: user.id };
       }
 

@@ -30,7 +30,7 @@ const Favorilerim = () => {
     
     console.log('Fetching favorites for user_id:', user.id);
     
-    fetch('https://gamedev.mymedya.tr/api/favorilerim.php', {
+    fetch('https://elephunt.com/api/favorilerim.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ user_id: user.id })
@@ -76,7 +76,7 @@ const Favorilerim = () => {
     }
     
     try {
-      const response = await fetch('https://gamedev.mymedya.tr/api/favori_ekle.php', {
+      const response = await fetch('https://elephunt.com/api/favori_ekle.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

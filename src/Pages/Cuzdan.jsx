@@ -21,7 +21,7 @@ const Cuzdan = () => {
         const stored = localStorage.getItem('user');
         if (stored) {
             const { email } = JSON.parse(stored);
-            fetch('https://gamedev.mymedya.tr/api/get_user.php', {
+            fetch('https://elephunt.com/api/get_user.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email }),
@@ -39,7 +39,7 @@ const Cuzdan = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch('https://gamedev.mymedya.tr/api/get_balance_transactions.php', {
+            fetch('https://elephunt.com/api/get_balance_transactions.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: user.email }),

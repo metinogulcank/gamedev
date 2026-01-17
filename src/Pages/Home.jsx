@@ -64,7 +64,7 @@ const AuthModal = ({ open, onClose, setUser }) => {
       return;
     }
     try {
-      const res = await fetch('http://gamedev.mymedya.tr/api/register.php', {
+      const res = await fetch('http://elephunt.com/api/register.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ fullname, email, password }),
@@ -92,7 +92,7 @@ const AuthModal = ({ open, onClose, setUser }) => {
       return;
     }
     try {
-      const res = await fetch('https://gamedev.mymedya.tr/api/login.php', {
+      const res = await fetch('https://elephunt.com/api/login.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -295,7 +295,7 @@ const Home = () => {
       console.error('Error loading scripts:', error);
     });
 
-    fetch('https://gamedev.mymedya.tr/api/tum_ilanlar.php')
+    fetch('https://elephunt.com/api/tum_ilanlar.php')
       .then(res => res.json())
       .then(data => {
         if (data.success) {

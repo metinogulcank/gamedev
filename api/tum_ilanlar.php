@@ -40,9 +40,9 @@ set_exception_handler(function($e) {
 });
 // Veritabanı bağlantı bilgileri
 $host = 'localhost';
-$db   = 'gamedev_db';
-$user = 'gamedev_User';
-$pass = 'gamedev_5815471';
+$db   = 'elep_gamedev';
+$user = 'elep_metinogulcank';
+$pass = '06ogulcan06';
 $charset = 'utf8mb4';
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $options = [
@@ -57,7 +57,32 @@ try {
     echo json_encode(['success' => false, 'message' => 'Veritabanı bağlantı hatası!']);
     exit;
 }
-// Tüm ilanları çek
-$stmt = $pdo->query('SELECT * FROM ilanlar ORDER BY created_at DESC');
+// Tüm aktif ilanları çek
+try {
+    $sql = "SELECT i.*, 
+            u.store_name, 
+            u.store_logo, 
+            u.fullname as seller_username, 
+            u.fullname as username,
+            u.store_logo as seller_avatar,
+            u.trade_url as seller_trade_url
+            FROM ilanlar i 
+            LEFT JOIN `user` u ON i.user_id = u.id 
+            WHERE i.status = 'active' 
+            ORDER BY i.created_at DESC";
+    $stmt = $pdo->query($sql);
+} catch (\PDOException $e) {
+    // status sütunu yoksa tüm ilanları döndür
+    $sql = "SELECT i.*, 
+            u.store_name, 
+            u.store_logo, 
+            u.fullname as seller_username, 
+            u.fullname as username,
+            u.store_logo as seller_avatar
+            FROM ilanlar i 
+            LEFT JOIN `user` u ON i.user_id = u.id 
+            ORDER BY i.created_at DESC";
+    $stmt = $pdo->query($sql);
+}
 $ilanlar = $stmt->fetchAll();
 echo json_encode(['success' => true, 'ilanlar' => $ilanlar]); 

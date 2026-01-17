@@ -2,15 +2,12 @@ import React, { useState, useEffect } from "react";
 
 const Sidebar = () => {
   const [user, setUser] = useState(null);
-  const [editMode, setEditMode] = useState(false);
-  const [fieldValues, setFieldValues] = useState({});
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem("user");
     if (!stored) return;
     const { email } = JSON.parse(stored);
-    fetch("https://gamedev.mymedya.tr/api/get_user.php", {
+    fetch("https://elephunt.com/api/get_user.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),
@@ -19,7 +16,6 @@ const Sidebar = () => {
       .then((data) => {
         if (data.success) {
           setUser(data.user);
-          setFieldValues(data.user);
         }
       });
   }, []);
@@ -53,6 +49,12 @@ const Sidebar = () => {
           <li>
             <a href="/siparislerim">
               <i className="fas fa-shopping-bag"></i>Siparişlerim
+            </a>
+          </li>
+          <li>
+            <a href="/siparis-olustur">
+              <i className="fas fa-file-signature"></i>Sipariş Oluştur
+              <span className="Profilenew">Yeni</span>
             </a>
           </li>
           <li>

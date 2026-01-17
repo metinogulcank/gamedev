@@ -13,11 +13,15 @@ import TakasEkle from './Pages/TakasEkle'
 import Takas from './Pages/Takas'
 import TakasDetay from './Pages/TakasDetay'
 import Bildirimlerim from './Pages/Bildirimlerim'
+import MagazaAyarlari from './Pages/MagazaAyarlari'
+import Satislarim from './Pages/Satislarim'
+import Siparislerim from './Pages/Siparislerim'
+import SiparisOlustur from './Pages/SiparisOlustur'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 
 function App() {
-  const [user, setUser] = useState(null)
+  const [user] = useState(null)
 
   return (
       <Routes>
@@ -35,6 +39,10 @@ function App() {
         <Route path="/takas" element={<Takas />} />
         <Route path="/takas-detay/:id" element={<TakasDetay />} />
         <Route path="/bildirimlerim" element={<Bildirimlerim />} />
+        <Route path="/magaza-ayarlari" element={<MagazaAyarlari />} />
+        <Route path="/satislarim" element={<Satislarim />} />
+        <Route path="/siparislerim" element={<Siparislerim />} />
+        <Route path="/siparis-olustur" element={<SiparisOlustur />} />
       </Routes>
   )
 }

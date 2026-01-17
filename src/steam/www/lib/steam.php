@@ -1,7 +1,27 @@
 <?php
 define('APIKEY','930D25DC502DF2F0106A37A5FB074591');
 
-function open_json($url,$assoc = false){return @json_decode(file_get_contents($url),$assoc);}  
+function open_json($url,$assoc = false){
+    if (stripos($url, 'http://') === 0 || stripos($url, 'https://') === 0) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)');
+        curl_setopt($ch, CURLOPT_ENCODING, "");
+        curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        if ($response === false || $response === '') return null;
+        return @json_decode($response,$assoc);
+    } else {
+        $content = @file_get_contents($url);
+        if ($content === false || $content === '') return null;
+        return @json_decode($content,$assoc);
+    }
+}  
 function save_json($data,$path){$tmp = json_encode($data);file_put_contents($path, $tmp, LOCK_EX);}
 
 function open_backpack($steamid,$onlyTradeable = true){

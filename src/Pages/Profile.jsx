@@ -24,7 +24,7 @@ const Profile = () => {
     const stored = localStorage.getItem('user');
     if (!stored) return;
     const { email } = JSON.parse(stored);
-    fetch('https://gamedev.mymedya.tr/api/get_user.php', {
+    fetch('https://elephunt.com/api/get_user.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email }),
@@ -61,7 +61,7 @@ const Profile = () => {
     let lastError = '';
     for (const field of editableFields) {
       if (user[field.key] !== fieldValues[field.key]) {
-        const res = await fetch('https://gamedev.mymedya.tr/api/update_user.php', {
+        const res = await fetch('https://elephunt.com/api/update_user.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, field: field.key, value: fieldValues[field.key] }),

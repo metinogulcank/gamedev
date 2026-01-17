@@ -33,9 +33,9 @@ header('Content-Type: application/json');
 
 // Veritabanı bağlantı bilgileri
 $host = 'localhost';
-$db   = 'gamedev_db';
-$user = 'gamedev_User';
-$pass = 'gamedev_5815471';
+$db   = 'elep_gamedev';
+$user = 'elep_metinogulcank';
+$pass = '06ogulcan06';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -69,6 +69,10 @@ $item_name = trim($data['item_name'] ?? '');
 $price     = floatval($data['price'] ?? 0);
 $image     = trim($data['image'] ?? '');
 $item_type = trim($data['item_type'] ?? '');
+// Opsiyonel: inspect ve asset bilgileri
+$inspect_link = trim($data['inspect_link'] ?? '');
+$assetid = trim($data['assetid'] ?? '');
+$owner_steamid = trim($data['owner_steamid'] ?? '');
 
 // Eğer item_type verilmemişse, item_name'den çıkar
 if (empty($item_type) && !empty($item_name)) {
@@ -88,23 +92,48 @@ if (!$user_id || !$item_name || !$price) {
     exit;
 }
 
-// İlanı ekle - item_type alanını da ekle
+$cols = [];
+$vals = [];
+$existingCols = [];
 try {
-    $stmt = $pdo->prepare('INSERT INTO ilanlar (user_id, item_name, price, image, item_type) VALUES (?, ?, ?, ?, ?)');
-    $success = $stmt->execute([$user_id, $item_name, $price, $image, $item_type]);
-} catch (\PDOException $e) {
-    // Eğer item_type kolonu yoksa, onu olmadan ekle
-    if (strpos($e->getMessage(), 'item_type') !== false) {
-        $stmt = $pdo->prepare('INSERT INTO ilanlar (user_id, item_name, price, image) VALUES (?, ?, ?, ?)');
-        $success = $stmt->execute([$user_id, $item_name, $price, $image]);
-    } else {
-        throw $e;
+    $columnStmt = $pdo->query('SHOW COLUMNS FROM ilanlar');
+    foreach ($columnStmt->fetchAll() as $c) {
+        $existingCols[] = $c['Field'];
     }
+} catch (\PDOException $e) {}
+if (in_array('user_id', $existingCols)) { $cols[] = 'user_id'; $vals[] = $user_id; }
+if (in_array('item_name', $existingCols)) { $cols[] = 'item_name'; $vals[] = $item_name; }
+if (in_array('price', $existingCols)) { $cols[] = 'price'; $vals[] = $price; }
+if (in_array('image', $existingCols)) { $cols[] = 'image'; $vals[] = $image; }
+if (in_array('item_type', $existingCols)) { $cols[] = 'item_type'; $vals[] = $item_type; }
+if ($inspect_link !== '' && in_array('inspect_link', $existingCols)) { $cols[] = 'inspect_link'; $vals[] = $inspect_link; }
+if ($assetid !== '' && in_array('assetid', $existingCols)) { $cols[] = 'assetid'; $vals[] = $assetid; }
+if ($owner_steamid !== '' && in_array('owner_steamid', $existingCols)) { $cols[] = 'owner_steamid'; $vals[] = $owner_steamid; }
+$success = false;
+if (!empty($cols)) {
+    $placeholders = implode(',', array_fill(0, count($cols), '?'));
+    $sql = 'INSERT INTO ilanlar (' . implode(',', $cols) . ') VALUES (' . $placeholders . ')';
+    $stmt = $pdo->prepare($sql);
+    $success = $stmt->execute($vals);
 }
 
 if ($success) {
+    // Katalog upsert: ilan eklenirken kataloğa ekle/güncelle
+    try {
+        $upsert = $pdo->prepare("
+            INSERT INTO skin_catalog (item_name, image, total_sales_count, last_sale_price, average_sale_price, first_seen_at, last_seen_at)
+            VALUES (?, ?, 0, NULL, NULL, NOW(), NOW())
+            ON DUPLICATE KEY UPDATE
+                image = IF(VALUES(image) IS NOT NULL AND VALUES(image)!='', VALUES(image), image),
+                last_seen_at = NOW(),
+                first_seen_at = COALESCE(first_seen_at, VALUES(first_seen_at))
+        ");
+        $upsert->execute([$item_name, $image]);
+    } catch (\PDOException $e) {
+        // skin_catalog yoksa sessiz geç
+    }
     echo json_encode(['success' => true, 'message' => 'İlan başarıyla eklendi!']);
 } else {
     http_response_code(500);
     echo json_encode(['success' => false, 'message' => 'İlan eklenirken hata oluştu.']);
-} 
+}

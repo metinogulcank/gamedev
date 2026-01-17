@@ -17,7 +17,7 @@ const Takas = () => {
     const fetchTakasIlanlari = async () => {
       try {
         setIlanlarLoading(true);
-        const response = await fetch('https://gamedev.mymedya.tr/api/tum_takas_ilanlari.php');
+        const response = await fetch('https://elephunt.com/api/tum_takas_ilanlari.php');
         const data = await response.json();
         
         if (data.success) {

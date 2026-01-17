@@ -31,7 +31,7 @@ const CekimTalep = () => {
     const stored = localStorage.getItem('user');
     if (stored) {
       const { email } = JSON.parse(stored);
-      fetch('https://gamedev.mymedya.tr/api/get_user.php', {
+      fetch('https://elephunt.com/api/get_user.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
@@ -174,7 +174,7 @@ const CekimTalep = () => {
                                        }
                                       
                                       try {
-                                        const response = await fetch('https://gamedev.mymedya.tr/api/withdraw_balance.php', {
+                                        const response = await fetch('https://elephunt.com/api/withdraw_balance.php', {
                                           method: 'POST',
                                           headers: { 'Content-Type': 'application/json' },
                                           body: JSON.stringify({
@@ -259,7 +259,7 @@ const CekimTalep = () => {
                                         return;
                                       }
                                       try {
-                                        const response = await fetch('https://gamedev.mymedya.tr/api/add_account.php', {
+                                        const response = await fetch('https://elephunt.com/api/add_account.php', {
                                           method: 'POST',
                                           headers: { 'Content-Type': 'application/json' },
                                           body: JSON.stringify({

@@ -32,7 +32,7 @@ function normalizeInspectLink(link, ownerSteamId, assetId) {
 
 // GÜNCELLENDİ: Proxy üzerinden fetch
 async function fetchSteamInventory(steamid64) {
-  const url = `https://gamedev.mymedya.tr/api/steam_inventory_proxy.php?steamid=${steamid64}`;
+  const url = `https://elephunt.com/api/steam_inventory_proxy.php?steamid=${steamid64}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error('Envanter alınamadı');
   return res.json();
@@ -182,7 +182,7 @@ const TakasEkle = () => {
     const stored = localStorage.getItem('user');
     if (!stored) return;
     const { email } = JSON.parse(stored);
-    fetch('https://gamedev.mymedya.tr/api/get_user.php', {
+    fetch('https://elephunt.com/api/get_user.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email }),
@@ -276,7 +276,7 @@ const TakasEkle = () => {
     setSubmitLoading(true);
 
     try {
-      const res = await fetch('https://gamedev.mymedya.tr/api/takas_ekle.php', {
+      const res = await fetch('https://elephunt.com/api/takas_ekle.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -11,9 +11,9 @@ header('Content-Type: application/json');
 
 // Veritabanı bağlantı bilgileri
 $host = 'localhost';
-$db   = 'gamedev_db';
-$user = 'gamedev_User';
-$pass = 'gamedev_5815471';
+$db   = 'elep_gamedev';
+$user = 'elep_metinogulcank';
+$pass = '06ogulcan06';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -52,8 +52,8 @@ if (!$email && !$userId) {
     exit;
 }
 
-// Seçilecek kolonlar (Profile.jsx alanları + trade_url)
-$columns = 'id, fullname, email, balance, phone, tc_no, birthdate, gender, sms_notifications, email_notifications, trade_url, created_at';
+// Seçilecek kolonlar (Profile.jsx alanları + trade_url + store alanları)
+$columns = 'id, fullname, email, balance, provision_balance, phone, tc_no, birthdate, gender, sms_notifications, email_notifications, trade_url, store_name, store_description, store_url, store_logo, created_at';
 
 if ($email) {
     $stmt = $pdo->prepare("SELECT $columns FROM user WHERE email = ? LIMIT 1");

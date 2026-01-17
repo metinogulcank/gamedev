@@ -14,10 +14,19 @@ function Market() {
   const [ilanlarError, setIlanlarError] = useState('');
   const [filterOpen, setFilterOpen] = useState(false);
   const [selectedWeapon, setSelectedWeapon] = useState(null);
+  const [catalogItems, setCatalogItems] = useState([]);
+  
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 20;
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedWeapon]);
 
   useEffect(() => {
     // Fetch market items from database
-    fetch('https://gamedev.mymedya.tr/api/tum_ilanlar.php')
+    fetch('https://elephunt.com/api/tum_ilanlar.php')
       .then(res => res.json())
       .then(data => {
         if (data.success) {
@@ -32,7 +41,14 @@ function Market() {
         setIlanlarLoading(false);
       });
 
-
+    fetch('https://elephunt.com/api/get_market_catalog.php')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          setCatalogItems(Array.isArray(data.items) ? data.items : []);
+        }
+      })
+      .catch(() => {});
   }, []);
 
   // Helper function to get wear condition class
@@ -65,47 +81,87 @@ function Market() {
     return parts[0].trim();
   };
 
-  // Group listings by weapon name
+  // Group listings by full item_name (skin bazında)
   const getWeaponsList = () => {
-    const weaponsMap = new Map();
+    const skinsMap = new Map();
     tumIlanlar.forEach(ilan => {
-      const weaponName = extractWeaponName(ilan.item_name);
-      if (weaponName) {
-        if (!weaponsMap.has(weaponName)) {
-          weaponsMap.set(weaponName, {
-            name: weaponName,
+      const key = ilan.item_name;
+      if (key) {
+        if (!skinsMap.has(key)) {
+          skinsMap.set(key, {
+            name: key,
             count: 0,
             image: ilan.image,
             totalPrice: 0,
             minPrice: parseFloat(ilan.price),
-            firstListingId: ilan.id // İlk ilan ID'sini sakla
+            firstListingId: ilan.id
           });
         }
-        const weapon = weaponsMap.get(weaponName);
-        weapon.count++;
+        const skin = skinsMap.get(key);
+        skin.count++;
         const price = parseFloat(ilan.price);
-        weapon.totalPrice += price;
-        if (price < weapon.minPrice) {
-          weapon.minPrice = price;
-          weapon.image = ilan.image;
+        skin.totalPrice += price;
+        if (!isNaN(price) && price < skin.minPrice) {
+          skin.minPrice = price;
+          skin.image = ilan.image;
         }
       }
     });
-    // Calculate average price for each weapon
-    const weaponsArray = Array.from(weaponsMap.values());
-    weaponsArray.forEach(weapon => {
-      weapon.averagePrice = weapon.count > 0 ? weapon.totalPrice / weapon.count : 0;
+    const skinsArray = Array.from(skinsMap.values());
+    skinsArray.forEach(skin => {
+      skin.averagePrice = skin.count > 0 ? skin.totalPrice / skin.count : 0;
     });
-    return weaponsArray.sort((a, b) => a.name.localeCompare(b.name));
+    return skinsArray.sort((a, b) => a.name.localeCompare(b.name));
   };
 
-  // Get listings for selected weapon
-  const getListingsForWeapon = (weaponName) => {
-    return tumIlanlar.filter(ilan => extractWeaponName(ilan.item_name) === weaponName);
+  // Get listings for selected skin (exact item_name)
+  const getListingsForWeapon = (itemName) => {
+    return tumIlanlar.filter(ilan => ilan.item_name === itemName);
   };
 
-  const weaponsList = getWeaponsList();
+  const getFirstListingIdByName = (name) => {
+    let bestId = null;
+    let bestPrice = Number.POSITIVE_INFINITY;
+    tumIlanlar.forEach(ilan => {
+      if (ilan.item_name === name) {
+        const p = parseFloat(ilan.price);
+        if (!isNaN(p) && p < bestPrice) {
+          bestPrice = p;
+          bestId = ilan.id;
+        }
+      }
+    });
+    if (bestId) return bestId;
+    // Fallback: isim bazında ilan yoksa silah adına göre eşleştir
+    const weaponKey = extractWeaponName(name);
+    tumIlanlar.forEach(ilan => {
+      const wn = extractWeaponName(ilan.item_name);
+      if (wn === weaponKey) {
+        const p = parseFloat(ilan.price);
+        if (!isNaN(p) && p < bestPrice) {
+          bestPrice = p;
+          bestId = ilan.id;
+        }
+      }
+    });
+    return bestId;
+  };
+  const weaponsList = (catalogItems.length > 0 ? catalogItems.map(c => {
+    const firstId = getFirstListingIdByName(c.name);
+    return {...c, firstListingId: firstId};
+  }) : getWeaponsList());
   const selectedWeaponListings = selectedWeapon ? getListingsForWeapon(selectedWeapon) : [];
+
+  const currentList = selectedWeapon ? selectedWeaponListings : weaponsList;
+  const totalItems = currentList.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  const paginate = (pageNumber) => {
+    if (pageNumber < 1 || pageNumber > totalPages) return;
+    setCurrentPage(pageNumber);
+  };
+
+  const currentItems = currentList.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
 
 
@@ -482,15 +538,17 @@ function Market() {
                 // Show weapons list
                 <>
                   {weaponsList.length === 0 && !ilanlarLoading && <li>Hiç silah bulunamadı.</li>}
-                  {weaponsList.map((weapon, index) => (
+                  {currentItems.map((weapon, index) => (
                     <li 
                       key={index} 
                       title={weapon.name}
                       style={{cursor: 'pointer'}}
                       onClick={() => {
-                        // Silaha tıklandığında ilk ilanın detay sayfasına git
-                        if (weapon.firstListingId) {
-                          navigate(`/skindetay/${weapon.firstListingId}`);
+                        const targetId = weapon.firstListingId || getFirstListingIdByName(weapon.name);
+                        if (targetId) {
+                          navigate(`/skindetay/${targetId}`);
+                        } else {
+                          navigate(`/skindetay/0?name=${encodeURIComponent(weapon.name)}`);
                         }
                       }}
                     >
@@ -506,8 +564,11 @@ function Market() {
                               e.preventDefault();
                               e.stopPropagation();
                               // Silaha tıklandığında ilk ilanın detay sayfasına git
-                              if (weapon.firstListingId) {
-                                navigate(`/skindetay/${weapon.firstListingId}`);
+                              const targetId = weapon.firstListingId || getFirstListingIdByName(weapon.name);
+                              if (targetId) {
+                                navigate(`/skindetay/${targetId}`);
+                              } else {
+                                navigate(`/skindetay/0?name=${encodeURIComponent(weapon.name)}`);
                               }
                             }}
                             title={weapon.name}
@@ -520,8 +581,20 @@ function Market() {
                           <h2>{weapon.name}</h2>
                           <p>
                             <span className="left">
-                              {weapon.averagePrice.toFixed(2)} ₺
-                            </span>
+                              {(() => {
+                                // Öncelik: aktif ilanlardan bu isim için min fiyat
+                                let minActive = Number.POSITIVE_INFINITY;
+                                tumIlanlar.forEach(ilan => {
+                                  if (ilan.item_name === weapon.name || extractWeaponName(ilan.item_name) === extractWeaponName(weapon.name)) {
+                                    const p = parseFloat(ilan.price);
+                                    if (!isNaN(p) && p < minActive) minActive = p;
+                                  }
+                                });
+                                if (isFinite(minActive)) return `${minActive.toFixed(2)} ₺`;
+                              // Eğer aktif ilan yoksa fiyat gösterme
+                              return null;
+                            })()}
+                          </span>
                             <span className="right">
                               {weapon.count} İlan
                             </span>
@@ -535,7 +608,7 @@ function Market() {
                 // Show listings for selected weapon
                 <>
                   {selectedWeaponListings.length === 0 && !ilanlarLoading && <li>Bu silah için ilan bulunamadı.</li>}
-                  {selectedWeaponListings.map(ilan => (
+                  {currentItems.map(ilan => (
                     <li key={ilan.id} title={ilan.item_name}>
                       <div className="ProductItem">
                         <div className="ProductPic">
@@ -566,16 +639,20 @@ function Market() {
               )}
             </ul>
           </div>
-          {!selectedWeapon && (
+          {totalItems >= 20 && (
             <div className="pagination">
-              <a href="#">&laquo;</a>
-              <a className="active" href="#">1</a>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">5</a>
-              <a href="#">6</a>
-              <a href="#">&raquo;</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); paginate(currentPage - 1); }}>&laquo;</a>
+              {Array.from({ length: totalPages }, (_, i) => (
+                <a 
+                  key={i} 
+                  href="#" 
+                  className={currentPage === i + 1 ? 'active' : ''}
+                  onClick={(e) => { e.preventDefault(); paginate(i + 1); }}
+                >
+                  {i + 1}
+                </a>
+              ))}
+              <a href="#" onClick={(e) => { e.preventDefault(); paginate(currentPage + 1); }}>&raquo;</a>
             </div>
           )}
         </div>

@@ -43,7 +43,7 @@ const Odeme = () => {
         }
         setLoading(true);
         try {
-            const res = await fetch('https://gamedev.mymedya.tr/api/add_balance.php', {
+            const res = await fetch('https://elephunt.com/api/add_balance.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: userEmail, amount, method: activeTab }),
@@ -52,7 +52,7 @@ const Odeme = () => {
             if (data.success) {
                 alert('Bakiye başarıyla eklendi!');
                 // Yeni bakiyeyi çek
-                const res2 = await fetch('https://gamedev.mymedya.tr/api/get_user.php', {
+                const res2 = await fetch('https://elephunt.com/api/get_user.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email: userEmail }),

@@ -13,9 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 try {
     // Database connection
     $host = 'localhost';
-    $dbname = 'gamedev_db';
-    $user = 'gamedev_User';
-    $pass = 'gamedev_5815471';
+    $dbname = 'elep_gamedev';
+    $user = 'elep_metinogulcank';
+    $pass = '06ogulcan06';
     
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -33,7 +33,7 @@ function normalizeInspectLink(link, ownerSteamId, assetId) {
 
 // GÜNCELLENDİ: Proxy üzerinden fetch
 async function fetchSteamInventory(steamid64) {
-  const url = `https://gamedev.mymedya.tr/api/steam_inventory_proxy.php?steamid=${steamid64}`;
+  const url = `https://elephunt.com/api/steam_inventory_proxy.php?steamid=${steamid64}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error('Envanter alınamadı');
   return res.json();
@@ -56,7 +56,7 @@ const IlanEkle = () => {
     const stored = localStorage.getItem('user');
     if (!stored) return;
     const { email } = JSON.parse(stored);
-    fetch('https://gamedev.mymedya.tr/api/get_user.php', {
+    fetch('https://elephunt.com/api/get_user.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email }),
@@ -93,6 +93,12 @@ const IlanEkle = () => {
         }
       setInventory(data);
         setShowInventory(true);
+        // Envanteri kataloğa upsert et
+        try {
+          const upsertRes = await fetch(`https://elephunt.com/api/steam_inventory_proxy.php?steamid=${steamid64}&upsert=1`);
+          const upsertData = await upsertRes.json();
+          try { console.log('Katalog upsert sonucu', upsertData); } catch(_) {}
+        } catch(_) {}
     } catch (e) {
         setError(`Envanter alınamadı: ${e.message}`);
         setShowInventory(false);
@@ -127,7 +133,7 @@ const IlanEkle = () => {
       } catch (_) {}
       setFloatLoading(true);
       // 1) CSInventoryAPI (server proxy) → 2) CSFloat → 3) csgofloat
-      fetch(`https://gamedev.mymedya.tr/api/float_proxy.php?csinv_inspect=1&url=${encodeURIComponent(normalizedInspect)}`)
+      fetch(`https://elephunt.com/api/float_proxy.php?csinv_inspect=1&url=${encodeURIComponent(normalizedInspect)}`)
         .then(res => res.json())
         .then(data => {
           // csinventory/inspect muhtemel yanıtları (csgofloat ile benzer)
@@ -136,7 +142,7 @@ const IlanEkle = () => {
             return;
           }
           // csfloat inspect muhtemel yanıtları
-          return fetch(`https://gamedev.mymedya.tr/api/float_proxy.php?csfloat_inspect=1&url=${encodeURIComponent(normalizedInspect)}`)
+          return fetch(`https://elephunt.com/api/float_proxy.php?csfloat_inspect=1&url=${encodeURIComponent(normalizedInspect)}`)
             .then(r => r.json())
             .then(d2 => {
               if (d2 && typeof d2.floatvalue === 'number') {
@@ -152,7 +158,7 @@ const IlanEkle = () => {
                 return;
               }
               // 3) csgofloat
-              return fetch(`https://gamedev.mymedya.tr/api/float_proxy.php?inspect_link=${encodeURIComponent(normalizedInspect)}`)
+              return fetch(`https://elephunt.com/api/float_proxy.php?inspect_link=${encodeURIComponent(normalizedInspect)}`)
                 .then(r2 => r2.json())
                 .then(d3 => {
                   if (d3 && d3.iteminfo && typeof d3.iteminfo.floatvalue === 'number') {
@@ -461,14 +467,17 @@ const IlanEkle = () => {
                                             return;
                                           }
                                           try {
-                                            const res = await fetch('https://gamedev.mymedya.tr/api/ilan_ekle.php', {
+                                            const res = await fetch('https://elephunt.com/api/ilan_ekle.php', {
                                               method: 'POST',
                                               headers: { 'Content-Type': 'application/json' },
                                               body: JSON.stringify({
                                                 user_id: user.id,
                                                 item_name: selectedItem.name,
                                                 price: itemPrice,
-                                                image: selectedItem.image // yeni eklendi
+                                                image: selectedItem.image,
+                                                inspect_link: selectedItem.inspect_link || '',
+                                                assetid: selectedItem.assetid || '',
+                                                owner_steamid: selectedItem.owner_steamid || ''
                                               })
                                             });
                                             const data = await res.json();

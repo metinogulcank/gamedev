@@ -12,9 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 try {
     // Database connection
     $host = 'localhost';
-    $dbname = 'gamedev_db';
-    $user = 'gamedev_User';
-    $pass = 'gamedev_5815471';
+    $dbname = 'elep_gamedev';
+    $user = 'elep_metinogulcank';
+    $pass = '06ogulcan06';
     
     error_log("Karsi teklif ekle - Database bağlantısı kuruluyor...");
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
@@ -58,13 +58,32 @@ try {
             throw new Exception('Kendi ilanınıza teklif veremezsiniz');
         }
         
-        // Fiyat kontrolü: ±%5
         $ilan_fiyati = floatval($ilan['price']);
-        $min_fiyat = $ilan_fiyati * 0.95; // %5 azalt
-        $max_fiyat = $ilan_fiyati * 1.05; // %5 artır
+        $min_fiyat = $ilan_fiyati * 0.90;
         
-        if ($teklif_fiyati < $min_fiyat || $teklif_fiyati > $max_fiyat) {
-            throw new Exception('Teklif fiyatı ilan fiyatının %5\'i kadar farklı olabilir. Minimum: ' . number_format($min_fiyat, 2, ',', '.') . ' ₺, Maximum: ' . number_format($max_fiyat, 2, ',', '.') . ' ₺');
+        try {
+            $pdo->exec("CREATE TABLE IF NOT EXISTS buy_orders (
+              id INT AUTO_INCREMENT PRIMARY KEY,
+              buyer_id INT NOT NULL,
+              item_name VARCHAR(255) NOT NULL,
+              price DECIMAL(10,2) NOT NULL,
+              status VARCHAR(16) NOT NULL DEFAULT 'active',
+              created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+              INDEX(buyer_id), INDEX(item_name), INDEX(status)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+            
+            $minStmt = $pdo->prepare("SELECT MIN(price) AS min_price FROM buy_orders WHERE item_name = ? AND status = ?");
+            $minStmt->execute([$ilan['item_name'], 'active']);
+            $minRow = $minStmt->fetch();
+            if ($minRow && isset($minRow['min_price']) && $minRow['min_price'] !== null && $minRow['min_price'] !== '') {
+                $min_fiyat = floatval($minRow['min_price']);
+            }
+        } catch (\PDOException $e) {
+            error_log("Karsi teklif ekle - Minimum sipariş fiyatı kontrol hatası: " . $e->getMessage());
+        }
+        
+        if ($teklif_fiyati < $min_fiyat) {
+            throw new Exception('Teklif fiyatı minimum tutarın altında olamaz. Minimum: ' . number_format($min_fiyat, 2, ',', '.') . ' ₺');
         }
         
         // Mevcut tablo yapısını kontrol et ve eksik kolonları ekle

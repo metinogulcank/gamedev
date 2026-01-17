@@ -146,10 +146,10 @@ function loginUser() {
     }
 
     console.log('=== API İSTEĞİ GÖNDERİLİYOR ===');
-    console.log('URL:', 'http://gamedev.mymedya.tr/api/login.php');
+    console.log('URL:', 'http://elephunt.com/api/login.php');
     console.log('Gönderilecek data:', { email, password });
 
-    fetch('http://gamedev.mymedya.tr/api/login.php', {
+    fetch('http://elephunt.com/api/login.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -204,7 +204,7 @@ function registerUser() {
 
     console.log('API isteği gönderiliyor...');
 
-    fetch('http://gamedev.mymedya.tr/api/register.php', {
+    fetch('http://elephunt.com/api/register.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
