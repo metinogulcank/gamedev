@@ -88,6 +88,11 @@ const Sidebar = () => {
             </a>
           </li>
           <li>
+            <a href="/yayinci-basvuru">
+              <i className="fas fa-broadcast-tower"></i>Yayıncı Başvurusu
+            </a>
+          </li>
+          <li>
                     <a href="/ilanlarim">
               <i className="fas fa-clipboard-list"></i>İlanlarım
             </a>

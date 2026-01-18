@@ -290,7 +290,7 @@ const Topbar = () => {
       <div className="SetContent">
         <div className="Logo">
           <a href="/">
-            <img src="/images/Logo.png" alt="Logo" />
+            <img src="/images/Logo.png" alt="Logo" width={200}/>
           </a>
         </div>
         <div className="ProfileMenu">

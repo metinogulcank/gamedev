@@ -754,6 +754,11 @@ function IlanDetay() {
                           <div className="ProductFloat" style={{ width: '18%', marginRight: 0 }}>
                             <p>{listing.description || 'Silah ilanı'}</p>
                             <span>Durum: {wearText}</span>
+                            {listing.wear && !isNaN(parseFloat(listing.wear)) && (
+                              <div style={{fontSize:'12px', color:'#ccc', marginTop:'2px'}}>
+                                Float: {parseFloat(listing.wear).toFixed(9)}
+                              </div>
+                            )}
                             {createdAtText && <span>İlan Tarihi: {createdAtText}</span>}
                           </div>
                           <div className="ProductSticker" style={{ width: '15%', marginRight: 0, padding: '10px 0' }}>

@@ -17,6 +17,9 @@ import MagazaAyarlari from './Pages/MagazaAyarlari'
 import Satislarim from './Pages/Satislarim'
 import Siparislerim from './Pages/Siparislerim'
 import SiparisOlustur from './Pages/SiparisOlustur'
+import YayinciBasvuru from './Pages/YayinciBasvuru'
+import YayinciBasvuru2 from './Pages/YayinciBasvuru2'
+import YayinciDestekle from './Pages/YayinciDestekle'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 
@@ -43,6 +46,9 @@ function App() {
         <Route path="/satislarim" element={<Satislarim />} />
         <Route path="/siparislerim" element={<Siparislerim />} />
         <Route path="/siparis-olustur" element={<SiparisOlustur />} />
+        <Route path="/yayinci-basvuru" element={<YayinciBasvuru />} />
+        <Route path="/yayinci-basvuru-2" element={<YayinciBasvuru2 />} />
+        <Route path="/destekle/:yayinci_id" element={<YayinciDestekle />} />
       </Routes>
   )
 }

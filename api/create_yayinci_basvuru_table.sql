@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS `yayinci_basvuru` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `yayin_linki` varchar(500) DEFAULT NULL,
+  `sayfa_basligi` varchar(255) DEFAULT NULL,
+  `destek_adresi` varchar(255) DEFAULT NULL,
+  `min_bagis_tutari` decimal(10,2) DEFAULT NULL,
+  `twitch_adresi` varchar(500) DEFAULT NULL,
+  `youtube_adresi` varchar(500) DEFAULT NULL,
+  `instagram_adresi` varchar(500) DEFAULT NULL,
+  `twitter_adresi` varchar(500) DEFAULT NULL,
+  `discord_adresi` varchar(500) DEFAULT NULL,
+  `tiktok_adresi` varchar(500) DEFAULT NULL,
+  `nimo_tv_adresi` varchar(500) DEFAULT NULL,
+  `dlive_adresi` varchar(500) DEFAULT NULL,
+  `durum` enum('beklemede','onaylandi','reddedildi') DEFAULT 'beklemede',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_user_id` (`user_id`),
+  KEY `idx_user_id` (`user_id`),
+  KEY `idx_durum` (`durum`),
+  KEY `idx_destek_adresi` (`destek_adresi`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+

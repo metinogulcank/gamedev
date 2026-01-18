@@ -4159,6 +4159,13 @@ a:hover,
 .ProductCategories > li a:hover {
   background: rgb(29, 32, 38);
 }
+.ProductCategories > li.active a {
+  background: rgb(29, 32, 38);
+  color: #e4ae39; /* Gold color to match price highlight or just white/theme color */
+}
+.ProductCategories > li.active a h2 {
+  color: #e4ae39;
+}
 .ProductCategories > li:hover .ProductsWeapons {
   display: flex;
 }

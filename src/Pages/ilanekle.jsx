@@ -132,45 +132,53 @@ const IlanEkle = () => {
         console.groupEnd();
       } catch (_) {}
       setFloatLoading(true);
-      // 1) CSInventoryAPI (server proxy) → 2) CSFloat → 3) csgofloat
-      fetch(`https://elephunt.com/api/float_proxy.php?csinv_inspect=1&url=${encodeURIComponent(normalizedInspect)}`)
-        .then(res => res.json())
-        .then(data => {
-          // csinventory/inspect muhtemel yanıtları (csgofloat ile benzer)
-          if (data && data.iteminfo && typeof data.iteminfo.floatvalue === 'number') {
-            setFloatValue(data.iteminfo.floatvalue);
-            return;
-          }
-          // csfloat inspect muhtemel yanıtları
-          return fetch(`https://elephunt.com/api/float_proxy.php?csfloat_inspect=1&url=${encodeURIComponent(normalizedInspect)}`)
-            .then(r => r.json())
-            .then(d2 => {
-              if (d2 && typeof d2.floatvalue === 'number') {
-                setFloatValue(d2.floatvalue);
-                return;
-              }
-              if (d2 && d2.item && typeof d2.item.wear === 'number') {
-                setFloatValue(d2.item.wear);
-                return;
-              }
-              if (d2 && d2.iteminfo && typeof d2.iteminfo.floatvalue === 'number') {
-                setFloatValue(d2.iteminfo.floatvalue);
-                return;
-              }
-              // 3) csgofloat
-              return fetch(`https://elephunt.com/api/float_proxy.php?inspect_link=${encodeURIComponent(normalizedInspect)}`)
-                .then(r2 => r2.json())
-                .then(d3 => {
-                  if (d3 && d3.iteminfo && typeof d3.iteminfo.floatvalue === 'number') {
-                    setFloatValue(d3.iteminfo.floatvalue);
-                  } else {
-                    setFloatError('Float değeri alınamadı');
-                  }
+      
+      // Yöntem 1: Halka açık CORS Proxy (Client-side IP kullanır, sunucu limitine takılmaz)
+      // Yöntem 2: Kendi sunucumuzdaki Proxy (Yedek)
+
+      const tryPublicCorsProxy = () => {
+        // corsproxy.io kullanarak api.csgofloat.com'a git
+        const targetUrl = `https://api.csgofloat.com/?url=${encodeURIComponent(normalizedInspect)}`;
+        const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(targetUrl)}`;
+        
+        return fetch(proxyUrl)
+          .then(res => {
+             if (!res.ok) throw new Error('Public CORS proxy failed');
+             return res.json();
+          })
+          .then(data => {
+             if (data && data.iteminfo && typeof data.iteminfo.floatvalue === 'number') {
+                 setFloatValue(data.iteminfo.floatvalue);
+                 return true; // Başarılı
+             }
+             throw new Error('No float data from public proxy');
+          });
+      };
+
+      tryPublicCorsProxy()
+        .catch(() => {
+             // Eğer public proxy başarısız olursa kendi sunucumuzu dene
+             console.log("Public proxy failed, trying local proxy...");
+             return fetch(`https://elephunt.com/api/float_proxy.php?url=${encodeURIComponent(normalizedInspect)}`)
+                .then(res => {
+                    if (!res.ok) throw new Error('Local proxy failed');
+                    return res.json();
+                })
+                .then(data => {
+                    if (data && data.iteminfo && typeof data.iteminfo.floatvalue === 'number') {
+                        setFloatValue(data.iteminfo.floatvalue);
+                    } else {
+                        throw new Error('No float value in response');
+                    }
                 });
-            });
         })
-        .catch(() => setFloatError('Float değeri alınamadı'))
+        .catch(err => {
+            console.error('All float fetch methods failed:', err);
+            // Detaylı hata mesajı göster
+            setFloatError('Float alınamadı (API Yoğunluğu/Limit)');
+        })
         .finally(() => setFloatLoading(false));
+
     } else {
       setFloatLoading(false);
     }
@@ -477,7 +485,8 @@ const IlanEkle = () => {
                                                 image: selectedItem.image,
                                                 inspect_link: selectedItem.inspect_link || '',
                                                 assetid: selectedItem.assetid || '',
-                                                owner_steamid: selectedItem.owner_steamid || ''
+                                                owner_steamid: selectedItem.owner_steamid || '',
+                                                wear: floatValue // Float değerini gönder
                                               })
                                             });
                                             const data = await res.json();

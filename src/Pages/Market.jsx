@@ -16,6 +16,12 @@ function Market() {
   const [selectedWeapon, setSelectedWeapon] = useState(null);
   const [catalogItems, setCatalogItems] = useState([]);
   
+  // Filters
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [filterRarity, setFilterRarity] = useState('All');
+  const [filterExterior, setFilterExterior] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
+  
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
@@ -81,10 +87,39 @@ function Market() {
     return parts[0].trim();
   };
 
+  // Helper to categorize weapons
+  const getWeaponCategory = (weaponName) => {
+    if (!weaponName) return 'Others';
+    const name = weaponName.toLowerCase();
+    if (name.includes('knife') || name.includes('bayonet') || name.includes('karambit') || name.includes('daggers')) return 'Knives';
+    if (name.includes('glove') || name.includes('wraps')) return 'Gloves';
+    if (name.includes('usp') || name.includes('glock') || name.includes('p250') || name.includes('five-seven') || name.includes('desert eagle') || name.includes('deagle') || name.includes('revolver') || name.includes('cz75') || name.includes('dual berettas') || name.includes('p2000') || name.includes('tec-9')) return 'Pistols';
+    if (name.includes('ak-47') || name.includes('m4a') || name.includes('awp') || name.includes('famas') || name.includes('galil') || name.includes('sg 553') || name.includes('aug') || name.includes('g3sg1') || name.includes('scar-20') || name.includes('ssg 08')) return 'Rifles';
+    if (name.includes('mp9') || name.includes('mac-10') || name.includes('mp7') || name.includes('mp5') || name.includes('ump-45') || name.includes('p90') || name.includes('bizon')) return 'SMGs';
+    if (name.includes('nova') || name.includes('xm1014') || name.includes('mag-7') || name.includes('sawed-off')) return 'Shotguns';
+    if (name.includes('negev') || name.includes('m249')) return 'Machineguns';
+    if (name.includes('sticker')) return 'Stickers';
+    if (name.includes('agent')) return 'Agent';
+    return 'Others';
+  };
+
   // Group listings by full item_name (skin bazında)
   const getWeaponsList = () => {
     const skinsMap = new Map();
     tumIlanlar.forEach(ilan => {
+      // Apply Filters
+      if (searchQuery && !ilan.item_name.toLowerCase().includes(searchQuery.toLowerCase())) return;
+      if (selectedCategory !== 'All' && getWeaponCategory(ilan.item_name) !== selectedCategory) return;
+      // Note: Rarity and Exterior are usually item specific properties. 
+      // For grouped view, we might filter if *any* listing matches, or just filter the listings inside the group.
+      // Here we will filter the listings that contribute to the group.
+      
+      const wearText = getWearText(ilan.wear);
+      if (filterExterior !== 'All' && wearText !== filterExterior) return;
+      
+      // Rarity check (requires rarity data which might be missing in simple ilan object, skipping for now or assuming it matches)
+      // If we had rarity in ilan object: if (filterRarity !== 'All' && ilan.rarity !== filterRarity) return;
+
       const key = ilan.item_name;
       if (key) {
         if (!skinsMap.has(key)) {
@@ -116,7 +151,14 @@ function Market() {
 
   // Get listings for selected skin (exact item_name)
   const getListingsForWeapon = (itemName) => {
-    return tumIlanlar.filter(ilan => ilan.item_name === itemName);
+    return tumIlanlar.filter(ilan => {
+      if (ilan.item_name !== itemName) return false;
+      
+      const wearText = getWearText(ilan.wear);
+      if (filterExterior !== 'All' && wearText !== filterExterior) return false;
+      
+      return true;
+    });
   };
 
   const getFirstListingIdByName = (name) => {
@@ -146,10 +188,45 @@ function Market() {
     });
     return bestId;
   };
-  const weaponsList = (catalogItems.length > 0 ? catalogItems.map(c => {
-    const firstId = getFirstListingIdByName(c.name);
-    return {...c, firstListingId: firstId};
-  }) : getWeaponsList());
+  const weaponsList = (() => {
+    if (catalogItems.length > 0) {
+      // Pre-calculate counts and availability
+      const counts = {};
+      const availableWithExterior = new Set();
+      
+      tumIlanlar.forEach(ilan => {
+        const name = ilan.item_name;
+        counts[name] = (counts[name] || 0) + 1;
+        
+        if (filterExterior !== 'All') {
+            if (getWearText(ilan.wear) === filterExterior) {
+                availableWithExterior.add(name);
+            }
+        }
+      });
+
+      return catalogItems.filter(item => {
+        // Search
+        if (searchQuery && !item.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
+        
+        // Category
+        if (selectedCategory !== 'All' && getWeaponCategory(item.name) !== selectedCategory) return false;
+        
+        // Exterior
+        if (filterExterior !== 'All') {
+           if (!availableWithExterior.has(item.name)) return false;
+        }
+        
+        return true;
+      }).map(c => {
+        const count = counts[c.name] || 0;
+        const firstId = getFirstListingIdByName(c.name);
+        return {...c, firstListingId: firstId, count: count};
+      });
+    } else {
+      return getWeaponsList();
+    }
+  })();
   const selectedWeaponListings = selectedWeapon ? getListingsForWeapon(selectedWeapon) : [];
 
   const currentList = selectedWeapon ? selectedWeaponListings : weaponsList;
@@ -199,309 +276,168 @@ function Market() {
               ></i>
             </div>
             <ul className="ProductCategories">
-              <li>
-                <a href="#">
+              <li onClick={() => setSelectedCategory('Knives')} className={selectedCategory === 'Knives' ? 'active' : ''}>
+                <a href="#" onClick={(e) => e.preventDefault()}>
                   <i className="iconCsgo iconCsgo_knife"></i>
                   <h2>Knives</h2>
                 </a>
-                <ul className="ProductsWeapons">
-                  <li><a href="/skinlist">Bowie Knife </a></li>
-                  <li><a href="/skinlist">Butterfly Knife </a></li>
-                  <li><a href="/skinlist">Falchion Knife </a></li>
-                  <li><a href="/skinlist">Flip Knife </a></li>
-                  <li><a href="/skinlist">Gut Knife </a></li>
-                  <li><a href="/skinlist">Huntsman Knife </a></li>
-                  <li><a href="/skinlist">M9 Bayonet </a></li>
-                  <li><a href="/skinlist">Bayonet </a></li>
-                  <li><a href="/skinlist">Karambit </a></li>
-                  <li><a href="/skinlist">Shadow Daggers </a></li>
-                  <li><a href="/skinlist">Stiletto Knife </a></li>
-                  <li><a href="/skinlist">Ursus Knife </a></li>
-                  <li><a href="/skinlist">Navaja Knife </a></li>
-                  <li><a href="/skinlist">Talon Knife </a></li>
-                  <li><a href="/skinlist">Classic Knife </a></li>
-                  <li><a href="/skinlist">Paracord Knife </a></li>
-                  <li><a href="/skinlist">Survival Knife </a></li>
-                  <li><a href="/skinlist">Nomad Knife </a></li>
-                  <li><a href="/skinlist">Skeleton Knife </a></li>
-                </ul>
               </li>
 
-              <li>
-                <a href="#">
+              <li onClick={() => setSelectedCategory('Pistols')} className={selectedCategory === 'Pistols' ? 'active' : ''}>
+                <a href="#" onClick={(e) => e.preventDefault()}>
                   <i className="iconCsgo iconCsgo_pistol"></i>
                   <h2>Pistols</h2>
                 </a>
-                <ul className="ProductsWeapons">
-                  <li><a href="#">P2000 </a></li>
-                  <li><a href="#">USP-S </a></li>
-                  <li><a href="#">Glock-18 </a></li>
-                  <li><a href="#">P250 </a></li>
-                  <li><a href="#">FN57 </a></li>
-                  <li><a href="#">CZ75-Auto </a></li>
-                  <li><a href="#">Tec-9 </a></li>
-                  <li><a href="#">R8 Revolver </a></li>
-                  <li><a href="#">Desert Eagle </a></li>
-                  <li><a href="#">Dual Berettas </a></li>
-                </ul>
               </li>
 
-              <li>
-                <a href="#">
+              <li onClick={() => setSelectedCategory('Rifles')} className={selectedCategory === 'Rifles' ? 'active' : ''}>
+                <a href="#" onClick={(e) => e.preventDefault()}>
                   <i className="iconCsgo iconCsgo_rifle"></i>
                   <h2>Rifles</h2>
                 </a>
-                <ul className="ProductsWeapons">
-                  <li><a href="#">Galil AR </a></li>
-                  <li><a href="#">SCAR-20 </a></li>
-                  <li><a href="#">AWP </a></li>
-                  <li><a href="#">AK-47 </a></li>
-                  <li><a href="#">FAMAS </a></li>
-                  <li><a href="#">M4A4 </a></li>
-                  <li><a href="#">M4A1-S </a></li>
-                  <li><a href="#">SG 553 </a></li>
-                  <li><a href="#">SSG 08 </a></li>
-                  <li><a href="#">AUG </a></li>
-                  <li><a href="#">G3SG1 </a></li>
-                </ul>
               </li>
 
-              <li>
-                <a href="#">
+              <li onClick={() => setSelectedCategory('SMGs')} className={selectedCategory === 'SMGs' ? 'active' : ''}>
+                <a href="#" onClick={(e) => e.preventDefault()}>
                   <i className="iconCsgo iconCsgo_smg"></i>
                   <h2>SMGs</h2>
                 </a>
-                <ul className="ProductsWeapons">
-                  <li><a href="#">P90 </a></li>
-                  <li><a href="#">MAC-10 </a></li>
-                  <li><a href="#">UMP-45 </a></li>
-                  <li><a href="#">MP7 </a></li>
-                  <li><a href="#">PP-Bizon </a></li>
-                  <li><a href="#">MP9 </a></li>
-                  <li><a href="#">MP5-SD </a></li>
-                </ul>
               </li>
 
-              <li>
-                <a href="#">
+              <li onClick={() => setSelectedCategory('Shotguns')} className={selectedCategory === 'Shotguns' ? 'active' : ''}>
+                <a href="#" onClick={(e) => e.preventDefault()}>
                   <i className="iconCsgo iconCsgo_shotgun"></i>
                   <h2>Shotguns</h2>
                 </a>
-                <ul className="ProductsWeapons">
-                  <li><a href="#">Sawed off </a></li>
-                  <li><a href="#">XM1014 </a></li>
-                  <li><a href="#">Nova </a></li>
-                  <li><a href="#">MAG-7 </a></li>
-                </ul>
               </li>
 
-              <li>
-                <a href="#">
+              <li onClick={() => setSelectedCategory('Machineguns')} className={selectedCategory === 'Machineguns' ? 'active' : ''}>
+                <a href="#" onClick={(e) => e.preventDefault()}>
                   <i className="iconCsgo iconCsgo_machinegun"></i>
                   <h2>Machineguns</h2>
                 </a>
-                <ul className="ProductsWeapons">
-                  <li><a href="#">M249 </a></li>
-                  <li><a href="#">Negev </a></li>
-                </ul>
               </li>
 
-              <li>
-                <a href="#">
+              <li onClick={() => setSelectedCategory('Gloves')} className={selectedCategory === 'Gloves' ? 'active' : ''}>
+                <a href="#" onClick={(e) => e.preventDefault()}>
                   <i className="iconCsgo iconCsgo_hands"></i>
                   <h2>Gloves</h2>
                 </a>
-                <ul className="ProductsWeapons">
-                  <li><a href="#">Bloodhound Gloves </a></li>
-                  <li><a href="#">Driver Gloves </a></li>
-                  <li><a href="#">Hand Wraps </a></li>
-                  <li><a href="#">Moto Gloves </a></li>
-                  <li><a href="#">Specialist Gloves </a></li>
-                  <li><a href="#">Sport Gloves </a></li>
-                  <li><a href="#">Hydra Gloves </a></li>
-                  <li><a href="#">Broken Fang Glove </a></li>
-                </ul>
               </li>
 
-              <li>
-                <a href="#">
+              <li onClick={() => setSelectedCategory('Stickers')} className={selectedCategory === 'Stickers' ? 'active' : ''}>
+                <a href="#" onClick={(e) => e.preventDefault()}>
                   <i className="iconCsgo iconCsgo_sticker"></i>
                   <h2>Stickers</h2>
                 </a>
-                <ul className="ProductsWeapons">
-                  <li><a href="#">Antwerp 2022 </a></li>
-                  <li><a href="#">Boardroom </a></li>
-                  <li><a href="#">Battlefield 2042 </a></li>
-                  <li><a href="#">Stockholm 2021 </a></li>
-                  <li><a href="#">Riptide Surf Shop </a></li>
-                  <li><a href="#">Operation Riptide </a></li>
-                  <li><a href="#">2021 Community </a></li>
-                  <li><a href="#">Poorly Drawn </a></li>
-                  <li><a href="#">2020RMR </a></li>
-                  <li><a href="#">Broken Fang </a></li>
-                  <li><a href="#">Recoil </a></li>
-                  <li><a href="#">Warhammer 40K </a></li>
-                  <li><a href="#">HL:Alyx </a></li>
-                  <li><a href="#">Halo </a></li>
-                  <li><a href="#">Shattered Web </a></li>
-                  <li><a href="#">CS20 </a></li>
-                  <li><a href="#">Berlin 2019 </a></li>
-                  <li><a href="#">Chicken </a></li>
-                  <li><a href="#">Feral Predators </a></li>
-                  <li><a href="#">Katowice 2019 </a></li>
-                  <li><a href="#">Skill Group </a></li>
-                  <li><a href="#">London 2018 </a></li>
-                  <li><a href="#">Boston 2018 </a></li>
-                  <li><a href="#">Krakow 2017 </a></li>
-                  <li><a href="#">Atlanta 2017 </a></li>
-                  <li><a href="#">Cologne 2016 </a></li>
-                  <li><a href="#">Columbus 2016 </a></li>
-                  <li><a href="#">DreamHack 2015 </a></li>
-                  <li><a href="#">Cologne 2015 </a></li>
-                  <li><a href="#">Katowice 2015 </a></li>
-                  <li><a href="#">DreamHack 2014 </a></li>
-                  <li><a href="#">Cologne 2014 </a></li>
-                  <li><a href="#">Katowice 2014 </a></li>
-                  <li><a href="#">Community 2018 </a></li>
-                  <li><a href="#">Sticker 1 </a></li>
-                  <li><a href="#">Sticker 2 </a></li>
-                  <li><a href="#">Enfu Sticker </a></li>
-                  <li><a href="#">Perfect World 1 </a></li>
-                  <li><a href="#">Perfect World 2 </a></li>
-                  <li><a href="#">Community 1 </a></li>
-                  <li><a href="#">Bestiary </a></li>
-                  <li><a href="#">Slid3 </a></li>
-                  <li><a href="#">Sugarface </a></li>
-                  <li><a href="#">Pinups </a></li>
-                  <li><a href="#">Team Roles </a></li>
-                  <li><a href="#">Other Stickers </a></li>
-                </ul>
               </li>
 
-              <li>
-                <a href="#">
+              <li onClick={() => setSelectedCategory('Agent')} className={selectedCategory === 'Agent' ? 'active' : ''}>
+                <a href="#" onClick={(e) => e.preventDefault()}>
                   <i className="iconCsgo iconCsgo_customplayer"></i>
                   <h2>Agent</h2>
                 </a>
-                <ul className="ProductsWeapons">
-                  <li><a href="#">CT </a></li>
-                  <li><a href="#">T </a></li>
-                </ul>
               </li>
 
-              <li>
-                <a href="#">
+              <li onClick={() => setSelectedCategory('Others')} className={selectedCategory === 'Others' ? 'active' : ''}>
+                <a href="#" onClick={(e) => e.preventDefault()}>
                   <i className="iconCsgo iconCsgo_other"></i>
                   <h2>Others</h2>
                 </a>
-                <ul className="ProductsWeapons">
-                  <li><a href="#">Tools </a></li>
-                  <li><a href="#">Spray </a></li>
-                  <li><a href="#">Collectibles </a></li>
-                  <li><a href="#">Passes </a></li>
-                  <li><a href="#">Gifts </a></li>
-                  <li><a href="#">Music Kits </a></li>
-                  <li><a href="#">Weapon Cases </a></li>
-                  <li><a href="#">Keys </a></li>
-                  <li><a href="#">Patch </a></li>
-                </ul>
               </li>
             </ul>
 
-            <ul className="FilterCombos">
-              <li>
-                <select className="Select">
-                  <optgroup label="Quality">
-                    <option className="exterior_wearcategory0">All</option>
-                    <option className="exterior_wearcategory1">Contraband</option>
-                    <option className="exterior_wearcategory2">Covert</option>
-                    <option className="exterior_wearcategory3">Classified</option>
-                    <option className="exterior_wearcategory4">Restricted</option>
-                    <option className="quality_normal">Mil-Spec Grade</option>
-                    <option className="quality_tournament">Industrial Grade</option>
-                    <option className="quality_strange">Consumer Grade</option>
-                    <option className="quality_unusual">Extraordinary</option>
-                    <option className="quality_unusual_strange">Remarkable</option>
-                    <option className="rarity_ancient_weapon">Exotic</option>
-                    <option className="rarity_rare_weapon">High Grade</option>
-                    <option className="rarity_mythical_weapon">Base Grade</option>
-                    <option className="rarity_legendary_weapon">Agent Quality</option>
-                  </optgroup>
-                </select>
-              </li>
+            <div className="FilterCombos" style={{
+              display: 'flex', 
+              gap: '15px', 
+              padding: '20px', 
+              background: 'rgba(0,0,0,0.2)', 
+              borderRadius: '8px',
+              flexWrap: 'wrap',
+              alignItems: 'center'
+            }}>
+              {/* Search */}
+              <div style={{flex: '1 1 200px'}}>
+                <div className="Search" style={{margin: 0, width: '100%', maxWidth: '100%', boxShadow: 'none', background: '#23252b'}}>
+                  <input 
+                    type="text" 
+                    placeholder="Silah Ara..." 
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    style={{border: '1px solid #333'}}
+                  />
+                  <i className="fas fa-search" style={{right: '15px'}}></i>
+                </div>
+              </div>
 
-              <li>
-                <select className="Select">
-                  <optgroup label="Category">
-                    <option className="exterior_wearcategory0">All</option>
-                    <option className="exterior_wearcategory1">Normal</option>
-                    <option className="exterior_wearcategory2">Souvenir</option>
-                    <option className="exterior_wearcategory3">StatTrak™</option>
-                    <option className="exterior_wearcategory4">★</option>
-                    <option className="quality_normal">★ StatTrak™</option>
-                  </optgroup>
+              {/* Exterior Filter */}
+              <div style={{flex: '0 0 auto'}}>
+                <select 
+                  className="Select" 
+                  value={filterExterior}
+                  onChange={(e) => setFilterExterior(e.target.value)}
+                  style={{
+                    background: '#23252b',
+                    color: '#fff',
+                    border: '1px solid #333',
+                    padding: '0 15px',
+                    height: '40px',
+                    borderRadius: '5px',
+                    cursor: 'pointer',
+                    minWidth: '150px'
+                  }}
+                >
+                  <option value="All">Dış Görünüş (Tümü)</option>
+                  <option value="Factory New">Factory New</option>
+                  <option value="Minimal Wear">Minimal Wear</option>
+                  <option value="Field-Tested">Field-Tested</option>
+                  <option value="Well-Worn">Well-Worn</option>
+                  <option value="Battle-Scarred">Battle-Scarred</option>
                 </select>
-              </li>
+              </div>
 
-              <li>
-                <select className="Select">
-                  <optgroup label="Exterior">
-                    <option className="exterior_wearcategory0">All</option>
-                    <option className="exterior_wearcategory1">Factory New</option>
-                    <option className="exterior_wearcategory2">Minimal Wear</option>
-                    <option className="exterior_wearcategory3">Field-Tested</option>
-                    <option className="exterior_wearcategory4">Well-Worn</option>
-                    <option className="quality_normal">Battle-Scarred</option>
-                  </optgroup>
+              {/* Rarity Filter - Placeholder for now since we don't have rarity data yet */}
+              {/* 
+              <div style={{flex: '0 0 auto'}}>
+                <select 
+                  className="Select"
+                  value={filterRarity}
+                  onChange={(e) => setFilterRarity(e.target.value)}
+                  style={{...}}
+                >
+                  <option value="All">Kalite (Tümü)</option>
+                  <option value="Covert">Covert (Red)</option>
+                  <option value="Classified">Classified (Pink)</option>
+                  <option value="Restricted">Restricted (Purple)</option>
+                  <option value="Mil-Spec">Mil-Spec (Blue)</option>
+                  <option value="Industrial">Industrial (Light Blue)</option>
+                  <option value="Consumer">Consumer (White)</option>
                 </select>
-              </li>
-
-              <li>
-                <select className="Select">
-                  <optgroup label="Popular">
-                    <option className="exterior_wearcategory0">All</option>
-                    <option className="exterior_wearcategory1">Knives</option>
-                    <option className="exterior_wearcategory2">Weapons</option>
-                  </optgroup>
-                </select>
-              </li>
-
-              <li>
-                <select className="Select">
-                  <optgroup label="Color">
-                    <option className="exterior_wearcategory0">All</option>
-                    <option className="exterior_wearcategory1">Red</option>
-                    <option className="exterior_wearcategory2">Blue</option>
-                    <option className="exterior_wearcategory3">Green</option>
-                    <option className="exterior_wearcategory4">Yellow</option>
-                    <option className="quality_normal">Black</option>
-                    <option className="quality_tournament">White</option>
-                    <option className="quality_strange">Purple</option>
-                    <option className="quality_unusual">Camouflage</option>
-                    <option className="quality_unusual_strange">Beast</option>
-                  </optgroup>
-                </select>
-              </li>
-
-              <li>
-                <select className="Select">
-                  <optgroup label="Collections">
-                    <option className="exterior_wearcategory0">All</option>
-                    <option className="exterior_wearcategory1">Weapon Cases</option>
-                    <option className="exterior_wearcategory2">Map Collections</option>
-                  </optgroup>
-                </select>
-              </li>
-
-              <li>
-                <select className="Select">
-                  <optgroup label="Stickers">
-                    <option className="exterior_wearcategory0">All</option>
-                    <option className="exterior_wearcategory1">Customize</option>
-                  </optgroup>
-                </select>
-              </li>
-            </ul>
+              </div> 
+              */}
+              
+              <div style={{flex: '0 0 auto'}}>
+                 <button 
+                   onClick={() => {
+                     setSelectedCategory('All');
+                     setFilterExterior('All');
+                     setSearchQuery('');
+                   }}
+                   style={{
+                     background: '#e74c3c',
+                     color: '#fff',
+                     border: 'none',
+                     padding: '0 20px',
+                     height: '40px',
+                     borderRadius: '5px',
+                     cursor: 'pointer',
+                     fontWeight: '600'
+                   }}
+                 >
+                   Filtreleri Temizle
+                 </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -538,11 +474,23 @@ function Market() {
                 // Show weapons list
                 <>
                   {weaponsList.length === 0 && !ilanlarLoading && <li>Hiç silah bulunamadı.</li>}
-                  {currentItems.map((weapon, index) => (
+                  {currentItems.map((weapon, index) => {
+                    // Fiyat hesaplama mantığı
+                    let priceDisplay = null;
+                    let minActive = Number.POSITIVE_INFINITY;
+                    tumIlanlar.forEach(ilan => {
+                      if (ilan.item_name === weapon.name || extractWeaponName(ilan.item_name) === extractWeaponName(weapon.name)) {
+                        const p = parseFloat(ilan.price);
+                        if (!isNaN(p) && p < minActive) minActive = p;
+                      }
+                    });
+                    if (isFinite(minActive)) priceDisplay = `${minActive.toFixed(2)} ₺`;
+
+                    return (
                     <li 
                       key={index} 
                       title={weapon.name}
-                      style={{cursor: 'pointer'}}
+                      style={{cursor: 'pointer', margin: '5px'}}
                       onClick={() => {
                         const targetId = weapon.firstListingId || getFirstListingIdByName(weapon.name);
                         if (targetId) {
@@ -552,57 +500,84 @@ function Market() {
                         }
                       }}
                     >
-                      <div className="ProductItem">
-                        <div className="ProductPic">
+                      <div className="ProductItem" style={{
+                          width: '280px',
+                          height: '90px',
+                          display: 'flex',
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          padding: '10px',
+                          background: '#23252b',
+                          borderRadius: '5px',
+                          margin: '0',
+                          position: 'relative'
+                      }}>
+                        <div className="ProductPic" style={{
+                            width: '80px',
+                            height: '70px',
+                            position: 'static',
+                            background: 'transparent',
+                            boxShadow: 'none',
+                            padding: '0',
+                            marginRight: '15px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0
+                        }}>
                           <img 
                             src={`https://steamcommunity-a.akamaihd.net/economy/image/${weapon.image}`}
                             alt={weapon.name}
-                          />
-                          <a 
-                            className="ProductButton" 
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              // Silaha tıklandığında ilk ilanın detay sayfasına git
-                              const targetId = weapon.firstListingId || getFirstListingIdByName(weapon.name);
-                              if (targetId) {
-                                navigate(`/skindetay/${targetId}`);
-                              } else {
-                                navigate(`/skindetay/0?name=${encodeURIComponent(weapon.name)}`);
-                              }
+                            style={{
+                                maxWidth: '100%',
+                                maxHeight: '100%',
+                                width: 'auto',
+                                height: 'auto',
+                                margin: '0',
+                                display: 'block'
                             }}
-                            title={weapon.name}
-                            style={{cursor: 'pointer'}}
-                          >
-                            İncele <i className="fas fa-arrow-right"></i>
-                          </a>
+                          />
                         </div>
-                        <div className="ProductDesc">
-                          <h2>{weapon.name}</h2>
-                          <p>
-                            <span className="left">
-                              {(() => {
-                                // Öncelik: aktif ilanlardan bu isim için min fiyat
-                                let minActive = Number.POSITIVE_INFINITY;
-                                tumIlanlar.forEach(ilan => {
-                                  if (ilan.item_name === weapon.name || extractWeaponName(ilan.item_name) === extractWeaponName(weapon.name)) {
-                                    const p = parseFloat(ilan.price);
-                                    if (!isNaN(p) && p < minActive) minActive = p;
-                                  }
-                                });
-                                if (isFinite(minActive)) return `${minActive.toFixed(2)} ₺`;
-                              // Eğer aktif ilan yoksa fiyat gösterme
-                              return null;
-                            })()}
-                          </span>
-                            <span className="right">
-                              {weapon.count} İlan
-                            </span>
+                        <div className="ProductDesc" style={{
+                            position: 'static',
+                            width: 'calc(100% - 95px)',
+                            height: 'auto',
+                            padding: 0
+                        }}>
+                          <h2 style={{
+                              fontSize: '15px',
+                              marginBottom: '5px',
+                              whiteSpace: 'nowrap',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                              textAlign: 'left',
+                              width: '100%'
+                          }}>{weapon.name}</h2>
+                          <p style={{
+                              textAlign: 'left',
+                              fontSize: '13px',
+                              color: '#aaa',
+                              display: 'flex',
+                              alignItems: 'center',
+                              margin: 0
+                          }}>
+                             {priceDisplay && (
+                               <>
+                                 <span style={{color: '#e4ae39', fontWeight: '600', marginRight: '5px'}}>
+                                   {priceDisplay}
+                                 </span>
+                                 <span style={{marginRight: '5px'}}> - </span>
+                               </>
+                             )}
+                             <span>
+                               {weapon.count} İlan
+                             </span>
                           </p>
                         </div>
                       </div>
                     </li>
-                  ))}
+                  );
+                  })}
                 </>
               ) : (
                 // Show listings for selected weapon
