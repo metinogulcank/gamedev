@@ -450,28 +450,123 @@ const Home = () => {
               {ilanlarLoading && <div>Yükleniyor...</div>}
               {ilanlarError && <div style={{color:'red'}}>{ilanlarError}</div>}
               <ul>
-                {tumIlanlar.length === 0 && !ilanlarLoading && <li>Hiç ilan yok.</li>}
-                {tumIlanlar.map(ilan => (
-                  <li key={ilan.id} title={ilan.item_name}>
-                  <div className="ProductItem">
-                    <div className="ProductPic">
-                        {/* Varsa float veya condition etiketi eklenebilir */}
+                {(() => {
+                  const skinsMap = new Map();
+                  tumIlanlar.forEach(ilan => {
+                    const key = ilan.item_name;
+                    if (!key) return;
+                    
+                    if (!skinsMap.has(key)) {
+                      skinsMap.set(key, {
+                        name: key,
+                        image: ilan.image,
+                        minPrice: parseFloat(ilan.price),
+                        firstListingId: ilan.id,
+                        created_at: ilan.created_at
+                      });
+                    }
+                    
+                    const skin = skinsMap.get(key);
+                    const price = parseFloat(ilan.price);
+                    
+                    if (!isNaN(price) && price < skin.minPrice) {
+                      skin.minPrice = price;
+                      skin.image = ilan.image;
+                      // Keep the ID of the cheapest item if you want, or just the first one. 
+                      // Market usually shows "Starts from X price".
+                      // If we want to navigate to a specific item, usually the cheapest is best for "Buy".
+                      skin.firstListingId = ilan.id;
+                      skin.created_at = ilan.created_at;
+                    }
+                  });
+
+                  const uniqueSkins = Array.from(skinsMap.values());
+                  // Sort by name or date? Market sorts by name.
+                  uniqueSkins.sort((a, b) => a.name.localeCompare(b.name));
+                  
+                  // Limit to 24 items max, but do NOT duplicate
+                  const displayItems = uniqueSkins.slice(0, 24);
+
+                  if (displayItems.length === 0 && !ilanlarLoading) {
+                    return <li>Hiç ilan yok.</li>;
+                  }
+
+                  return displayItems.map((skin, index) => (
+                    <li 
+                      key={`${skin.firstListingId}-${index}`} 
+                      title={skin.name}
+                      onClick={() => navigate(`/skindetay/${skin.firstListingId}`)}
+                      style={{cursor: 'pointer'}}
+                    >
+                  <div className="ProductItem" style={{
+                      width: '100%',
+                      height: '90px',
+                      display: 'flex',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      padding: '10px',
+                      background: '#23252b',
+                      borderRadius: '5px',
+                      margin: '0',
+                      position: 'relative'
+                  }}>
+                    <div className="ProductPic" style={{
+                        width: '80px',
+                        height: '70px',
+                        position: 'static',
+                        background: 'transparent',
+                        boxShadow: 'none',
+                        padding: '0',
+                        marginRight: '15px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0
+                    }}>
                         <img
-                          src={`https://steamcommunity-a.akamaihd.net/economy/image/${ilan.image}`}
-                          alt={ilan.item_name}
+                          src={`https://steamcommunity-a.akamaihd.net/economy/image/${skin.image}`}
+                          alt={skin.name}
+                          style={{
+                              maxWidth: '100%',
+                              maxHeight: '100%',
+                              width: 'auto',
+                              height: 'auto',
+                              margin: '0',
+                              display: 'block'
+                          }}
                         />
-                        <a className="ProductButton" href="#" title={ilan.item_name}>İncele <i className="fas fa-arrow-right"></i></a>
                     </div>
-                    <div className="ProductDesc">
-                        <h2>{ilan.item_name}</h2>
-                      <p>
-                          <span className="left">{parseFloat(ilan.price).toFixed(2)} ₺</span>
-                          {ilan.created_at && <span className="right">{new Date(ilan.created_at).toLocaleString()}</span>}
+                    <div className="ProductDesc" style={{
+                        position: 'static',
+                        width: 'calc(100% - 95px)',
+                        height: 'auto',
+                        padding: 0
+                    }}>
+                        <h2 style={{
+                            fontSize: '15px',
+                            marginBottom: '5px',
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            textAlign: 'left',
+                            width: '100%'
+                        }}>{skin.name}</h2>
+                      <p style={{
+                          textAlign: 'left',
+                          fontSize: '13px',
+                          color: '#aaa',
+                          display: 'flex',
+                          alignItems: 'center',
+                          margin: 0
+                      }}>
+                          <span style={{color: '#e4ae39', fontWeight: '600', marginRight: '5px'}}>{skin.minPrice.toFixed(2)} ₺</span>
+                          {skin.created_at && <span className="right" style={{marginLeft: 'auto', fontSize: '10px'}}>{new Date(skin.created_at).toLocaleDateString()}</span>}
                       </p>
                     </div>
                   </div>
                 </li>
-                ))}
+                  ));
+                })()}
               </ul>
             </div>
           </div>

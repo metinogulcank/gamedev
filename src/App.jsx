@@ -20,6 +20,7 @@ import SiparisOlustur from './Pages/SiparisOlustur'
 import YayinciBasvuru from './Pages/YayinciBasvuru'
 import YayinciBasvuru2 from './Pages/YayinciBasvuru2'
 import YayinciDestekle from './Pages/YayinciDestekle'
+import Sepet from './Pages/Sepet'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 
@@ -49,6 +50,7 @@ function App() {
         <Route path="/yayinci-basvuru" element={<YayinciBasvuru />} />
         <Route path="/yayinci-basvuru-2" element={<YayinciBasvuru2 />} />
         <Route path="/destekle/:yayinci_id" element={<YayinciDestekle />} />
+        <Route path="/sepet" element={<Sepet />} />
       </Routes>
   )
 }

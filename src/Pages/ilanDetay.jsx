@@ -782,41 +782,44 @@ function IlanDetay() {
                           <div style={{ width: '22%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
                             <div className="ProductBuy" style={{ width: 'auto', float: 'none', padding: 0, height: 'auto' }}>
                               <button
-                                onClick={async () => {
+                                onClick={() => {
                                   const stored = localStorage.getItem('user');
-                                  if (!stored) { alert('Satın almak için giriş yapın.'); return; }
+                                  if (!stored) { alert('Sepete eklemek için giriş yapın.'); return; }
                                   const u = JSON.parse(stored);
-                                  if (u.id === listing.user_id) { alert('Kendi ilanınızı satın alamazsınız.'); return; }
+                                  if (u.id === listing.user_id) { alert('Kendi ilanınızı sepete ekleyemezsiniz.'); return; }
+
+                                  let cart = [];
                                   try {
-                                    const res = await fetch('https://elephunt.com/api/purchase.php', {
-                                      method: 'POST',
-                                      headers: { 'Content-Type': 'application/json' },
-                                      body: JSON.stringify({ buyer_id: u.id, ilan_id: listing.id })
-                                    });
-                                    const data = await res.json();
-                                    if (data.success) {
-                                      alert('Satın alma başarılı. Satıcıya provizyon olarak eklendi.');
-                                      setTimeout(async () => {
-                                        try {
-                                          await fetch('https://elephunt.com/api/release_provision.php', {
-                                            method: 'POST',
-                                            headers: { 'Content-Type': 'application/json' },
-                                            body: JSON.stringify({ order_id: data.order_id })
-                                          });
-                                        } catch (e) {}
-                                      }, 15000);
-                                      setWeaponListings(prev => prev.filter(i => i.id !== listing.id));
-                                    } else {
-                                      alert(data.message || 'Satın alma başarısız.');
-                                    }
-                                  } catch (err) {
-                                    alert('Sunucu hatası.');
+                                    cart = JSON.parse(localStorage.getItem('cart') || '[]');
+                                  } catch (e) {
+                                    cart = [];
                                   }
+
+                                  if (cart.find(item => item.id === listing.id)) {
+                                    alert('Bu ürün zaten sepetinizde.');
+                                    return;
+                                  }
+
+                                  cart.push(listing);
+                                  localStorage.setItem('cart', JSON.stringify(cart));
+                                  alert('Ürün sepete eklendi.');
+                                  
+                                  // Attempt to save to DB (Hypothetical)
+                                  if (u.id) {
+                                      fetch('https://elephunt.com/api/add_to_cart.php', {
+                                          method: 'POST',
+                                          headers: { 'Content-Type': 'application/json' },
+                                          body: JSON.stringify({ user_id: u.id, listing_id: listing.id })
+                                      }).catch(e => console.log('DB Cart update failed', e));
+                                  }
+
+                                  // Dispatch event for other components to listen
+                                  window.dispatchEvent(new Event('cartUpdated'));
                                 }}
                                 className="BtnSepeteEkle"
                                 style={{ width: '100px', textAlign: 'center', fontSize: '12px' }}
                               >
-                                SATIN AL
+                                SEPETE EKLE
                               </button>
                             </div>
                             <div className="ProductFavorite" style={{ width: 'auto' }}>

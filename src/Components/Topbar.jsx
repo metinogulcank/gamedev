@@ -321,8 +321,46 @@ const Topbar = () => {
           <ul>
             <li>
             <div className="Basket">
-          <a href="/Sepet.html" title="Sepetim">
+          <a href="/sepet" title="Sepetim" style={{position: 'relative'}}>
             <i className="fas fa-shopping-cart"></i>
+            {(() => {
+              const [count, setCount] = React.useState(0);
+              React.useEffect(() => {
+                const updateCount = () => {
+                  try {
+                    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+                    setCount(cart.length);
+                  } catch(e) { setCount(0); }
+                };
+                updateCount();
+                window.addEventListener('cartUpdated', updateCount);
+                window.addEventListener('storage', updateCount);
+                return () => {
+                  window.removeEventListener('cartUpdated', updateCount);
+                  window.removeEventListener('storage', updateCount);
+                };
+              }, []);
+              
+              if (count === 0) return null;
+              
+              return (
+                <span style={{
+                  position: 'absolute',
+                  top: '-8px',
+                  right: '-8px',
+                  backgroundColor: '#e74c3c',
+                  color: '#fff',
+                  borderRadius: '50%',
+                  width: '16px',
+                  height: '16px',
+                  fontSize: '10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: 'bold'
+                }}>{count}</span>
+              );
+            })()}
           </a>
         </div>
             </li>
