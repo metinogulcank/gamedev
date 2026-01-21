@@ -75,41 +75,52 @@ $assetid = trim($data['assetid'] ?? '');
 $owner_steamid = trim($data['owner_steamid'] ?? '');
 
 // Eğer item_type verilmemişse, item_name'den çıkar
-if (empty($item_type) && !empty($item_name)) {
-    // CS2 item formatı: "AK-47 | Redline" -> "AK-47"
-    $parts = explode('|', $item_name);
-    $item_type = trim($parts[0]);
+    if (empty($item_type) && !empty($item_name)) {
+        // CS2 item formatı: "AK-47 | Redline" -> "AK-47"
+        $parts = explode('|', $item_name);
+        $item_type = trim($parts[0]);
+        
+        // Eğer hala boşsa, varsayılan değer
+        if (empty($item_type)) {
+            $item_type = 'Weapon';
+        }
+    }
+
+    if (!$user_id || !$item_name || !$price) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Lütfen tüm alanları doldurun.']);
+        exit;
+    }
+
+    $cols = [];
+    $vals = [];
+    $existingCols = [];
+    try {
+        $columnStmt = $pdo->query('SHOW COLUMNS FROM ilanlar');
+        foreach ($columnStmt->fetchAll() as $c) {
+            $existingCols[] = $c['Field'];
+        }
+    } catch (\PDOException $e) {}
+    if (in_array('user_id', $existingCols)) { $cols[] = 'user_id'; $vals[] = $user_id; }
+    if (in_array('item_name', $existingCols)) { $cols[] = 'item_name'; $vals[] = $item_name; }
+    if (in_array('price', $existingCols)) { $cols[] = 'price'; $vals[] = $price; }
+    if (in_array('image', $existingCols)) { $cols[] = 'image'; $vals[] = $image; }
+    if (in_array('item_type', $existingCols)) { $cols[] = 'item_type'; $vals[] = $item_type; }
+    if ($inspect_link !== '' && in_array('inspect_link', $existingCols)) { $cols[] = 'inspect_link'; $vals[] = $inspect_link; }
+    if ($assetid !== '' && in_array('assetid', $existingCols)) { $cols[] = 'assetid'; $vals[] = $assetid; }
+    if ($owner_steamid !== '' && in_array('owner_steamid', $existingCols)) { $cols[] = 'owner_steamid'; $vals[] = $owner_steamid; }
+
+    // Random float değerini kaydet (wear veya float_value sütunlarına)
+    // Eğer istemciden 'wear' geldiyse onu kullan, yoksa rastgele oluştur
+    $wear_val = isset($data['wear']) ? floatval($data['wear']) : null;
+    if ($wear_val === null) {
+        $wear_val = mt_rand() / mt_getrandmax();
+    }
     
-    // Eğer hala boşsa, varsayılan değer
-    if (empty($item_type)) {
-        $item_type = 'Weapon';
-    }
-}
-
-if (!$user_id || !$item_name || !$price) {
-    http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Lütfen tüm alanları doldurun.']);
-    exit;
-}
-
-$cols = [];
-$vals = [];
-$existingCols = [];
-try {
-    $columnStmt = $pdo->query('SHOW COLUMNS FROM ilanlar');
-    foreach ($columnStmt->fetchAll() as $c) {
-        $existingCols[] = $c['Field'];
-    }
-} catch (\PDOException $e) {}
-if (in_array('user_id', $existingCols)) { $cols[] = 'user_id'; $vals[] = $user_id; }
-if (in_array('item_name', $existingCols)) { $cols[] = 'item_name'; $vals[] = $item_name; }
-if (in_array('price', $existingCols)) { $cols[] = 'price'; $vals[] = $price; }
-if (in_array('image', $existingCols)) { $cols[] = 'image'; $vals[] = $image; }
-if (in_array('item_type', $existingCols)) { $cols[] = 'item_type'; $vals[] = $item_type; }
-if ($inspect_link !== '' && in_array('inspect_link', $existingCols)) { $cols[] = 'inspect_link'; $vals[] = $inspect_link; }
-if ($assetid !== '' && in_array('assetid', $existingCols)) { $cols[] = 'assetid'; $vals[] = $assetid; }
-if ($owner_steamid !== '' && in_array('owner_steamid', $existingCols)) { $cols[] = 'owner_steamid'; $vals[] = $owner_steamid; }
-$success = false;
+    if (in_array('wear', $existingCols)) { $cols[] = 'wear'; $vals[] = $wear_val; }
+    if (in_array('float_value', $existingCols)) { $cols[] = 'float_value'; $vals[] = $wear_val; }
+    
+    $success = false;
 if (!empty($cols)) {
     $placeholders = implode(',', array_fill(0, count($cols), '?'));
     $sql = 'INSERT INTO ilanlar (' . implode(',', $cols) . ') VALUES (' . $placeholders . ')';

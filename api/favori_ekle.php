@@ -74,46 +74,69 @@ if (stripos($contentType, 'application/json') !== false) {
     $data = $_POST;
 }
 
-$ilan_id = intval($data['ilan_id'] ?? 0);
+$ilan_id = isset($data['ilan_id']) ? intval($data['ilan_id']) : null;
+$item_name = isset($data['item_name']) ? trim($data['item_name']) : null;
+$image = isset($data['image']) ? trim($data['image']) : null;
 $user_id = intval($data['user_id'] ?? 1); // Default user ID for now
 $action = $data['action'] ?? 'add'; // 'add' or 'remove'
 
-if (!$ilan_id) {
+if (!$ilan_id && !$item_name) {
     http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'İlan ID gerekli!']);
+    echo json_encode(['success' => false, 'message' => 'İlan ID veya Item Name gerekli!']);
     exit;
 }
 
 try {
     if ($action === 'add') {
-        // Check if already in favorites
-        $stmt = $pdo->prepare('SELECT id FROM favoriler WHERE user_id = ? AND ilan_id = ?');
-        $stmt->execute([$user_id, $ilan_id]);
-        
-        if ($stmt->fetch()) {
-            echo json_encode(['success' => false, 'message' => 'Bu item zaten favorilerinizde!']);
-            exit;
+        if ($item_name) {
+            // Skin Favorisi Ekleme
+            // Check if already in favorites (skin)
+            $stmt = $pdo->prepare('SELECT id FROM favoriler WHERE user_id = ? AND item_name = ?');
+            $stmt->execute([$user_id, $item_name]);
+            
+            if ($stmt->fetch()) {
+                echo json_encode(['success' => false, 'message' => 'Bu skin zaten favorilerinizde!']);
+                exit;
+            }
+            
+            // Add to favorites (skin)
+            // Note: ilan_id will be NULL
+            $stmt = $pdo->prepare('INSERT INTO favoriler (user_id, item_name, image, created_at) VALUES (?, ?, ?, NOW())');
+            $stmt->execute([$user_id, $item_name, $image]);
+        } else {
+            // İlan Favorisi Ekleme
+            // Check if already in favorites
+            $stmt = $pdo->prepare('SELECT id FROM favoriler WHERE user_id = ? AND ilan_id = ?');
+            $stmt->execute([$user_id, $ilan_id]);
+            
+            if ($stmt->fetch()) {
+                echo json_encode(['success' => false, 'message' => 'Bu item zaten favorilerinizde!']);
+                exit;
+            }
+            
+            // Add to favorites
+            $stmt = $pdo->prepare('INSERT INTO favoriler (user_id, ilan_id, created_at) VALUES (?, ?, NOW())');
+            $stmt->execute([$user_id, $ilan_id]);
         }
         
-        // Add to favorites
-        $stmt = $pdo->prepare('INSERT INTO favoriler (user_id, ilan_id, created_at) VALUES (?, ?, NOW())');
-        $stmt->execute([$user_id, $ilan_id]);
-        
         echo json_encode(['success' => true, 'message' => 'Favorilere eklendi!']);
-        
-    } else if ($action === 'remove') {
-        // Remove from favorites
-        $stmt = $pdo->prepare('DELETE FROM favoriler WHERE user_id = ? AND ilan_id = ?');
-        $stmt->execute([$user_id, $ilan_id]);
+    } elseif ($action === 'remove') {
+        if ($item_name) {
+            // Skin favorisi sil
+             $stmt = $pdo->prepare('DELETE FROM favoriler WHERE user_id = ? AND item_name = ?');
+             $stmt->execute([$user_id, $item_name]);
+        } else {
+            // İlan favorisi sil
+            $stmt = $pdo->prepare('DELETE FROM favoriler WHERE user_id = ? AND ilan_id = ?');
+            $stmt->execute([$user_id, $ilan_id]);
+        }
         
         echo json_encode(['success' => true, 'message' => 'Favorilerden çıkarıldı!']);
-        
     } else {
         http_response_code(400);
         echo json_encode(['success' => false, 'message' => 'Geçersiz işlem!']);
     }
-    
-} catch(\PDOException $e) {
+} catch (\PDOException $e) {
     http_response_code(500);
     echo json_encode(['success' => false, 'message' => 'Veritabanı hatası!']);
 }

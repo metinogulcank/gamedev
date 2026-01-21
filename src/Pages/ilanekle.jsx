@@ -110,77 +110,14 @@ const IlanEkle = () => {
     }
   }, [currentUser?.trade_url]);
 
-  // Seçili item değişince float çek
+  // Seçili item değişince float çek (ŞİMDİLİK RASTGELE)
   React.useEffect(() => {
     setFloatValue(null);
     setFloatError('');
     if (selectedItem && selectedItem.inspect_link) {
-      const ownerFromItem = selectedItem.owner_steamid || '';
-      const ownerFromTrade = currentUser?.trade_url ? getSteamId64FromTradeUrl(currentUser.trade_url) : '';
-      const owner = ownerFromItem || ownerFromTrade || '';
-      const normalizedInspect = normalizeInspectLink(selectedItem.inspect_link, owner, selectedItem.assetid);
-      try {
-        console.groupCollapsed('Seçilen item');
-        console.log({
-          name: selectedItem.name,
-          type: selectedItem.type,
-          assetid: selectedItem.assetid,
-          owner_steamid: selectedItem.owner_steamid,
-          inspect_link: selectedItem.inspect_link,
-          normalized_inspect_link: normalizedInspect,
-        });
-        console.groupEnd();
-      } catch (_) {}
-      setFloatLoading(true);
-      
-      // Yöntem 1: Halka açık CORS Proxy (Client-side IP kullanır, sunucu limitine takılmaz)
-      // Yöntem 2: Kendi sunucumuzdaki Proxy (Yedek)
-
-      const tryPublicCorsProxy = () => {
-        // corsproxy.io kullanarak api.csgofloat.com'a git
-        const targetUrl = `https://api.csgofloat.com/?url=${encodeURIComponent(normalizedInspect)}`;
-        const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(targetUrl)}`;
-        
-        return fetch(proxyUrl)
-          .then(res => {
-             if (!res.ok) throw new Error('Public CORS proxy failed');
-             return res.json();
-          })
-          .then(data => {
-             if (data && data.iteminfo && typeof data.iteminfo.floatvalue === 'number') {
-                 setFloatValue(data.iteminfo.floatvalue);
-                 return true; // Başarılı
-             }
-             throw new Error('No float data from public proxy');
-          });
-      };
-
-      tryPublicCorsProxy()
-        .catch(() => {
-             // Eğer public proxy başarısız olursa kendi sunucumuzu dene
-             console.log("Public proxy failed, trying local proxy...");
-             return fetch(`https://elephunt.com/api/float_proxy.php?url=${encodeURIComponent(normalizedInspect)}`)
-                .then(res => {
-                    if (!res.ok) throw new Error('Local proxy failed');
-                    return res.json();
-                })
-                .then(data => {
-                    if (data && data.iteminfo && typeof data.iteminfo.floatvalue === 'number') {
-                        setFloatValue(data.iteminfo.floatvalue);
-                    } else {
-                        throw new Error('No float value in response');
-                    }
-                });
-        })
-        .catch(err => {
-            console.error('All float fetch methods failed:', err);
-            // Detaylı hata mesajı göster
-            setFloatError('Float alınamadı (API Yoğunluğu/Limit)');
-        })
-        .finally(() => setFloatLoading(false));
-
-    } else {
-      setFloatLoading(false);
+      // Rastgele float oluştur (0.0 - 1.0)
+      const randomFloat = Math.random();
+      setFloatValue(randomFloat);
     }
   }, [selectedItem]);
 
@@ -436,12 +373,10 @@ const IlanEkle = () => {
                                       {/* Float değeri */}
                                       {selectedItem.inspect_link && (
                                         <div style={{marginBottom: 6, width: '100%'}}>
-                                          {floatLoading ? (
-                                            <span style={{color:'#66c0f4'}}>Float: Yükleniyor...</span>
-                                          ) : floatError ? (
+                                          {floatError ? (
                                             <span style={{color:'orange', fontSize:'13px'}}>Float değeri otomatik olarak alınamıyor. Lütfen itemi Steam'de inceleyerek float değerini kontrol edin.</span>
                                           ) : floatValue !== null ? (
-                                            <span style={{color:'#baffb6', fontWeight:'bold'}}>Float: {floatValue.toFixed(5)}</span>
+                                            <span style={{color:'#baffb6', fontWeight:'bold'}}>Float: {floatValue.toFixed(4)}</span>
                                           ) : null}
                                         </div>
                                       )}

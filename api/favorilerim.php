@@ -84,11 +84,16 @@ if (!$user_id) {
 }
 
 try {
-    // Kullanıcının favorilerini ilanlar tablosuyla birleştirerek al
+    // Kullanıcının favorilerini ilanlar tablosuyla birleştirerek al (Left Join)
     $query = '
-        SELECT i.*, f.created_at as favori_eklenme_tarihi 
+        SELECT 
+            f.id as fav_id, 
+            f.item_name as fav_item_name, 
+            f.image as fav_image, 
+            f.created_at as favori_eklenme_tarihi, 
+            i.* 
         FROM favoriler f 
-        INNER JOIN ilanlar i ON f.ilan_id = i.id 
+        LEFT JOIN ilanlar i ON f.ilan_id = i.id 
         WHERE f.user_id = ? 
         ORDER BY f.created_at DESC
     ';
@@ -98,12 +103,33 @@ try {
     
     $stmt = $pdo->prepare($query);
     $stmt->execute([$user_id]);
-    $favoriler = $stmt->fetchAll();
     
-    error_log("Favorilerim API - Found " . count($favoriler) . " favorites");
-    error_log("Favorilerim API - Favorites data: " . json_encode($favoriler));
+    $favorites = $stmt->fetchAll();
+    
+    // Normalize data
+    $result = array_map(function($row) {
+        if (empty($row['id'])) {
+             // Bu bir skin favorisi (ilan_id null veya ilan silinmiş)
+             return [
+                 'id' => null, // Listing ID is null
+                 'fav_id' => $row['fav_id'],
+                 'item_name' => $row['fav_item_name'] ?? $row['item_name'], // fallback if mixed
+                 'image' => $row['fav_image'] ?? $row['image'],
+                 'price' => null, // No price for skin
+                 'favori_eklenme_tarihi' => $row['favori_eklenme_tarihi'],
+                 'is_skin_favorite' => true
+             ];
+        } else {
+             // Bu bir ilan favorisi
+             return array_merge($row, [
+                 'is_skin_favorite' => false,
+                 // Ensure item_name is from listing if fav_item_name is null
+                 'item_name' => $row['item_name']
+             ]);
+        }
+    }, $favorites);
 
-    echo json_encode(['success' => true, 'favoriler' => $favoriler]);
+    echo json_encode(['success' => true, 'favoriler' => $result]);
     
 } catch(\PDOException $e) {
     error_log("Favorilerim API - Database error: " . $e->getMessage());

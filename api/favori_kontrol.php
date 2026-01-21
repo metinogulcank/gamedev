@@ -65,10 +65,12 @@ try {
 
 // Get request data
 $ilan_id = 0;
+$item_name = null;
 $user_id = 1; // Default user ID for now
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $ilan_id = isset($_GET['ilan_id']) ? intval($_GET['ilan_id']) : 0;
+    $item_name = isset($_GET['item_name']) ? trim($_GET['item_name']) : null;
     $user_id = isset($_GET['user_id']) ? intval($_GET['user_id']) : 1;
 } else {
     $contentType = $_SERVER['CONTENT_TYPE'] ?? '';
@@ -79,25 +81,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     } else {
         $data = $_POST;
     }
-    $ilan_id = intval($data['ilan_id'] ?? 0);
+    $ilan_id = isset($data['ilan_id']) ? intval($data['ilan_id']) : 0;
+    $item_name = isset($data['item_name']) ? trim($data['item_name']) : null;
     $user_id = intval($data['user_id'] ?? 1);
 }
 
-if (!$ilan_id) {
+if (!$ilan_id && !$item_name) {
     http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'İlan ID gerekli!']);
+    echo json_encode(['success' => false, 'message' => 'İlan ID veya Item Name gerekli!']);
     exit;
 }
 
 try {
-    // Check if item is in favorites
-    $stmt = $pdo->prepare('SELECT id FROM favoriler WHERE user_id = ? AND ilan_id = ?');
-    $stmt->execute([$user_id, $ilan_id]);
-    $favorite = $stmt->fetch();
+    $isFavorite = false;
+    
+    if ($item_name) {
+        // Check skin favorite
+        $stmt = $pdo->prepare('SELECT id FROM favoriler WHERE user_id = ? AND item_name = ?');
+        $stmt->execute([$user_id, $item_name]);
+        $favorite = $stmt->fetch();
+        $isFavorite = $favorite ? true : false;
+    } else {
+        // Check ilan favorite
+        $stmt = $pdo->prepare('SELECT id FROM favoriler WHERE user_id = ? AND ilan_id = ?');
+        $stmt->execute([$user_id, $ilan_id]);
+        $favorite = $stmt->fetch();
+        $isFavorite = $favorite ? true : false;
+    }
     
     echo json_encode([
         'success' => true, 
-        'isFavorite' => $favorite ? true : false
+        'isFavorite' => $isFavorite
     ]);
     
 } catch(\PDOException $e) {

@@ -56,7 +56,7 @@ const Favorilerim = () => {
       });
   }, []);
 
-  const removeFromFavorites = async (ilanId, event) => {
+  const removeFromFavorites = async (ilanId, itemName, event) => {
     // Prevent event bubbling to parent click handler
     event.stopPropagation();
     
@@ -83,6 +83,7 @@ const Favorilerim = () => {
         },
         body: JSON.stringify({
           ilan_id: ilanId,
+          item_name: itemName,
           user_id: user.id,
           action: 'remove'
         })
@@ -91,7 +92,11 @@ const Favorilerim = () => {
       const data = await response.json();
       
       if (data.success) {
-        setFavoriler(prev => prev.filter(fav => fav.id !== ilanId));
+        if (ilanId) {
+             setFavoriler(prev => prev.filter(fav => fav.id !== ilanId));
+        } else {
+             setFavoriler(prev => prev.filter(fav => fav.item_name !== itemName));
+        }
       } else {
         alert(data.message || 'Favorilerden çıkarılamadı!');
       }
@@ -100,8 +105,14 @@ const Favorilerim = () => {
     }
   };
 
-  const goToItemDetail = (ilanId) => {
-    navigate(`/skindetay/${ilanId}`);
+  const goToItemDetail = (favori) => {
+    if (favori.is_skin_favorite || !favori.id) {
+        // Skin favorisi, generic sayfaya git
+        navigate(`/skindetay/0?name=${encodeURIComponent(favori.item_name)}`);
+    } else {
+        // İlan favorisi, ilan sayfasına git
+        navigate(`/skindetay/${favori.id}`);
+    }
   };
 
   return (
@@ -121,11 +132,11 @@ const Favorilerim = () => {
                                          <ul>
                        {favoriler.length === 0 && <li>Henüz favori itemınız yok.</li>}
                        {favoriler.map(favori => (
-                         <li key={favori.id} style={{position:'relative'}}>
+                         <li key={favori.fav_id || favori.id} style={{position:'relative'}}>
                            <div 
                              className="ProductItem" 
                              style={{cursor: 'pointer'}}
-                             onClick={() => goToItemDetail(favori.id)}
+                             onClick={() => goToItemDetail(favori)}
                            >
                              {/* Sağ üstte çarpı butonu */}
                              <button
@@ -149,9 +160,9 @@ const Favorilerim = () => {
                                  fontWeight: 'bold'
                                }}
                                title="Favorilerden Çıkar"
-                               onClick={(e) => removeFromFavorites(favori.id, e)}
-                             >
-                               ×
+                                onClick={(e) => removeFromFavorites(favori.id, favori.id ? null : favori.item_name, e)}
+                              >
+                                ×
                              </button>
                              <div className="ProductPic">
                                {/* Eğer image alanı varsa göster */}
@@ -163,9 +174,10 @@ const Favorilerim = () => {
                                )}
                              </div>
                              <div className="ProductDesc">
-                               <h2>{favori.item_name}</h2>
+                               <h2>{favori.item_name} {favori.is_skin_favorite && <span style={{fontSize:'12px', color:'#aaa'}}>(Skin)</span>}</h2>
                                <p>
-                                 <span className="left">{parseFloat(favori.price).toFixed(2)} ₺</span>
+                                 {favori.price && <span className="left">{parseFloat(favori.price).toFixed(2)} ₺</span>}
+                                 {!favori.price && <span className="left" style={{color:'#999'}}>Market Fiyatı</span>}
                                  {favori.favori_eklenme_tarihi && (
                                    <span className="right">
                                      Favori: {new Date(favori.favori_eklenme_tarihi).toLocaleString()}

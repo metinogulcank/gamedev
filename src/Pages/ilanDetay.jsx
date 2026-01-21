@@ -74,6 +74,7 @@ function IlanDetay() {
 
   const [sellerModalOpen, setSellerModalOpen] = useState(false);
   const [selectedSeller, setSelectedSeller] = useState(null);
+  const [selectedWearFilter, setSelectedWearFilter] = useState(null); // 'Factory New', 'Minimal Wear', 'Field-Tested', 'Well-Worn', 'Battle-Scarred', 'StatTrak'
 
   const openSellerModal = (listing) => {
     setSelectedSeller(listing);
@@ -84,12 +85,85 @@ function IlanDetay() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
 
+  // Helper function to get wear condition class
+  const getWearClass = (wear) => {
+    if (!wear) return 'factorynew';
+    const wearValue = parseFloat(wear);
+    if (wearValue <= 0.07) return 'factorynew';
+    if (wearValue <= 0.15) return 'minimalwear';
+    if (wearValue <= 0.38) return 'fieldtested';
+    if (wearValue <= 0.45) return 'wellworn';
+    return 'battlescarred';
+  };
+
+  // Helper function to get wear condition text
+  const getWearText = (wear) => {
+    if (!wear) return 'Factory New';
+    const wearValue = parseFloat(wear);
+    if (wearValue <= 0.07) return 'Factory New';
+    if (wearValue <= 0.15) return 'Minimal Wear';
+    if (wearValue <= 0.38) return 'Field-Tested';
+    if (wearValue <= 0.45) return 'Well-Worn';
+    return 'Battle-Scarred';
+  };
+
+
+
+  // Min Prices & Filtering Logic
+  const wearMinPrices = React.useMemo(() => {
+    const prices = {
+      'Factory New': null,
+      'Minimal Wear': null,
+      'Field-Tested': null,
+      'Well-Worn': null,
+      'Battle-Scarred': null,
+      'StatTrak': null
+    };
+
+    weaponListings.forEach(item => {
+      const price = parseFloat(item.price);
+      if (isNaN(price)) return;
+      
+      const isStatTrak = item.item_name && item.item_name.includes('StatTrak');
+      const wearText = getWearText(item.wear);
+
+      // Check for StatTrak
+      if (isStatTrak) {
+        if (prices['StatTrak'] === null || price < prices['StatTrak']) {
+          prices['StatTrak'] = price;
+        }
+      }
+
+      // Check for Wear (Non-StatTrak)
+      if (!isStatTrak) {
+         if (prices[wearText] === null || price < prices[wearText]) {
+            prices[wearText] = price;
+         }
+      }
+    });
+    return prices;
+  }, [weaponListings]);
+
+  const filteredWeaponListings = React.useMemo(() => {
+      if (!selectedWearFilter) return weaponListings;
+      return weaponListings.filter(item => {
+          const isStatTrak = item.item_name && item.item_name.includes('StatTrak');
+          const wearText = getWearText(item.wear);
+
+          if (selectedWearFilter === 'StatTrak') {
+              return isStatTrak;
+          } else {
+              return !isStatTrak && wearText === selectedWearFilter;
+          }
+      });
+  }, [weaponListings, selectedWearFilter]);
+
   useEffect(() => {
     setCurrentPage(1);
-  }, [activeTab]);
+  }, [activeTab, selectedWearFilter]); // Reset page on filter change too
 
   const getCurrentListLength = () => {
-    if (activeTab === 'Sell') return weaponListings.length;
+    if (activeTab === 'Sell') return filteredWeaponListings.length;
     if (activeTab === 'Buyy') return buyOrders.length;
     if (activeTab === 'Gecmis') return lastSales.length;
     return 0;
@@ -292,28 +366,6 @@ function IlanDetay() {
       })
       .catch(() => setHasItemInInventory(false));
   }, [ilan]);
-
-  // Helper function to get wear condition class
-  const getWearClass = (wear) => {
-    if (!wear) return 'factorynew';
-    const wearValue = parseFloat(wear);
-    if (wearValue <= 0.07) return 'factorynew';
-    if (wearValue <= 0.15) return 'minimalwear';
-    if (wearValue <= 0.38) return 'fieldtested';
-    if (wearValue <= 0.45) return 'wellworn';
-    return 'battlescarred';
-  };
-
-  // Helper function to get wear condition text
-  const getWearText = (wear) => {
-    if (!wear) return 'Factory New';
-    const wearValue = parseFloat(wear);
-    if (wearValue <= 0.07) return 'Factory New';
-    if (wearValue <= 0.15) return 'Minimal Wear';
-    if (wearValue <= 0.38) return 'Field-Tested';
-    if (wearValue <= 0.45) return 'Well-Worn';
-    return 'Battle-Scarred';
-  };
 
   const extractWeaponName = (itemName) => {
     if (!itemName) return '';
@@ -661,17 +713,41 @@ function IlanDetay() {
              <div className="WearConditionTabs">
                <div className="SetContent">
                  <div className="WearTabs">
-                   <button className={`wear-tab ${getWearText(ilan?.wear) === 'Factory New' ? 'active' : ''}`}>
-                     Factory New {ilan && generateWearPrices(ilan.price).factoryNew} TL
+                   <button 
+                     className={`wear-tab ${selectedWearFilter === 'Factory New' ? 'active' : ''}`}
+                     onClick={() => setSelectedWearFilter(selectedWearFilter === 'Factory New' ? null : 'Factory New')}
+                   >
+                     Factory New {wearMinPrices['Factory New'] ? wearMinPrices['Factory New'].toFixed(2) : (ilan && generateWearPrices(ilan.price).factoryNew)} TL
                    </button>
-                   <button className={`wear-tab ${getWearText(ilan?.wear) === 'Minimal Wear' ? 'active' : ''}`}>
-                     Minimal Wear {ilan && generateWearPrices(ilan.price).minimalWear} TL
+                   <button 
+                     className={`wear-tab ${selectedWearFilter === 'Minimal Wear' ? 'active' : ''}`}
+                     onClick={() => setSelectedWearFilter(selectedWearFilter === 'Minimal Wear' ? null : 'Minimal Wear')}
+                   >
+                     Minimal Wear {wearMinPrices['Minimal Wear'] ? wearMinPrices['Minimal Wear'].toFixed(2) : (ilan && generateWearPrices(ilan.price).minimalWear)} TL
                    </button>
-                   <button className={`wear-tab ${getWearText(ilan?.wear) === 'Field-Tested' ? 'active' : ''}`}>
-                     Field-Tested {ilan && generateWearPrices(ilan.price).fieldTested} TL
+                   <button 
+                     className={`wear-tab ${selectedWearFilter === 'Field-Tested' ? 'active' : ''}`}
+                     onClick={() => setSelectedWearFilter(selectedWearFilter === 'Field-Tested' ? null : 'Field-Tested')}
+                   >
+                     Field-Tested {wearMinPrices['Field-Tested'] ? wearMinPrices['Field-Tested'].toFixed(2) : (ilan && generateWearPrices(ilan.price).fieldTested)} TL
                    </button>
-                   <button className="wear-tab statTrak">
-                     ★ StatTrak™ {ilan && generateWearPrices(ilan.price).statTrak} TL
+                   <button 
+                     className={`wear-tab ${selectedWearFilter === 'Well-Worn' ? 'active' : ''}`}
+                     onClick={() => setSelectedWearFilter(selectedWearFilter === 'Well-Worn' ? null : 'Well-Worn')}
+                   >
+                     Well-Worn {wearMinPrices['Well-Worn'] ? wearMinPrices['Well-Worn'].toFixed(2) : (ilan && generateWearPrices(ilan.price).wellWorn || '-')} TL
+                   </button>
+                   <button 
+                     className={`wear-tab ${selectedWearFilter === 'Battle-Scarred' ? 'active' : ''}`}
+                     onClick={() => setSelectedWearFilter(selectedWearFilter === 'Battle-Scarred' ? null : 'Battle-Scarred')}
+                   >
+                     Battle-Scarred {wearMinPrices['Battle-Scarred'] ? wearMinPrices['Battle-Scarred'].toFixed(2) : (ilan && generateWearPrices(ilan.price).battleScarred || '-')} TL
+                   </button>
+                   <button 
+                     className={`wear-tab statTrak ${selectedWearFilter === 'StatTrak' ? 'active' : ''}`}
+                     onClick={() => setSelectedWearFilter(selectedWearFilter === 'StatTrak' ? null : 'StatTrak')}
+                   >
+                     ★ StatTrak™ {wearMinPrices['StatTrak'] ? wearMinPrices['StatTrak'].toFixed(2) : (ilan && generateWearPrices(ilan.price).statTrak)} TL
                    </button>
                  </div>
                </div>
@@ -710,13 +786,13 @@ function IlanDetay() {
               <div id="container">
                 <section className="tabs-content">
                   <div id="Sell" style={{ display: activeTab === 'Sell' ? 'block' : 'none' }}>
-                    <div className="SkinDetailProductsTitle">
-                      <div className="item">Items</div>
-                      <div className="item">Açıklama</div>
-                      <div className="item">&nbsp;</div>
-                      <div className="item">Satıcı</div>
-                      <div className="item">Fiyat</div>
-                      <div className="item">&nbsp;</div>
+                    <div className="SkinDetailProductsTitle" style={{ display: 'flex', alignItems: 'center', width: '100%', height: 'auto', padding: '10px 0' }}>
+                      <div className="item" style={{ width: '10%', textAlign: 'center', padding: 0 }}>Items</div>
+                      <div className="item" style={{ width: '18%', textAlign: 'left', padding: 0 }}>Açıklama</div>
+                      <div className="item" style={{ width: '15%', padding: 0 }}>&nbsp;</div>
+                      <div className="item" style={{ width: '16%', textAlign: 'center', padding: 0 }}>Satıcı</div>
+                      <div className="item" style={{ width: '14%', textAlign: 'center', padding: 0 }}>Fiyat</div>
+                      <div className="item" style={{ width: '22%', padding: 0 }}>&nbsp;</div>
                     </div>
 
                     {weaponListingsLoading && (
@@ -734,7 +810,7 @@ function IlanDetay() {
                         Aktif ilan bulunamadı.
                       </div>
                     )}
-                    {!weaponListingsLoading && getPaginatedData(weaponListings).map(listing => {
+                    {!weaponListingsLoading && getPaginatedData(filteredWeaponListings).map(listing => {
                       const storeName = listing.store_name || listing.seller_username || listing.user_name || listing.username || 'Satıcı';
                       const sellerAvatar = listing.store_logo || listing.seller_avatar || '/images/unknownuser.jpg';
                       const priceValue = Number.isFinite(listing.price) ? listing.price : parseFloat(listing.price);
@@ -744,7 +820,7 @@ function IlanDetay() {
 
                       return (
                         <div className="Product-item" key={listing.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                          <div className="itemImg" style={{ width: '10%', marginRight: 0 }}>
+                          <div className="itemImg" style={{ width: '10%', marginRight: 0, display: 'flex', justifyContent: 'center' }}>
                             <img 
                               src={`https://steamcommunity-a.akamaihd.net/economy/image/${listing.image}`} 
                               alt={listing.item_name}
@@ -752,14 +828,32 @@ function IlanDetay() {
                             />
                           </div>
                           <div className="ProductFloat" style={{ width: '18%', marginRight: 0 }}>
-                            <p>{listing.description || 'Silah ilanı'}</p>
-                            <span>Durum: {wearText}</span>
+                            <p>{listing.description || ''}</p>
+                            <span>{wearText.replace('-', ' - ')}</span>
                             {listing.wear && !isNaN(parseFloat(listing.wear)) && (
-                              <div style={{fontSize:'12px', color:'#ccc', marginTop:'2px'}}>
-                                Float: {parseFloat(listing.wear).toFixed(9)}
+                              <div style={{ marginTop: '5px', width: '90%' }}>
+                                <div style={{ fontSize: '11px', color: '#ccc', marginBottom: '2px', textAlign: 'left' }}>
+                                  <strong style={{color:'#03b0fa'}}>Float:</strong> {parseFloat(listing.wear).toFixed(9)}
+                                </div>
+                                <div style={{ position: 'relative', height: '6px', width: '100%', background: '#1c1f26', borderRadius: '3px', overflow: 'hidden' }}>
+                                  <div style={{
+                                    position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
+                                    background: 'linear-gradient(90deg, #26a69a 0%, #26a69a 15%, #ffeb3b 38%, #ff9800 45%, #ef5350 100%)'
+                                  }}></div>
+                                  <div style={{
+                                    position: 'absolute',
+                                    top: 0,
+                                    bottom: 0,
+                                    left: `${Math.min(Math.max(parseFloat(listing.wear), 0), 1) * 100}%`,
+                                    width: '2px',
+                                    background: '#fff',
+                                    boxShadow: '0 0 2px rgba(0,0,0,0.5)',
+                                    zIndex: 2
+                                  }}></div>
+                                </div>
                               </div>
                             )}
-                            {createdAtText && <span>İlan Tarihi: {createdAtText}</span>}
+                            {/* {createdAtText && <span>İlan Tarihi: {createdAtText}</span>} */}
                           </div>
                           <div className="ProductSticker" style={{ width: '15%', marginRight: 0, padding: '10px 0' }}>
                             {listing.inspect_link && (
@@ -774,7 +868,7 @@ function IlanDetay() {
                               <span style={{ fontWeight: 'bold' }}>{storeName}</span>
                             </div>
                           </div>
-                          <div className="ProductPrice" style={{ width: '14%', marginRight: 0 }}>
+                          <div className="ProductPrice" style={{ width: '14%', marginRight: 0, textAlign: 'center' }}>
                             <p>
                               {displayPrice} <span>TL</span>
                             </p>
@@ -817,7 +911,7 @@ function IlanDetay() {
                                   window.dispatchEvent(new Event('cartUpdated'));
                                 }}
                                 className="BtnSepeteEkle"
-                                style={{ width: '100px', textAlign: 'center', fontSize: '12px' }}
+                                style={{ width: 'auto', minWidth: '100px', padding: '0 10px', textAlign: 'center', fontSize: '12px', whiteSpace: 'nowrap' }}
                               >
                                 SEPETE EKLE
                               </button>
@@ -829,21 +923,40 @@ function IlanDetay() {
                                   if (!stored) { alert('Giriş yapmalısınız!'); return; }
                                   const user = JSON.parse(stored);
                                   if (!user.id) return;
+
+                                  // Skin ismini sadeleştir (Wear bilgisini çıkar)
+                                  const rawName = listing.item_name || ilan.item_name;
+                                  const skinName = rawName ? rawName.replace(/\s*\(.*?\)\s*/g, '').trim() : rawName;
+                                  const skinImage = listing.image || ilan.image;
+
                                   try {
-                                    const checkRes = await fetch(`https://elephunt.com/api/favori_kontrol.php?ilan_id=${listing.id}&user_id=${user.id}`);
+                                    // Önce favoride mi kontrol et (Skin ismine göre)
+                                    const checkRes = await fetch(`https://elephunt.com/api/favori_kontrol.php?item_name=${encodeURIComponent(skinName)}&user_id=${user.id}`);
                                     const checkData = await checkRes.json();
                                     const isFav = checkData.success && checkData.isFavorite;
+
+                                    // Ekle veya Çıkar (Skin olarak)
                                     const response = await fetch('https://elephunt.com/api/favori_ekle.php', {
                                       method: 'POST',
                                       headers: { 'Content-Type': 'application/json' },
-                                      body: JSON.stringify({ ilan_id: listing.id, user_id: user.id, action: isFav ? 'remove' : 'add' })
+                                      body: JSON.stringify({ 
+                                        item_name: skinName, 
+                                        image: skinImage,
+                                        user_id: user.id, 
+                                        action: isFav ? 'remove' : 'add' 
+                                      })
                                     });
                                     const data = await response.json();
-                                    if (data.success) window.location.reload();
+                                    if (data.success) {
+                                        alert(isFav ? 'Skin favorilerden çıkarıldı.' : 'Skin komple favorilere eklendi.');
+                                        // window.location.reload(); // İsteğe bağlı
+                                    } else {
+                                        alert(data.message);
+                                    }
                                   } catch (error) { console.error('Favori işlemi başarısız:', error); }
                                 }}
                                 style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#fff', fontSize: '16px', padding: '5px' }}
-                                title="Favorilere Ekle"
+                                title="Bu Skini Favorilere Ekle"
                               >
                                 <i className="fa fa-star"></i>
                               </button>
